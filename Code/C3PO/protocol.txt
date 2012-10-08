@@ -1,0 +1,27 @@
+-------------------------------------------------------------------------
+---------------------- PROTOCOL SPECIFICATIONS --------------------------
+-------------------------------------------------------------------------
+
+	Nomencalture :
+	* Text to Speech Server : TTSS
+	* Text to Speech Client : TTSC
+	* Media Control Socket  : MSC
+	* Data Transfer Socket  : DTS
+
+
+		MSC (accept) <------------ (request) MSC
+	i)  TTSS                                        TTSC
+	        DTS (accept) <------------ (request) DTS
+
+	
+
+		MSC          --data size-->          MSC
+	ii) TTSS                                        TTSC
+		DTS                                  DTS 
+
+
+		 MSC                                 MSC
+	iii) TTSS                                       TTSC
+		 DTS         ---- data ---->         DTS
+
+	

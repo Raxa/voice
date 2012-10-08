@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/rtp
+END
+RtpParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/rtp/RtpParser.java
+END
+RFC3551.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/rtp/RFC3551.java
+END
+RtpSession.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/rtp/RtpSession.java
+END
+RFC4733.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/rtp/RFC4733.java
+END
+RtpListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/rtp/RtpListener.java
+END
+RtpPacket.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/rtp/RtpPacket.java
+END

@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding
+END
+RunnableSipParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/RunnableSipParser.java
+END
+SipHeadersTable.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipHeadersTable.java
+END
+SipHeaderFieldMultiValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipHeaderFieldMultiValue.java
+END
+SipUriSyntaxException.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipUriSyntaxException.java
+END
+SipHeader.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipHeader.java
+END
+SipHeaderFieldValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipHeaderFieldValue.java
+END
+NameAddress.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/NameAddress.java
+END
+SipHeaderParamName.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipHeaderParamName.java
+END
+SipHeaders.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipHeaders.java
+END
+SipParserException.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipParserException.java
+END
+SipParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipParser.java
+END
+SipHeaderFieldName.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipHeaderFieldName.java
+END
+SipURI.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/syntaxencoding/SipURI.java
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/handlers
+END
+RegisterHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/handlers/RegisterHandler.java
+END
+CancelHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/handlers/CancelHandler.java
+END
+OptionsHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/handlers/OptionsHandler.java
+END
+InviteHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/handlers/InviteHandler.java
+END
+ByeHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/handlers/ByeHandler.java
+END
+DialogMethodHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/handlers/DialogMethodHandler.java
+END
+MethodHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/handlers/MethodHandler.java
+END

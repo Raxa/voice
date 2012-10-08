@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp
+END
+RFC4566.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/RFC4566.java
+END
+MediaDestination.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/MediaDestination.java
+END
+SDPManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/SDPManager.java
+END
+MediaDescription.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/MediaDescription.java
+END
+SdpParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/SdpParser.java
+END
+SessionDescription.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/SessionDescription.java
+END
+NoCodecException.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/NoCodecException.java
+END
+SDPMessage.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/SDPMessage.java
+END
+Codec.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/Codec.java
+END
+SdpLine.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sdp/SdpLine.java
+END

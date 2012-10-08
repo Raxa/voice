@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/peers/!svn/ver/187/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction
+END
+InviteClientTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svnroot/peers/!svn/ver/187/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteClientTransaction.java
+END
+NonInviteServerTransactionStateCompleted.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteServerTransactionStateCompleted.java
+END
+InviteServerTransactionStateTerminated.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteServerTransactionStateTerminated.java
+END
+ServerTransactionUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/ServerTransactionUser.java
+END
+ServerTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/ServerTransaction.java
+END
+NonInviteClientTransactionStateTrying.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteClientTransactionStateTrying.java
+END
+NonInviteClientTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteClientTransaction.java
+END
+NonInviteClientTransactionStateProceeding.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteClientTransactionStateProceeding.java
+END
+NonInviteClientTransactionState.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteClientTransactionState.java
+END
+InviteServerTransactionStateInit.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteServerTransactionStateInit.java
+END
+TransactionManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/TransactionManager.java
+END
+SipListeningPoint.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/SipListeningPoint.java
+END
+InviteServerTransactionStateConfirmed.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteServerTransactionStateConfirmed.java
+END
+Transaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/Transaction.java
+END
+InviteServerTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteServerTransaction.java
+END
+NonInviteClientTransactionStateTerminated.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteClientTransactionStateTerminated.java
+END
+InviteClientTransactionStateCalling.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteClientTransactionStateCalling.java
+END
+InviteClientTransactionStateCompleted.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteClientTransactionStateCompleted.java
+END
+NonInviteClientTransactionStateInit.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteClientTransactionStateInit.java
+END
+NonInviteServerTransactionStateTrying.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteServerTransactionStateTrying.java
+END
+InviteTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteTransaction.java
+END
+InviteClientTransactionState.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteClientTransactionState.java
+END
+InviteClientTransactionStateProceeding.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteClientTransactionStateProceeding.java
+END
+NonInviteServerTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteServerTransaction.java
+END
+NonInviteServerTransactionStateProceeding.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteServerTransactionStateProceeding.java
+END
+NonInviteServerTransactionState.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteServerTransactionState.java
+END
+NonInviteClientTransactionStateCompleted.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteClientTransactionStateCompleted.java
+END
+NonInviteTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteTransaction.java
+END
+InviteClientTransactionStateTerminated.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteClientTransactionStateTerminated.java
+END
+ClientTransactionUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/ClientTransactionUser.java
+END
+NonInviteServerTransactionStateTerminated.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/NonInviteServerTransactionStateTerminated.java
+END
+ClientTransaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/ClientTransaction.java
+END
+InviteClientTransactionStateInit.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteClientTransactionStateInit.java
+END
+InviteServerTransactionStateCompleted.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteServerTransactionStateCompleted.java
+END
+InviteServerTransactionState.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteServerTransactionState.java
+END
+InviteServerTransactionStateProceeding.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transaction/InviteServerTransactionStateProceeding.java
+END

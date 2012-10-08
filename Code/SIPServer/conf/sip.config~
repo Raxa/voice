@@ -1,0 +1,16 @@
+#################################################
+# Speech Recognizer Sender Configuration        #
+#################################################
+
+ASR_HOST_ADDRESS = localhost
+ASR_HOST_PORT = 9991
+
+#################################################
+# Text To Speech Receiver Configuration         #
+#################################################
+
+TTS_HOST_ADDRESS = localhost
+TTS_HOST_PORT = 9992
+SAMPLE_RATE = 8000
+SAMPLE_SIZE = 16
+

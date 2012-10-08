@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/nat
+END
+PeerManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/nat/PeerManager.java
+END
+Server.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/nat/Server.java
+END
+UDPReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/nat/UDPReceiver.java
+END
+Client.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/nat/Client.java
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transactionuser
+END
+Dialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transactionuser/Dialog.java
+END
+DialogState.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transactionuser/DialogState.java
+END
+DialogStateInit.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transactionuser/DialogStateInit.java
+END
+DialogStateConfirmed.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transactionuser/DialogStateConfirmed.java
+END
+DialogManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transactionuser/DialogManager.java
+END
+DialogStateEarly.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transactionuser/DialogStateEarly.java
+END
+DialogStateTerminated.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/transactionuser/DialogStateTerminated.java
+END

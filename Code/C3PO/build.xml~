@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************** -->
+<!-- *                                                        * -->
+<!-- * Apache Ant build file used to build C3PO               * -->
+<!-- * To build the demo, just type the following:            * -->
+<!-- *                                                        * -->
+<!-- *     ant all					      * -->
+<!-- *                                                        * -->
+<!-- * For more information:  http://ant.apache.org/          * -->
+<!-- *                                                        * -->
+<!-- ********************************************************** -->
+<project basedir="." default="all" name="C3PO">	
+	<!-- Setting Path Variables -->
+	<property name="src_dir" value="./src"/>
+	<property name="build_dir" value="./build"/>
+	<property name="lib_dir" value="./lib/"/>
+	<property name="bin_dir" value="bin"/>
+	<path id="libs">
+	        <pathelement path="${bin_dir}"/>
+		<pathelement path="${lib_dir}/freetts.jar"/>
+		<pathelement path="${lib_dir}/jsapi.jar"/>
+		<pathelement path="${lib_dir}/en_us.jar"/>
+	</path>
+	
+	<target name="all"
+	            depends="compile, run"
+	            description="Compiles and jars the demos"/>
+	
+	<target name="compile">
+			<mkdir dir="${build_dir}"/>
+	        <mkdir dir="${build_dir}"/>
+	        <javac debug="true"
+	               listfiles="true"
+	               deprecation="true"
+	               includeAntRuntime="false"
+	               srcdir="${src_dir}"
+	               destdir="${build_dir}"
+	               includes="**/*.java">
+	            <classpath refid="libs"/>
+	        </javac>
+	        <jar destfile="${bin_dir}/c3po.jar"
+	             basedir="${build_dir}"
+	             includes="**/*.*"
+	             compress="true"/>
+	</target>
+
+
+	<!-- DON'T RUN THIS JAR
+
+	<target name="run" depends="compile">
+		<java jar="${bin_dir}/c3po.jar" fork="true">
+			<jvmarg value="-Xms400m"/>
+			<jvmarg value="-Xmx1500m"/>
+		</java>
+	</target>  
+	-->
+</project>

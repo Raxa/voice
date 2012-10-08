@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media
+END
+Capture.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/Capture.java
+END
+PcmuEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/PcmuEncoder.java
+END
+Decoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/Decoder.java
+END
+RtpSender.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/RtpSender.java
+END
+PcmaDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/PcmaDecoder.java
+END
+MediaManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/MediaManager.java
+END
+IncomingRtpReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/IncomingRtpReader.java
+END
+Echo.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/Echo.java
+END
+Encoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/Encoder.java
+END
+PcmaEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/PcmaEncoder.java
+END
+DtmfFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/DtmfFactory.java
+END
+SoundManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/SoundManager.java
+END
+MediaMode.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/MediaMode.java
+END
+PcmuDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/PcmuDecoder.java
+END
+CaptureRtpSender.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/media/CaptureRtpSender.java
+END

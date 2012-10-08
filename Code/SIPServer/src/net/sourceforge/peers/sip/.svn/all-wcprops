@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/peers/!svn/ver/189/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip
+END
+Utils.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/Utils.java
+END
+JavaUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/JavaUtils.java
+END
+AbstractState.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/AbstractState.java
+END
+RFC3261.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/RFC3261.java
+END
+RFC2617.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/peers/!svn/ver/185/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/RFC2617.java
+END

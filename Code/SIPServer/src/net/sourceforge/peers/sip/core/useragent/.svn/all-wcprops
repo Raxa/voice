@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/peers/!svn/ver/189/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent
+END
+SipListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/SipListener.java
+END
+MessageInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/MessageInterceptor.java
+END
+RequestManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/RequestManager.java
+END
+UAC.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/peers/!svn/ver/189/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/UAC.java
+END
+UAS.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/UAS.java
+END
+ChallengeManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/peers/!svn/ver/185/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/ChallengeManager.java
+END
+InitialRequestManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/InitialRequestManager.java
+END
+MidDialogRequestManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/MidDialogRequestManager.java
+END
+SipEvent.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/peers/!svn/ver/177/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/SipEvent.java
+END
+UserAgent.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/peers/!svn/ver/186/trunk/peers-lib/src/main/java/net/sourceforge/peers/sip/core/useragent/UserAgent.java
+END
