@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/parser
+END
+Token.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/cmusphinx/!svn/ver/9532/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/parser/Token.java
+END
+TokenMgrError.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/9532/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/parser/TokenMgrError.java
+END
+JSGFParserTokenManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/10159/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/parser/JSGFParserTokenManager.java
+END
+JSGFParserConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/cmusphinx/!svn/ver/9522/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/parser/JSGFParserConstants.java
+END
+JSGFParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/parser/JSGFParser.java
+END
+ParseException.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9532/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/parser/ParseException.java
+END
+JavaCharStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9522/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/parser/JavaCharStream.java
+END
+jsgf.jj
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/10159/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/parser/jsgf.jj
+END

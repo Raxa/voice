@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/cmusphinx/!svn/ver/10192/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/search/stats
+END
+WordTracker.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/cmusphinx/!svn/ver/10096/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/search/stats/WordTracker.java
+END
+TokenTracker.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/cmusphinx/!svn/ver/10192/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/search/stats/TokenTracker.java
+END
+StateHistoryTracker.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/cmusphinx/!svn/ver/10192/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/search/stats/StateHistoryTracker.java
+END
+TokenTypeTracker.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svnroot/cmusphinx/!svn/ver/10192/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/search/stats/TokenTypeTracker.java
+END

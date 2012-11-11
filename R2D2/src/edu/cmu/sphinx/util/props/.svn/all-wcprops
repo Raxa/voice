@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svnroot/cmusphinx/!svn/ver/11344/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props
+END
+Configurable.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/10747/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/Configurable.java
+END
+ConfigurableAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/cmusphinx/!svn/ver/11344/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/ConfigurableAdapter.java
+END
+ConfigurationManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/cmusphinx/!svn/ver/9751/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/ConfigurationManager.java
+END
+PropertyException.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/cmusphinx/!svn/ver/10763/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/PropertyException.java
+END
+ConfigHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/10019/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/ConfigHandler.java
+END
+S4Integer.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/cmusphinx/!svn/ver/9763/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/S4Integer.java
+END
+S4ComponentList.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/8030/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/S4ComponentList.java
+END
+S4Component.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/8030/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/S4Component.java
+END
+S4StringList.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9340/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/S4StringList.java
+END
+PropertySheet.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/10965/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/PropertySheet.java
+END
+S4String.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/cmusphinx/!svn/ver/9763/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/S4String.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/package.html
+END
+S4Double.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/cmusphinx/!svn/ver/9763/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/S4Double.java
+END
+SaxLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/cmusphinx/!svn/ver/9386/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/SaxLoader.java
+END
+ConfigurationManagerUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svnroot/cmusphinx/!svn/ver/10310/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/ConfigurationManagerUtils.java
+END
+InternalConfigurationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/cmusphinx/!svn/ver/9522/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/InternalConfigurationException.java
+END
+ConfigurationChangeListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svnroot/cmusphinx/!svn/ver/6781/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/ConfigurationChangeListener.java
+END
+ConfCategory.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/6783/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/ConfCategory.java
+END
+S4Boolean.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/cmusphinx/!svn/ver/9233/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/S4Boolean.java
+END
+PropertyType.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9764/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/PropertyType.java
+END
+RawPropertyData.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9386/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/RawPropertyData.java
+END
+S4PropWrapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/10821/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/S4PropWrapper.java
+END
+S4Property.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/6603/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/props/S4Property.java
+END

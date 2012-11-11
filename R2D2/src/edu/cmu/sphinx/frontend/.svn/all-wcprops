@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/cmusphinx/!svn/ver/11344/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend
+END
+FloatData.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/cmusphinx/!svn/ver/9517/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/FloatData.java
+END
+FrontEnd.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/FrontEnd.java
+END
+GainControlProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/cmusphinx/!svn/ver/9378/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/GainControlProcessor.java
+END
+SignalListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9346/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/SignalListener.java
+END
+BaseDataProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/10116/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/BaseDataProcessor.java
+END
+DoubleData.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/DoubleData.java
+END
+DataStartSignal.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/DataStartSignal.java
+END
+DataProcessingException.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/cmusphinx/!svn/ver/9520/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/DataProcessingException.java
+END
+Data.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/cmusphinx/!svn/ver/7213/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/Data.java
+END
+DataProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/8891/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/DataProcessor.java
+END
+DataBlocker.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/cmusphinx/!svn/ver/9987/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/DataBlocker.java
+END
+Signal.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/Signal.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/cmusphinx/!svn/ver/6605/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/package.html
+END
+DataEndSignal.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/DataEndSignal.java
+END

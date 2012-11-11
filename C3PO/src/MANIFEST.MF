@@ -1,0 +1,3 @@
+Main-Class: edu.cmu.tts.demo.ServerDemo
+Class-Path: ../lib/freetts.jar ../lib/jsapi.jar ../lib/en_us.jar ../lib/leia.jar
+

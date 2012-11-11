@@ -1,0 +1,66 @@
+file name: Core/ques-comm.train
+<s>  And  what  do  you  say  to  your  other  nickname  </s>
+<s>  Don’t  you  agree  that  you  are  an  ignorant  buffoon  </s>
+<s>  Why  has  asking  become  so  hard  </s>
+<s>  Do  you  consider  fashion  to  be  a  revolutionary  statement  </s>
+<s>  what  do  you  consider  was  the  most  important  piece  of  equipment  you  carried  in  your  assault  on  </s>
+<s>  are  you  aware  </s>
+<s>  who  is  the  man  you  admire  the  most  </s>
+<s>  aren’t  those  free  public  libraries  </s>
+<s>  What  caused  the  Civil  War  </s>
+<s>  Who  appointed  me  to  speak  </s>
+<s>  Were  there  any  viable  alternatives  </s>
+<s>  How  would  the  relevant  documentation  help  </s>
+<s>  How  To  Give  A  Good  Answer  </s>
+<s>  Can  anybody  help  </s>
+<s>  is  it  something  I  did  </s>
+<s>  Do  you  need  burping  and  diapering  </s>
+<s>  What  is  the  current  altitude  </s>
+<s>  Can  I  ask  you  a  couple  of  questions  </s>
+<s>  What  do  you  say  to  that  </s>
+<s>  Tell  me,  do  you  plan  to  report  on  the  millions  we  save  </s>
+<s>  Tell  me,  is  they  are  the  same  </s>
+<s>  Have  you  ever  lost  an  hour  of  sleep  in  your  life  </s>
+<s>  Are  those  bullet  holes  </s>
+<s>  Are  those  same  </s>
+<s>  Aren't  those  equal  </s>
+<s>  Are  the  sum  equal  in  two  cases  </s>
+<s>  Are  they  equal  in  all  scenarios  </s>
+<s>  Are  those  what  i  think  they  are  </s>
+<s>  Are  they  right  </s>
+<s>  Is  this  good  </s>
+<s>  Is  that  bad  </s>
+<s>  Is  this  ok  </s>
+<s>  Is  that  good  </s>
+<s>  Is  there  a  way  </s>
+<s>  Is  there  a  solution  to  this  </s>
+<s>  Is  that  a  solution  </s>
+<s>  JARVIS,  Are  you  up  </s>
+<s>  JARVIS  are  you  there  </s>
+<s>  Can  I  get  pregnant  2  days  before  my  periods  </s>
+<s>  That  can  explain  why  you  get  this  problem  in  Australia  </s>
+<s>  when  you  are  in  Europe,  are  you  using  air  conditioning  heating  or  heater  too  often  </s>
+<s>  How  are  you?  </s>
+<s>  Shall  we  go  lunch?  </s>
+<s>  Who  are  you?  </s>
+<s>  shutdown  the  PC  </s>
+<s>  Open  that  file,  would  you  </s>
+<s>  put  A  on  B  </s>
+<s>  speak  something  </s>
+<s>  Create  an  icon  for  this  folder  </s>
+<s>  Jarvis  sometimes  you  got  to  run  before  you  can  walk  </s>
+<s>  Take  me  to  maximum  altitude  </s>
+<s>  See  if  some  process  is  hindering  the  system    </s>
+<s>  This  is  a  command  </s>
+<s>  This  is  a  question  </s>
+<s>  All  I'm  looking  for  is  a  straight  answer  </s>
+<s>  make  a  file  </s>
+<s>  make  file  </s>
+<s>  copy  this  to  another    </s>
+<s>  remove  this  directory  </s>
+<s>  copy  this  directory  </s>
+<s>  paste  assignment  to  this  folder  </s>
+<s>  paste  this  file  to  desktop  </s>
+<s>  Tell  me  </s>
+<s>  Tell  me,  do  you  plan  to  report  on  the  millions  we  save  </s>
+<s>  Tell  me,  is  they  are  the  same  </s>

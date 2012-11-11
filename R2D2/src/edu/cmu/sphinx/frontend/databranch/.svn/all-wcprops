@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/cmusphinx/!svn/ver/9517/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/databranch
+END
+DataListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/cmusphinx/!svn/ver/9357/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/databranch/DataListener.java
+END
+DataBufferProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/cmusphinx/!svn/ver/9517/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/databranch/DataBufferProcessor.java
+END
+FrontEndSplitter.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnroot/cmusphinx/!svn/ver/9517/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/databranch/FrontEndSplitter.java
+END
+DataProducer.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/cmusphinx/!svn/ver/9357/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/databranch/DataProducer.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/7724/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/databranch/package.html
+END

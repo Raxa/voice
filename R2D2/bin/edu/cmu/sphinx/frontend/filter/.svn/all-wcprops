@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/cmusphinx/!svn/ver/11032/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/filter
+END
+Dither.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/11032/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/filter/Dither.java
+END
+EnergyFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/cmusphinx/!svn/ver/11032/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/filter/EnergyFilter.java
+END
+Preemphasizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/cmusphinx/!svn/ver/9577/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/filter/Preemphasizer.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/6605/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/filter/package.html
+END

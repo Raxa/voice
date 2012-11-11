@@ -1,0 +1,869 @@
+<s>  AAHA  </s>
+<s>  AAHA  </s>
+<s>  ABSOLUTELY  NOT  </s>
+<s>  ABSOLUTELY  NOT  </s>
+<s>  ABSOLUTELY  RIDICULOUS  </s>
+<s>  ABSOLUTELY  WRONG  </s>
+<s>  BAD  </s>
+<s>  BEEN  THERE  DONE  THAT  </s>
+<s>  CERTAINLY  NOT  </s>
+<s>  CLEARLY  NOT  </s>
+<s>  FALSE  </s>
+<s>  FOR  THE  LAST  TIME  NO  </s>
+<s>  HE  AIN'T  ACCEPTING    </s>
+<s>  HE  WON'T  ACCEPT  </s>
+<s>  HE  WOULDN'T  SAY  YES  </s>
+<s>  HM  </s>
+<s>  I  AIN'T  HAPPY  WITH  THAT  </s>
+<s>  I  AM  NOT  HAPPY  </s>
+<s>  I  AM  NOT  POSITIVE  ABOUT  IT  </s>
+<s>  I  CAN'T  </s>
+<s>  I  CAN'T  AGREE  </s>
+<s>  I  CAN’T  DO  THAT  </s>
+<s>  I  CAN'T  SAY  YES  </s>
+<s>  I  DON’T    </s>
+<s>  I  DON'T  ACCEPT  </s>
+<s>  I  DON'T  AGREE  </s>
+<s>  I  DON'T  AGREE  </s>
+<s>  I  DON'T  PAINT  </s>
+<s>  I  DON’T  WANT  TO  HOLD  YOU  UP  SO  FEEL  FREE  TO  ASK  SOMEONE  ELSE.  </s>
+<s>  I  DON’T  WANT  TO  MAKE  ANYBODY  SICK.  </s>
+<s>  I  HAVE  A  CONFLICT  </s>
+<s>  I  HAVE  NO  INTENTION  OF  DOING  THAT  </s>
+<s>  I’LL  BE  SURE  TO  LET  YOU  KNOW  IF  IT’S  LOOKING  LIKELY  </s>
+<s>  I’LL  CALL  YOU  WHEN  I’M  READY  TO  DO  THAT  </s>
+<s>  I’M  AFRAID  I’M  NOT  THE  RIGHT  PERSON  FOR  IT.  </s>
+<s>  I’M  JUST  NOT  GOOD  AT  THAT.  </s>
+<s>  I’M  NOT  INTERESTED  </s>
+<s>  I’M  NOT  PLANNING  ON  IT  </s>
+<s>  I’M  NOT  THE  BEST  PERSON  TO  EXECUTE.  </s>
+<s>  I’M  UNAVAILABLE  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  IS  ALSO  A  WAY  TO  SAY  NO  </s>
+<s>  I  NEVER  EVEN  CONSIDERED  THAT  </s>
+<s>  I  NEVER  SAID  YOU  WERE  A  SUPERHERO  </s>
+<s>  I  THINK  I  AGREE  WITH  YOUR  ARGUMENT    </s>
+<s>  IT’S  NOT  A  PRIORITY  FOR  ME.  </s>
+<s>  IT’S  NOT  MY  THING.  </s>
+<s>  IT’S  NOT  PART  OF  MY  AGENDA  FOR  TODAY  </s>
+<s>  IT’S  OUT  OF  MY  HANDS  </s>
+<s>  I  WON'T  </s>
+<s>  I  WON'T  </s>
+<s>  I  WON'T  ACCEPT  </s>
+<s>  I  WON'T  AGREE  </s>
+<s>  I  WON'T  SAY  YES  </s>
+<s>  I  WON'T  SAY  YES  TO  THAT  </s>
+<s>  I  WOULD  NEVER  SAY  YES  </s>
+<s>  MY  JURISDICTION  DOESN’T  COVER  THAT.  </s>
+<s>  MY  SCHEDULE’S  UP  IN  THE  AIR  </s>
+<s>  MY  SPOUSE  WOULDN’T  APPROVE  </s>
+<s>  NAAH  </s>
+<s>  NAAH  </s>
+<s>  NAAHA  </s>
+<s>  NEVER  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  I  DON'T  </s>
+<s>  NO  NOT  TRUE  </s>
+<s>  NOPE  </s>
+<s>  NOPE  </s>
+<s>  NOPE  </s>
+<s>  NOPE  </s>
+<s>  NOPE  IS  NO    </s>
+<s>  NOPE  IS  NO    </s>
+<s>  NOPE  NOPE  </s>
+<s>  NOPE  NOT  TRUE  </s>
+<s>  NOPE  NOT  TRUE  </s>
+<s>  NOT  </s>
+<s>  NOT  AGREED  </s>
+<s>  NOT  AGREED  </s>
+<s>  NOT  BY  ALL  MEANS  </s>
+<s>  NOT  COOL  </s>
+<s>  NOT  COOL  </s>
+<s>  NOT  CORRECT  </s>
+<s>  NOT  FAIR  ENOUGH  </s>
+<s>  NOT  FINE  </s>
+<s>  NOT  FINE  </s>
+<s>  NOT  FINE  </s>
+<s>  NOT  FINE  </s>
+<s>  NOT  GOOD  </s>
+<s>  NOT  GOOD  </s>
+<s>  NOT  GOOD  FOR  ME  </s>
+<s>  NOT  GUARANTEED  </s>
+<s>  NO  THAT  IS  NOT  TRUE  </s>
+<s>  NOT  OK  </s>
+<s>  NOT  OKAY  </s>
+<s>  NOT  PERFECT  </s>
+<s>  NOT  POSITIVE  </s>
+<s>  NOT  TOTALLY  </s>
+<s>  NOT  VERY  </s>
+<s>  I'M  STUPID  </s>
+<s>  NOT  BAD  </s>
+<s>  FINE  </s>
+<s>  SO  SO  </s>
+<s>  YOU  ARE  RIGHT  </s>
+<s>  GREAT  </s>
+<s>  POOR  </s>
+<s>  MARVELOUS  </s>
+<s>  GO  STEERERS  </s>
+<s>  SAD  </s>
+<s>  HUPPY  </s>
+<s>  HAPPY  </s>
+<s>  HAPPY  </s>
+<s>  GO  OUT  </s>
+<s>  GREAT  </s>
+<s>  FINE  </s>
+<s>  VERY  GOOD  </s>
+<s>  GREAT  </s>
+<s>  NOT  YES  </s>
+<s>  NOW  THAT  IS  NOT  COOL  </s>
+<s>  STRANGE.  I  DON'T  LIKE  IT  </s>
+<s>  THANKS  BUT  NO  THANKS  </s>
+<s>  THAT  AIN'T  TRUE  </s>
+<s>  THAT  CAN'T  BE  CORRECT  </s>
+<s>  THAT  DOESN'T  SOUND  RIGHT  </s>
+<s>  THAT  IS  ABSOLUTELY  WRONG  </s>
+<s>  THAT  IS  A  PROBLEM  </s>
+<s>  THAT  IS  INCORRECT  </s>
+<s>  THAT  IS  INCORRECT  </s>
+<s>  THAT  IS  INCORRECT  </s>
+<s>  THAT  IS  NOT  A  RIGHT  ANSWER  </s>
+<s>  THAT  IS  NOT  CORRECT  </s>
+<s>  THAT  IS  NOT  GUARANTEED  </s>
+<s>  THAT  IS  SO  INCORRECT  </s>
+<s>  THAT  IS  SO  NOT  TRUE  </s>
+<s>  THAT  IS  SO  WRONG  </s>
+<s>  THAT  IS  SO  WRONG  </s>
+<s>  THAT  IS  SO  WRONG  </s>
+<s>  THAT  IS  SO  WRONG  </s>
+<s>  THAT  IS  WRONG  </s>
+<s>  THAT  IS  WRONG  </s>
+<s>  THAT  IS  WRONG  </s>
+<s>  THAT  IS  WRONG  </s>
+<s>  THAT'S  NOT  AGREED  UPON  </s>
+<s>  THE  LAST  TIME  I  DID  THAT  I  DIDN’T  LOVE  IT  </s>
+<s>  THEY  WOULDN'T  SAY  YEH  </s>
+<s>  WE'RE  SLAMMED  RIGHT  NOW  BUT  LET  ME  RECOMMEND  </s>
+<s>  WE  WISH  I  COULD  BUT  I  SIMPLY  CAN’T.  </s>
+<s>  WHAT   THAT  IS  NOT  TRUE  </s>
+<s>  WON'T    </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  IS  ALSO  CALLED  NO  </s>
+<s>  WRONG  IS  ALSO  CALLED  NO  </s>
+<s>  YEAH  TELL  YOU  WHAT  </s>
+<s>  YES  THAT  IS  INCORRECT  </s>
+<s>  YOU  GOT  IT  ALL  WRONG  </s>
+<s>  YOU  GOT  THAT  WRONG  </s>
+<s>  YOU  GOT  THAT  WRONG  </s>
+<s>  ABSOLUTELY  </s>
+<s>  ABSOLUTELY  </s>
+<s>  AFFIRMATIVE  </s>
+<s>  AGREED  </s>
+<s>  AGREED  </s>
+<s>  AGREED  </s>
+<s>  AGREED  </s>
+<s>  ALL  RIGHT  </s>
+<s>  ALWAYS  </s>
+<s>  AYE  AYE  </s>
+<s>  BY  ALL  MEANS  </s>
+<s>  CERTAINLY  </s>
+<s>  CERTAINLY  </s>
+<s>  CLEARLY  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  WORK  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  YOU  ARE  </s>
+<s>  DEFINITELY  </s>
+<s>  EXACTLY  </s>
+<s>  FAIR  ENOUGH  </s>
+<s>  FINE  </s>
+<s>  FINE  </s>
+<s>  FINE  </s>
+<s>  FINE  </s>
+<s>  FINE  </s>
+<s>  FINE  BY  ALL  </s>
+<s>  FINE  WITH  ME  </s>
+<s>  FOR  SURE  I  AM  IN  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  BY  ME  </s>
+<s>  GOOD  DEDUCTION  SHERLOCK  </s>
+<s>  GREAT  </s>
+<s>  GUARANTEED  </s>
+<s>  HECK  YES  </s>
+<s>  HELL  YES  </s>
+<s>  I  ACCEPT  </s>
+<s>  I  AGREE  </s>
+<s>  I  AGREE  </s>
+<s>  I  AGREE  </s>
+<s>  I  AGREE  </s>
+<s>  I  AGREE  </s>
+<s>  I  AM  FINE  BY  THAT  </s>
+<s>  I  AM  HAPPY  </s>
+<s>  I  AM  HAPPY  WITH  THIS  OFFER  </s>
+<s>  I  AM  IN  IT  </s>
+<s>  I  AM  OK  WITH  THAT  </s>
+<s>  I  AM  OK  WITH  THAT  </s>
+<s>  I  AM  OK  WITH  THIS  OFFER  </s>
+<s>  I  AM  POSITIVE  ABOUT  IT  </s>
+<s>  I  CONCUR  </s>
+<s>  I  CONCUR  </s>
+<s>  I  DO  </s>
+<s>  I  DO  WANT  TO  HELP  YOU  SO  FEEL  FREE  TO  ASK  ME  ANYTHING  </s>
+<s>  I  HAVE  AN  AGREEMENT  </s>
+<s>  I  LIKE  THAT  </s>
+<s>  I’M  FOCUSING  ON  EXACTLY  THE  SAME  THING  </s>
+<s>  I’M  IN  IT  </s>
+<s>  I’M  READY  TO  DO  THAT  </s>
+<s>  INDEED  </s>
+<s>  I  REALLY  LIKE  THAT  </s>
+<s>  I  SIMPLY  CAN  HELP  YOU  YOU  CAME  TO  THE  RIGHT  PERSON.  </s>
+<s>  IT  DOES  SUIT  MY  SCHEDULE  </s>
+<s>  IT  IS  IN  MY  HANDS  AND  INFACT  SEEMS  DO  ABLE  </s>
+<s>  I  WAS  BORN  FOR  IT  </s>
+<s>  LET  ME  RECOMMEND  BECAUSE  THIS  SEEMS  LEGITIMATE  </s>
+<s>  LET’S  DO  IT  </s>
+<s>  LIKE  </s>
+<s>  MMHMM    </s>
+<s>  MY  SPOUSE  WOULDN  APPROVE  IT  </s>
+<s>  MY  THOUGHTS  EXACTLY  </s>
+<s>  NOD  </s>
+<s>  NO  PROBLEM  </s>
+<s>  OFCOURSE  </s>
+<s>  OF  COURSE  </s>
+<s>  OF  COURSE  </s>
+<s>  OH  ALRIGHT  THEN  </s>
+<s>  OK  </s>
+<s>  OK  </s>
+<s>  OK  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  PERFECT  </s>
+<s>  PERFECT  </s>
+<s>  POSITIVE  </s>
+<s>  QUITE  </s>
+<s>  RIGHT  </s>
+<s>  RIGHT  ON  </s>
+<s>  SEEMS  CORRECT  TO  ME  </s>
+<s>  SEEMS  GOOD  </s>
+<s>  SEEMS  GOOD  </s>
+<s>  SEEMS  LEGITIMATE  </s>
+<s>  SO  TRUE  </s>
+<s>  SOUNDS  OK  </s>
+<s>  SURE  </s>
+<s>  SURE  </s>
+<s>  THAT  DOES  SOUND  CORRECT  </s>
+<s>  THAT  IS  CORRECT  </s>
+<s>  THAT  IS  CORRECT  </s>
+<s>  THAT  IS  CORRECT  </s>
+<s>  THAT  IS  CORRECT  </s>
+<s>  THAT  IS  FINE  </s>
+<s>  THAT  IS  GOOD  </s>
+<s>  THAT  IS  GOOD  </s>
+<s>  THAT  IS  GREAT  </s>
+<s>  THAT  IS  GUARANTEED  </s>
+<s>  THAT  IS  PERFECT  </s>
+<s>  THAT  IS  PERFECT  </s>
+<s>  THAT  IS  REALLY  GOOD  </s>
+<s>  THAT  IS  SO  CORRECT  </s>
+<s>  THAT  IS  WHAT  I  MEANT  </s>
+<s>  THAT'S  AGREED  UPON  </s>
+<s>  THAT'S  ALMOST  CORRECT  </s>
+<s>  THAT'S  CORRECT  </s>
+<s>  THAT  SEEMS  CORRECT  </s>
+<s>  THAT'S  GOOD  </s>
+<s>  THAT  SOUNDS  CORRECT  </s>
+<s>  THAT  SOUNDS  CORRECT  </s>
+<s>  THAT  SOUNDS  CORRECT  </s>
+<s>  THAT'S  TRUE  </s>
+<s>  THAT'S  TRUE  </s>
+<s>  THE  LAST  TIME  I  DID  THAT  I  DID  LOVE  IT  </s>
+<s>  TOTALLY  </s>
+<s>  TOTALLY  </s>
+<s>  TOTALLY  </s>
+<s>  TOTALLY  AGREED  </s>
+<s>  TRUE  </s>
+<s>  TRUE  </s>
+<s>  TRUE  </s>
+<s>  UNDOUBTEDLY  </s>
+<s>  VERY  </s>
+<s>  VERY  GOOD  </s>
+<s>  VERY  GOOD  </s>
+<s>  WHAT  ARE  WE  WAITING  FOR  </s>
+<s>  WHY  NOT  </s>
+<s>  WHY  NOT  </s>
+<s>  WHY  NOT  </s>
+<s>  WOW  </s>
+<s>  WOW  </s>
+<s>  WOW  </s>
+<s>  YEAH  </s>
+<s>  YEAH  RIGHT  </s>
+<s>  YEH  </s>
+<s>  YEH  THAT  IS  WHAT  I  MEANT  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  I  CONCUR  </s>
+<s>  YEP  THAT  IS  CORRECT  </s>
+<s>  YEP  THAT  IS  CORRECT  </s>
+<s>  YEP  THAT  IS  GOOD  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES  BACK  PAIN  </s>
+<s>  YES  LEG  HURTS  </s>
+<s>  YES  MY  LEG  HURTS  </s>
+<s>  YES  MY  LEG  HURTS  </s>
+<s>  YES  PLEASE    </s>
+<s>  YES  THAT  IS  CORRECT  </s>
+<s>  YES  THAT  IS  FINE  BY  ME  </s>
+<s>  YES  THAT'S  RIGHT  </s>
+<s>  YOU  ARE  THINKING  IT  RIGHT  </s>
+<s>  YOU  ARE  UNDERSTANDING  IT  CORRECT  </s>
+<s>  YOU  GOT  IT  RIGHT  THIS  TIME  </s>
+<s>  YOU  GOT  THAT  CORRECT  </s>
+<s>  YOU  GOT  THAT  RIGHT  </s>
+<s>  YUP    </s>
+<s>  YUP  THAT  IS  GOOD  </s>
+<s>  YUP  THAT'S  IS  FINE  </s>
+<s>  YUP  YUP  </s>
+<s>  APURV  </s>
+<s>  MY  NAME  IS  APURV  </s>
+<s>  THIS  IS  APURV  </s>
+<s>  BHIKSHA  </s>
+<s>  THIS  IS  BHIKSHA  </s>
+<s>  I  AM  BHIKSHA  </s>
+<s>  BHIKSHA  RAJ  </s>
+<s>  THIS  IS  APURV  TIWARI  </s>
+<s>  THIS  IS  BHIKSHA  RAMAKRISHNAN  </s>
+<s>  THIS  IS  RITA  </s>
+<s>  RITA  SINGH  </s>
+<s>  APURV  TIWARI  </s>
+<s>  LEIBNY  </s>
+<s>  PAOLA  LEIBNY  </s>
+<s>  THIS  IS  PAOLA  LEIBNY  GARCIA  </s>
+<s>  MY  NAME  IS  ANTONIO  </s>
+<s>  ANTONIO  </s>
+<s>  SOURISH  </s>
+<s>  MY  NAME  IS  SOURISH  CHOUDARI  </s>
+<s>  THIS  IS  SOURISH  </s>
+<s>  THIS  IS  TAKA  </s>
+<s>  I  AM  TAKA  </s>
+<s>  I  AM  TAKAYUKI  ARAKAWA  </s>
+<s>  TAKA  </s>
+<s>  I  AM  AKIKO  </s>
+<s>  AKIKO  </s>
+<s>  OLIVER  </s>
+<s>  MY  NAME  IS  OLIVER  </s>
+<s>  HI  I  AM  OLIVER  </s>
+<s>  HI  I  AM  PAOLA  </s>
+<s>  MY  NAME  IS  APURV  TIWARI  BUT  YOU  CAN  CALL  ME  APURV  </s>
+<s>  THEY  CALL  ME  APURV   APURV  TIWARI  </s>
+<s>  MY  NAME  IS  BHIKSHA  BHIKSHA  RAJ  </s>
+<s>  MY  NAME  IS  PAOLA  </s>
+<s>  MY  NAME  IS  LEIBNY  </s>
+<s>  MY  NAME  IS  SURAJIT  NUNDY  </s>
+<s>  MY  NAME  IS  SHURO  </s>
+<s>  SHURO  </s>
+<s>  MY  NAME  IS  DANIEL  </s>
+<s>  DANIEL  </s>
+<s>  THEY  CALL  ME  DANIEL  </s>
+<s>  NATHAN  LEIBY  </s>
+<s>  CALL  ME  NATHAN    </s>
+<s>  MY  NAME  IS  JOHN  </s>
+<s>  JOHN  </s>
+<s>  SAPTARSHI  </s>
+<s>  NAME  IS  SAPTARSHI  </s>
+<s>  CALL  ME  SAPTARSHI  </s>
+<s>  23  </s>
+<s>  24  </s>
+<s>  25  </s>
+<s>  26  </s>
+<s>  27  </s>
+<s>  45  </s>
+<s>  46  </s>
+<s>  47  </s>
+<s>  48  </s>
+<s>  49  </s>
+<s>  50  </s>
+file name: database.train
+<s>  AAHA  </s>
+<s>  AAHA  </s>
+<s>  ABSOLUTELY  NOT  </s>
+<s>  ABSOLUTELY  NOT  </s>
+<s>  ABSOLUTELY  RIDICULOUS  </s>
+<s>  ABSOLUTELY  WRONG  </s>
+<s>  BAD  </s>
+<s>  BEEN  THERE  DONE  THAT  </s>
+<s>  CERTAINLY  NOT  </s>
+<s>  CLEARLY  NOT  </s>
+<s>  FALSE  </s>
+<s>  FOR  THE  LAST  TIME  NO  </s>
+<s>  HE  AIN'T  ACCEPTING    </s>
+<s>  HE  WON'T  ACCEPT  </s>
+<s>  HE  WOULDN'T  SAY  YES  </s>
+<s>  HM  </s>
+<s>  I  AIN'T  HAPPY  WITH  THAT  </s>
+<s>  I  AM  NOT  HAPPY  </s>
+<s>  I  AM  NOT  POSITIVE  ABOUT  IT  </s>
+<s>  I  CAN'T  </s>
+<s>  I  CAN'T  AGREE  </s>
+<s>  I  CAN’T  DO  THAT  </s>
+<s>  I  CAN'T  SAY  YES  </s>
+<s>  I  DON’T    </s>
+<s>  I  DON'T  ACCEPT  </s>
+<s>  I  DON'T  AGREE  </s>
+<s>  I  DON'T  AGREE  </s>
+<s>  I  DON'T  PAINT  </s>
+<s>  I  DON’T  WANT  TO  HOLD  YOU  UP  SO  FEEL  FREE  TO  ASK  SOMEONE  ELSE.  </s>
+<s>  I  DON’T  WANT  TO  MAKE  ANYBODY  SICK.  </s>
+<s>  I  HAVE  A  CONFLICT  </s>
+<s>  I  HAVE  NO  INTENTION  OF  DOING  THAT  </s>
+<s>  I’LL  BE  SURE  TO  LET  YOU  KNOW  IF  IT’S  LOOKING  LIKELY  </s>
+<s>  I’LL  CALL  YOU  WHEN  I’M  READY  TO  DO  THAT  </s>
+<s>  I’M  AFRAID  I’M  NOT  THE  RIGHT  PERSON  FOR  IT.  </s>
+<s>  I’M  JUST  NOT  GOOD  AT  THAT.  </s>
+<s>  I’M  NOT  INTERESTED  </s>
+<s>  I’M  NOT  PLANNING  ON  IT  </s>
+<s>  I’M  NOT  THE  BEST  PERSON  TO  EXECUTE.  </s>
+<s>  I’M  UNAVAILABLE  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  </s>
+<s>  INCORRECT  IS  ALSO  A  WAY  TO  SAY  NO  </s>
+<s>  I  NEVER  EVEN  CONSIDERED  THAT  </s>
+<s>  I  NEVER  SAID  YOU  WERE  A  SUPERHERO  </s>
+<s>  I  THINK  I  AGREE  WITH  YOUR  ARGUMENT    </s>
+<s>  IT’S  NOT  A  PRIORITY  FOR  ME.  </s>
+<s>  IT’S  NOT  MY  THING.  </s>
+<s>  IT’S  NOT  PART  OF  MY  AGENDA  FOR  TODAY  </s>
+<s>  IT’S  OUT  OF  MY  HANDS  </s>
+<s>  I  WON'T  </s>
+<s>  I  WON'T  </s>
+<s>  I  WON'T  ACCEPT  </s>
+<s>  I  WON'T  AGREE  </s>
+<s>  I  WON'T  SAY  YES  </s>
+<s>  I  WON'T  SAY  YES  TO  THAT  </s>
+<s>  I  WOULD  NEVER  SAY  YES  </s>
+<s>  MY  JURISDICTION  DOESN’T  COVER  THAT.  </s>
+<s>  MY  SCHEDULE’S  UP  IN  THE  AIR  </s>
+<s>  MY  SPOUSE  WOULDN’T  APPROVE  </s>
+<s>  NAAH  </s>
+<s>  NAAH  </s>
+<s>  NAAHA  </s>
+<s>  NEVER  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  </s>
+<s>  NO  I  DON'T  </s>
+<s>  NO  NOT  TRUE  </s>
+<s>  NOPE  </s>
+<s>  NOPE  </s>
+<s>  NOPE  </s>
+<s>  NOPE  </s>
+<s>  NOPE  IS  NO    </s>
+<s>  NOPE  IS  NO    </s>
+<s>  NOPE  NOPE  </s>
+<s>  NOPE  NOT  TRUE  </s>
+<s>  NOPE  NOT  TRUE  </s>
+<s>  NOT  </s>
+<s>  NOT  AGREED  </s>
+<s>  NOT  AGREED  </s>
+<s>  NOT  BY  ALL  MEANS  </s>
+<s>  NOT  COOL  </s>
+<s>  NOT  COOL  </s>
+<s>  NOT  CORRECT  </s>
+<s>  NOT  FAIR  ENOUGH  </s>
+<s>  NOT  FINE  </s>
+<s>  NOT  FINE  </s>
+<s>  NOT  FINE  </s>
+<s>  NOT  FINE  </s>
+<s>  NOT  GOOD  </s>
+<s>  NOT  GOOD  </s>
+<s>  NOT  GOOD  FOR  ME  </s>
+<s>  NOT  GUARANTEED  </s>
+<s>  NO  THAT  IS  NOT  TRUE  </s>
+<s>  NOT  OK  </s>
+<s>  NOT  OKAY  </s>
+<s>  NOT  PERFECT  </s>
+<s>  NOT  POSITIVE  </s>
+<s>  NOT  TOTALLY  </s>
+<s>  NOT  VERY  </s>
+<s>  I'M  STUPID  </s>
+<s>  NOT  BAD  </s>
+<s>  FINE  </s>
+<s>  SO  SO  </s>
+<s>  YOU  ARE  RIGHT  </s>
+<s>  GREAT  </s>
+<s>  POOR  </s>
+<s>  MARVELOUS  </s>
+<s>  GO  STEERERS  </s>
+<s>  SAD  </s>
+<s>  HUPPY  </s>
+<s>  HAPPY  </s>
+<s>  HAPPY  </s>
+<s>  GO  OUT  </s>
+<s>  GREAT  </s>
+<s>  FINE  </s>
+<s>  VERY  GOOD  </s>
+<s>  GREAT  </s>
+<s>  NOT  YES  </s>
+<s>  NOW  THAT  IS  NOT  COOL  </s>
+<s>  STRANGE.  I  DON'T  LIKE  IT  </s>
+<s>  THANKS  BUT  NO  THANKS  </s>
+<s>  THAT  AIN'T  TRUE  </s>
+<s>  THAT  CAN'T  BE  CORRECT  </s>
+<s>  THAT  DOESN'T  SOUND  RIGHT  </s>
+<s>  THAT  IS  ABSOLUTELY  WRONG  </s>
+<s>  THAT  IS  A  PROBLEM  </s>
+<s>  THAT  IS  INCORRECT  </s>
+<s>  THAT  IS  INCORRECT  </s>
+<s>  THAT  IS  INCORRECT  </s>
+<s>  THAT  IS  NOT  A  RIGHT  ANSWER  </s>
+<s>  THAT  IS  NOT  CORRECT  </s>
+<s>  THAT  IS  NOT  GUARANTEED  </s>
+<s>  THAT  IS  SO  INCORRECT  </s>
+<s>  THAT  IS  SO  NOT  TRUE  </s>
+<s>  THAT  IS  SO  WRONG  </s>
+<s>  THAT  IS  SO  WRONG  </s>
+<s>  THAT  IS  SO  WRONG  </s>
+<s>  THAT  IS  SO  WRONG  </s>
+<s>  THAT  IS  WRONG  </s>
+<s>  THAT  IS  WRONG  </s>
+<s>  THAT  IS  WRONG  </s>
+<s>  THAT  IS  WRONG  </s>
+<s>  THAT'S  NOT  AGREED  UPON  </s>
+<s>  THE  LAST  TIME  I  DID  THAT  I  DIDN’T  LOVE  IT  </s>
+<s>  THEY  WOULDN'T  SAY  YEH  </s>
+<s>  WE'RE  SLAMMED  RIGHT  NOW  BUT  LET  ME  RECOMMEND  </s>
+<s>  WE  WISH  I  COULD  BUT  I  SIMPLY  CAN’T.  </s>
+<s>  WHAT  THAT  IS  NOT  TRUE  </s>
+<s>  WON'T    </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  </s>
+<s>  WRONG  IS  ALSO  CALLED  NO  </s>
+<s>  WRONG  IS  ALSO  CALLED  NO  </s>
+<s>  YEAH  TELL  YOU  WHAT  </s>
+<s>  YES  THAT  IS  INCORRECT  </s>
+<s>  YOU  GOT  IT  ALL  WRONG  </s>
+<s>  YOU  GOT  THAT  WRONG  </s>
+<s>  YOU  GOT  THAT  WRONG  </s>
+<s>  ABSOLUTELY  </s>
+<s>  ABSOLUTELY  </s>
+<s>  AFFIRMATIVE  </s>
+<s>  AGREED  </s>
+<s>  AGREED  </s>
+<s>  AGREED  </s>
+<s>  AGREED  </s>
+<s>  ALL  RIGHT  </s>
+<s>  ALWAYS  </s>
+<s>  AYE  AYE  </s>
+<s>  BY  ALL  MEANS  </s>
+<s>  CERTAINLY  </s>
+<s>  CERTAINLY  </s>
+<s>  CLEARLY  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  </s>
+<s>  COOL  WORK  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  </s>
+<s>  CORRECT  YOU  ARE  </s>
+<s>  DEFINITELY  </s>
+<s>  EXACTLY  </s>
+<s>  FAIR  ENOUGH  </s>
+<s>  FINE  </s>
+<s>  FINE  </s>
+<s>  FINE  </s>
+<s>  FINE  </s>
+<s>  FINE  </s>
+<s>  FINE  BY  ALL  </s>
+<s>  FINE  WITH  ME  </s>
+<s>  FOR  SURE  I  AM  IN  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  </s>
+<s>  GOOD  BY  ME  </s>
+<s>  GOOD  DEDUCTION  SHERLOCK  </s>
+<s>  GREAT  </s>
+<s>  GUARANTEED  </s>
+<s>  HECK  YES  </s>
+<s>  HELL  YES  </s>
+<s>  I  ACCEPT  </s>
+<s>  I  AGREE  </s>
+<s>  I  AGREE  </s>
+<s>  I  AGREE  </s>
+<s>  I  AGREE  </s>
+<s>  I  AGREE  </s>
+<s>  I  AM  FINE  BY  THAT  </s>
+<s>  I  AM  HAPPY  </s>
+<s>  I  AM  HAPPY  WITH  THIS  OFFER  </s>
+<s>  I  AM  IN  IT  </s>
+<s>  I  AM  OK  WITH  THAT  </s>
+<s>  I  AM  OK  WITH  THAT  </s>
+<s>  I  AM  OK  WITH  THIS  OFFER  </s>
+<s>  I  AM  POSITIVE  ABOUT  IT  </s>
+<s>  I  CONCUR  </s>
+<s>  I  CONCUR  </s>
+<s>  I  DO  </s>
+<s>  I  DO  WANT  TO  HELP  YOU  SO  FEEL  FREE  TO  ASK  ME  ANYTHING  </s>
+<s>  I  HAVE  AN  AGREEMENT  </s>
+<s>  I  LIKE  THAT  </s>
+<s>  I’M  FOCUSING  ON  EXACTLY  THE  SAME  THING  </s>
+<s>  I’M  IN  IT  </s>
+<s>  I’M  READY  TO  DO  THAT  </s>
+<s>  INDEED  </s>
+<s>  I  REALLY  LIKE  THAT  </s>
+<s>  I  SIMPLY  CAN  HELP  YOU,  YOU  CAME  TO  THE  RIGHT  PERSON.  </s>
+<s>  IT  DOES  SUIT  MY  SCHEDULE  </s>
+<s>  IT  IS  IN  MY  HANDS  AND  INFACT  SEEMS  DO  ABLE  </s>
+<s>  I  WAS  BORN  FOR  IT  </s>
+<s>  LET  ME  RECOMMEND  BECAUSE  THIS  SEEMS  LEGITIMATE  </s>
+<s>  LET’S  DO  IT  </s>
+<s>  LIKE  </s>
+<s>  MMHMM    </s>
+<s>  MY  SPOUSE  WOULDN  APPROVE  IT  </s>
+<s>  MY  THOUGHTS  EXACTLY  </s>
+<s>  NOD  </s>
+<s>  NO  PROBLEM  </s>
+<s>  OFCOURSE  </s>
+<s>  OF  COURSE  </s>
+<s>  OF  COURSE  </s>
+<s>  OH,  ALRIGHT  THEN  </s>
+<s>  OK  </s>
+<s>  OK  </s>
+<s>  OK  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  OKAY  </s>
+<s>  PERFECT  </s>
+<s>  PERFECT  </s>
+<s>  POSITIVE  </s>
+<s>  QUITE  </s>
+<s>  RIGHT  </s>
+<s>  RIGHT  ON  </s>
+<s>  SEEMS  CORRECT  TO  ME  </s>
+<s>  SEEMS  GOOD  </s>
+<s>  SEEMS  GOOD  </s>
+<s>  SEEMS  LEGITIMATE  </s>
+<s>  SO  TRUE  </s>
+<s>  SOUNDS  OK  </s>
+<s>  SURE  </s>
+<s>  SURE  </s>
+<s>  THAT  DOES  SOUND  CORRECT  </s>
+<s>  THAT  IS  CORRECT  </s>
+<s>  THAT  IS  CORRECT  </s>
+<s>  THAT  IS  CORRECT  </s>
+<s>  THAT  IS  CORRECT  </s>
+<s>  THAT  IS  FINE  </s>
+<s>  THAT  IS  GOOD  </s>
+<s>  THAT  IS  GOOD  </s>
+<s>  THAT  IS  GREAT  </s>
+<s>  THAT  IS  GUARANTEED  </s>
+<s>  THAT  IS  PERFECT  </s>
+<s>  THAT  IS  PERFECT  </s>
+<s>  THAT  IS  REALLY  GOOD  </s>
+<s>  THAT  IS  SO  CORRECT  </s>
+<s>  THAT  IS  WHAT  I  MEANT  </s>
+<s>  THAT'S  AGREED  UPON  </s>
+<s>  THAT'S  ALMOST  CORRECT  </s>
+<s>  THAT'S  CORRECT  </s>
+<s>  THAT  SEEMS  CORRECT  </s>
+<s>  THAT'S  GOOD  </s>
+<s>  THAT  SOUNDS  CORRECT  </s>
+<s>  THAT  SOUNDS  CORRECT  </s>
+<s>  THAT  SOUNDS  CORRECT  </s>
+<s>  THAT'S  TRUE  </s>
+<s>  THAT'S  TRUE  </s>
+<s>  THE  LAST  TIME  I  DID  THAT,  I  DID  LOVE  IT  </s>
+<s>  TOTALLY  </s>
+<s>  TOTALLY  </s>
+<s>  TOTALLY  </s>
+<s>  TOTALLY  AGREED  </s>
+<s>  TRUE  </s>
+<s>  TRUE  </s>
+<s>  TRUE  </s>
+<s>  UNDOUBTEDLY  </s>
+<s>  VERY  </s>
+<s>  VERY  GOOD  </s>
+<s>  VERY  GOOD  </s>
+<s>  WHAT  ARE  WE  WAITING  FOR  </s>
+<s>  WHY  NOT  </s>
+<s>  WHY  NOT  </s>
+<s>  WHY  NOT  </s>
+<s>  WOW  </s>
+<s>  WOW  </s>
+<s>  WOW  </s>
+<s>  YEAH  </s>
+<s>  YEAH  RIGHT  </s>
+<s>  YEH  </s>
+<s>  YEH  THAT  IS  WHAT  I  MEANT  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  </s>
+<s>  YEP  I  CONCUR  </s>
+<s>  YEP  THAT  IS  CORRECT  </s>
+<s>  YEP  THAT  IS  CORRECT  </s>
+<s>  YEP  THAT  IS  GOOD  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES  </s>
+<s>  YES    </s>
+<s>  YES  </s>
+<s>  YES  BACK  PAIN  </s>
+<s>  YES  LEG  HURTS  </s>
+<s>  YES  MY  LEG  HURTS  </s>
+<s>  YES  MY  LEG  HURTS  </s>
+<s>  YES  PLEASE    </s>
+<s>  YES  THAT  IS  CORRECT  </s>
+<s>  YES  THAT  IS  FINE  BY  ME  </s>
+<s>  YES  THAT'S  RIGHT  </s>
+<s>  YOU  ARE  THINKING  IT  RIGHT  </s>
+<s>  YOU  ARE  UNDERSTANDING  IT  CORRECT  </s>
+<s>  YOU  GOT  IT  RIGHT  THIS  TIME  </s>
+<s>  YOU  GOT  THAT  CORRECT  </s>
+<s>  YOU  GOT  THAT  RIGHT  </s>
+<s>  YUP    </s>
+<s>  YUP  THAT  IS  GOOD  </s>
+<s>  YUP  THAT'S  IS  FINE  </s>
+<s>  YUP  YUP  </s>
+<s>  APURV  </s>
+<s>  MY  NAME  IS  APURV  </s>
+<s>  THIS  IS  APURV  </s>
+<s>  BHIKSHA  </s>
+<s>  THIS  IS  BHIKSHA  </s>
+<s>  I  AM  BHIKSHA  </s>
+<s>  BHIKSHA  RAJ  </s>
+<s>  THIS  IS  APURV  TIWARI  </s>
+<s>  THIS  IS  BHIKSHA  RAMAKRISHNAN  </s>
+<s>  THIS  IS  RITA  </s>
+<s>  RITA  SINGH  </s>
+<s>  APURV  TIWARI  </s>
+<s>  LEIBNY  </s>
+<s>  PAOLA  LEIBNY  </s>
+<s>  THIS  IS  PAOLA  LEIBNY  GARCIA  </s>
+<s>  MY  NAME  IS  ANTONIO  </s>
+<s>  ANTONIO  </s>
+<s>  SOURISH  </s>
+<s>  MY  NAME  IS  SOURISH  CHOUDARI  </s>
+<s>  THIS  IS  SOURISH  </s>
+<s>  THIS  IS  TAKA  </s>
+<s>  I  AM  TAKA  </s>
+<s>  I  AM  TAKAYUKI  ARAKAWA  </s>
+<s>  TAKA  </s>
+<s>  I  AM  AKIKO  </s>
+<s>  AKIKO  </s>
+<s>  OLIVER  </s>
+<s>  MY  NAME  IS  OLIVER  </s>
+<s>  HI  I  AM  OLIVER  </s>
+<s>  HI  I  AM  PAOLA  </s>
+<s>  MY  NAME  IS  APURV  TIWARI  BUT  YOU  CAN  CALL  ME  APURV  </s>
+<s>  THEY  CALL  ME  APURV    APURV  TIWARI  </s>
+<s>  MY  NAME  IS  BHIKSHA  BHIKSHA  RAJ  </s>
+<s>  MY  NAME  IS  PAOLA  </s>
+<s>  MY  NAME  IS  LEIBNY  </s>
+<s>  MY  NAME  IS  SURAJIT  NUNDY  </s>
+<s>  MY  NAME  IS  SHURO  </s>
+<s>  SHURO  </s>
+<s>  MY  NAME  IS  DANIEL  </s>
+<s>  DANIEL  </s>
+<s>  THEY  CALL  ME  DANIEL  </s>
+<s>  NATHAN  LEIBY  </s>
+<s>  CALL  ME  NATHAN    </s>
+<s>  MY  NAME  IS  JOHN  </s>
+<s>  JOHN  </s>
+<s>  SAPTARSHI  </s>
+<s>  NAME  IS  SAPTARSHI  </s>
+<s>  CALL  ME  SAPTARSHI  </s>
+<s>  23  </s>
+<s>  24  </s>
+<s>  25  </s>
+<s>  26  </s>
+<s>  27  </s>
+<s>  45  </s>
+<s>  46  </s>
+<s>  47  </s>
+<s>  48  </s>
+<s>  49  </s>
+<s>  50  </s>

@@ -1,0 +1,26 @@
+# This is J.A.R.V.I.S task description file 
+# Please don't alter it's content unless you know what you are doing
+# Describe Dialog Graph
+TaskTree:*
+# Define variables
+def var { 
+ID:1
+NAME:COMPANY_NAME
+VALUE:Raxa
+QUESTION:
+
+CONFIRMATION:
+
+}
+def var { 
+ID:2
+NAME:Name
+VALUE:$NDV$
+QUESTION:
+STYLE:Could you tell me your name
+STYLE:Can I have your name please?
+
+CONFIRMATION:
+STYLE:I got your name as $2$. Is that right?
+
+}

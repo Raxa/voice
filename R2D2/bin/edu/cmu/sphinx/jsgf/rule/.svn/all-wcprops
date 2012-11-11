@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/cmusphinx/!svn/ver/11313/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/rule
+END
+JSGFRule.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/cmusphinx/!svn/ver/11313/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/rule/JSGFRule.java
+END
+JSGFRuleName.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/11313/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/rule/JSGFRuleName.java
+END
+JSGFRuleToken.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9544/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/rule/JSGFRuleToken.java
+END
+JSGFRuleAlternatives.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/cmusphinx/!svn/ver/10685/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/rule/JSGFRuleAlternatives.java
+END
+JSGFRuleCount.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9512/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/rule/JSGFRuleCount.java
+END
+JSGFRuleSequence.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9544/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/rule/JSGFRuleSequence.java
+END
+JSGFRuleTag.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/9544/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/jsgf/rule/JSGFRuleTag.java
+END

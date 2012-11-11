@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/10762/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/classes
+END
+ClassMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/cmusphinx/!svn/ver/9751/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/classes/ClassMap.java
+END
+ClassProbability.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svnroot/cmusphinx/!svn/ver/9340/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/classes/ClassProbability.java
+END
+ClassBasedLanguageModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svnroot/cmusphinx/!svn/ver/10762/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/classes/ClassBasedLanguageModel.java
+END
+ClassPresentingDictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svnroot/cmusphinx/!svn/ver/9408/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/classes/ClassPresentingDictionary.java
+END

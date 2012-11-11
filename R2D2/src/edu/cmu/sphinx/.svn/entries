@@ -1,0 +1,92 @@
+10
+
+dir
+11353
+http://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx
+http://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx
+
+
+
+2012-04-07T18:19:31.268107Z
+11344
+nshmyrev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c60273ff-4a12-0410-8d58-82ceea6d4170
+
+frontend
+dir
+
+tools
+dir
+
+sphinx4.manifest
+file
+
+
+
+
+2012-09-30T19:40:13.044653Z
+5a099bdd3eb4d2191997090de5628fa6
+2010-06-03T10:52:11.498885Z
+10143
+nshmyrev
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+43
+
+instrumentation
+dir
+
+config
+dir
+
+decoder
+dir
+
+recognizer
+dir
+
+jsgf
+dir
+
+util
+dir
+
+linguist
+dir
+
+result
+dir
+

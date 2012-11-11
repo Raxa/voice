@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/cmusphinx/!svn/ver/9522/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/writer
+END
+GUIWriterException.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/writer/GUIWriterException.java
+END
+GUIWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/6716/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/writer/GUIWriter.java
+END
+XMLConfigWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/writer/XMLConfigWriter.java
+END
+ConfigConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/cmusphinx/!svn/ver/9522/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/writer/ConfigConverter.java
+END

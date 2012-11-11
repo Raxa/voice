@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/cmusphinx/!svn/ver/11219/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio
+END
+AudioTool.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/11218/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/AudioTool.java
+END
+Utils.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/cmusphinx/!svn/ver/11219/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/Utils.java
+END
+FilenameDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/FilenameDialog.java
+END
+SpectrogramPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/cmusphinx/!svn/ver/11218/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/SpectrogramPanel.java
+END
+spectrogram.config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/cmusphinx/!svn/ver/11218/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/spectrogram.config.xml
+END
+RawReader.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/11219/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/RawReader.java
+END
+AudioPlayer.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/11218/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/AudioPlayer.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/package.html
+END
+RawRecorder.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/11219/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/RawRecorder.java
+END
+AudioPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/9746/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/AudioPanel.java
+END
+CepstrumPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/11219/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/CepstrumPanel.java
+END
+RawWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/11219/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/RawWriter.java
+END
+Manifest
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/5798/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/Manifest
+END
+AudioDataInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/cmusphinx/!svn/ver/11218/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/AudioDataInputStream.java
+END
+AudioData.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/11219/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/AudioData.java
+END
+Downsampler.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9746/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/Downsampler.java
+END
+Sinusoid.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/11219/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/audio/Sinusoid.java
+END

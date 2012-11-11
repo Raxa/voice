@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9405/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/tiedstate/HTK
+END
+HMMState.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/tiedstate/HTK/HMMState.java
+END
+SingleHMM.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/cmusphinx/!svn/ver/9404/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/tiedstate/HTK/SingleHMM.java
+END
+GMMDiag.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/cmusphinx/!svn/ver/9404/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/tiedstate/HTK/GMMDiag.java
+END
+NamesConversion.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/tiedstate/HTK/NamesConversion.java
+END
+HMMSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svnroot/cmusphinx/!svn/ver/9405/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/tiedstate/HTK/HMMSet.java
+END
+Lab.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/tiedstate/HTK/Lab.java
+END

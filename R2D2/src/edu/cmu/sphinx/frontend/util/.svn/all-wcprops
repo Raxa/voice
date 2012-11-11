@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/cmusphinx/!svn/ver/11344/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util
+END
+StreamCepstrumSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/10637/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/StreamCepstrumSource.java
+END
+VUMeterMonitor.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/VUMeterMonitor.java
+END
+FrontEndUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/FrontEndUtils.java
+END
+DataConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/DataConverter.java
+END
+Microphone.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/Microphone.java
+END
+EnergyPlotter.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/EnergyPlotter.java
+END
+ConcatAudioFileDataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/ConcatAudioFileDataSource.java
+END
+StreamDataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/cmusphinx/!svn/ver/11142/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/StreamDataSource.java
+END
+AudioFileProcessListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/AudioFileProcessListener.java
+END
+DataUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/9517/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/DataUtil.java
+END
+VUMeterPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9535/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/VUMeterPanel.java
+END
+AudioFileDataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/cmusphinx/!svn/ver/11344/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/AudioFileDataSource.java
+END
+AudioContinuityTester.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/AudioContinuityTester.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/6605/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/package.html
+END
+ConcatFileDataSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/cmusphinx/!svn/ver/9577/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/ConcatFileDataSource.java
+END
+StreamHTKCepstrum.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/cmusphinx/!svn/ver/11344/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/StreamHTKCepstrum.java
+END
+DataDumper.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/9577/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/DataDumper.java
+END
+VUMeter.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/6562/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/VUMeter.java
+END
+Utterance.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/Utterance.java
+END
+WavWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/10779/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/util/WavWriter.java
+END

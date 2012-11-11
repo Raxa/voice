@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/cmusphinx/!svn/ver/11344/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util
+END
+CommandInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/CommandInterface.java
+END
+SphinxLogFormatter.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9931/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/SphinxLogFormatter.java
+END
+BatchItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/BatchItem.java
+END
+StatisticsVariable.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/StatisticsVariable.java
+END
+CommandInterpreter.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9751/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/CommandInterpreter.java
+END
+IDGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/cmusphinx/!svn/ver/9316/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/IDGenerator.java
+END
+Cache.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svnroot/cmusphinx/!svn/ver/9537/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/Cache.java
+END
+ExtendedStreamTokenizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/ExtendedStreamTokenizer.java
+END
+Complex.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/Complex.java
+END
+TimerPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/10116/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/TimerPool.java
+END
+SocketCommandInterpreter.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/SocketCommandInterpreter.java
+END
+Utilities.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/10116/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/Utilities.java
+END
+BatchManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/BatchManager.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/package.html
+END
+FileReferenceSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/FileReferenceSource.java
+END
+PooledBatchManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9545/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/PooledBatchManager.java
+END
+ReferenceSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/ReferenceSource.java
+END
+Timer.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/cmusphinx/!svn/ver/10116/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/Timer.java
+END
+BatchFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/cmusphinx/!svn/ver/9309/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/BatchFile.java
+END
+SphinxHelp.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/cmusphinx/!svn/ver/10793/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/SphinxHelp.java
+END
+StreamFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/cmusphinx/!svn/ver/9533/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/StreamFactory.java
+END
+ResultAnalyzer.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/ResultAnalyzer.java
+END
+MatrixUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/MatrixUtils.java
+END
+SimpleBatchManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/SimpleBatchManager.java
+END
+SocketCommandClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/SocketCommandClient.java
+END
+NISTAlign.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/10998/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/NISTAlign.java
+END
+CustomThreadFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/9647/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/CustomThreadFactory.java
+END
+LogMath.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/LogMath.java
+END
+GapInsertionDetector.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/9533/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/util/GapInsertionDetector.java
+END

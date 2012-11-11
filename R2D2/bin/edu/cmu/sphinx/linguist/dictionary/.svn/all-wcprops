@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/11260/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/dictionary
+END
+MappingDictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svnroot/cmusphinx/!svn/ver/9408/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/dictionary/MappingDictionary.java
+END
+FastDictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/11260/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/dictionary/FastDictionary.java
+END
+Dictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/cmusphinx/!svn/ver/10775/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/dictionary/Dictionary.java
+END
+WordClassification.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svnroot/cmusphinx/!svn/ver/9404/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/dictionary/WordClassification.java
+END
+FullDictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/11260/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/dictionary/FullDictionary.java
+END
+Pronunciation.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/cmusphinx/!svn/ver/10774/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/dictionary/Pronunciation.java
+END
+Word.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/dictionary/Word.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/6606/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/dictionary/package.html
+END

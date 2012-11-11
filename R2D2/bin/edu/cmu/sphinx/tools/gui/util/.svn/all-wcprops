@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/cmusphinx/!svn/ver/9535/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util
+END
+ConfigurableComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnroot/cmusphinx/!svn/ver/9386/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util/ConfigurableComponent.java
+END
+JavadocExtractor.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/cmusphinx/!svn/ver/9535/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util/JavadocExtractor.java
+END
+ConfigurableProperty.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util/ConfigurableProperty.java
+END
+ModelBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/9517/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util/ModelBuilder.java
+END
+ClassTraverseTester.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/cmusphinx/!svn/ver/7702/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util/ClassTraverseTester.java
+END
+DocletHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/7401/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util/DocletHelper.java
+END
+SysCommandExecutor.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/cmusphinx/!svn/ver/9525/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util/SysCommandExecutor.java
+END
+ClassFinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9523/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util/ClassFinder.java
+END
+ConfigurableUtilException.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util/ConfigurableUtilException.java
+END

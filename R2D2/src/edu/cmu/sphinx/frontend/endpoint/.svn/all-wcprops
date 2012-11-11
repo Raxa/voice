@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/cmusphinx/!svn/ver/11324/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint
+END
+WienerFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/cmusphinx/!svn/ver/9918/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/WienerFilter.java
+END
+AbstractVoiceActivityDetector.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svnroot/cmusphinx/!svn/ver/9918/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/AbstractVoiceActivityDetector.java
+END
+NonSpeechDataFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svnroot/cmusphinx/!svn/ver/9378/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/NonSpeechDataFilter.java
+END
+SpeechStartSignal.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/SpeechStartSignal.java
+END
+SpeechClassifiedData.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/cmusphinx/!svn/ver/10350/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/SpeechClassifiedData.java
+END
+SpeechMarker.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/cmusphinx/!svn/ver/9951/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/SpeechMarker.java
+END
+SpeechClassifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnroot/cmusphinx/!svn/ver/11324/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/SpeechClassifier.java
+END
+SpeechEndSignal.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/SpeechEndSignal.java
+END
+ExcessiveNonSpeechPruner.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svnroot/cmusphinx/!svn/ver/9577/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/ExcessiveNonSpeechPruner.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/6605/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/endpoint/package.html
+END

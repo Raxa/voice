@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/transform
+END
+DiscreteCosineTransform.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/transform/DiscreteCosineTransform.java
+END
+DiscreteCosineTransform2.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/cmusphinx/!svn/ver/9345/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/transform/DiscreteCosineTransform2.java
+END
+DiscreteFourierTransform.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svnroot/cmusphinx/!svn/ver/10750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/transform/DiscreteFourierTransform.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/6605/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/frontend/transform/package.html
+END

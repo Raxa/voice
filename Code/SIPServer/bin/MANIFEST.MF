@@ -1,2 +1,0 @@
-Main-Class: raxa.ivr.sip.server.SipServer
-

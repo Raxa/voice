@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/cmusphinx/!svn/ver/10973/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic
+END
+Unit.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/9750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/Unit.java
+END
+HMM.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/9404/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/HMM.java
+END
+HMMState.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/10148/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/HMMState.java
+END
+Context.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/Context.java
+END
+HMMPosition.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/cmusphinx/!svn/ver/9764/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/HMMPosition.java
+END
+HMMStateArc.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnroot/cmusphinx/!svn/ver/10228/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/HMMStateArc.java
+END
+UnitManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/cmusphinx/!svn/ver/9750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/UnitManager.java
+END
+AcousticModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/cmusphinx/!svn/ver/10297/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/AcousticModel.java
+END
+HMMPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/10298/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/HMMPool.java
+END
+LeftRightContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/cmusphinx/!svn/ver/9750/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/LeftRightContext.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/6606/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/acoustic/package.html
+END

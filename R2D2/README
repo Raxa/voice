@@ -1,0 +1,5 @@
+The demo is to get Sphinx4 to work with audio streaming in through TCP socket.
+Current version uses Sphinx4 StreamAudioSource class to take data input with
+no VAD. 
+
+To look at a demo implementation of the code look into the source Demo.java

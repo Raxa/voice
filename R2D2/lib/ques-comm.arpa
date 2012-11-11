@@ -1,0 +1,1037 @@
+#############################################################################
+## Copyright (c) 1996, Carnegie Mellon University, Cambridge University,
+## Ronald Rosenfeld and Philip Clarkson
+## Version 3, Copyright (c) 2006, Carnegie Mellon University 
+## Contributors includes Wen Xu, Ananlada Chotimongkol, 
+## David Huggins-Daines, Arthur Chan and Alan Black 
+#############################################################################
+=============================================================================
+===============  This file was produced by the CMU-Cambridge  ===============
+===============     Statistical Language Modeling Toolkit     ===============
+=============================================================================
+This is a 3-gram language model, based on a vocabulary of 197 words,
+  which begins "2", "</s>", "<s>"...
+This is a CLOSED-vocabulary model
+  (OOVs eliminated from training data and are forbidden in test data)
+Good-Turing discounting was applied.
+1-gram frequency of frequency : 136 
+2-gram frequency of frequency : 286 51 8 1 2 1 1 
+3-gram frequency of frequency : 372 47 5 1 1 1 1 
+1-gram discounting ratios : 0.00 
+2-gram discounting ratios : 0.35 0.22 0.15 
+3-gram discounting ratios : 0.24 0.15 0.26 
+This file is in the ARPA-standard format introduced by Doug Paul.
+
+p(wd3|wd1,wd2)= if(trigram exists)           p_3(wd1,wd2,wd3)
+                else if(bigram w1,w2 exists) bo_wt_2(w1,w2)*p(wd3|wd2)
+                else                         p(wd3|w2)
+
+p(wd2|wd1)= if(bigram exists) p_2(wd1,wd2)
+            else              bo_wt_1(wd1)*p_1(wd2)
+
+All probs and back-off weights (bo_wt) are given in log10 form.
+
+Data formats:
+
+Beginning of data mark: \data\
+ngram 1=nr            # number of 1-grams
+ngram 2=nr            # number of 2-grams
+ngram 3=nr            # number of 3-grams
+
+\1-grams:
+p_1     wd_1 bo_wt_1
+\2-grams:
+p_2     wd_1 wd_2 bo_wt_2
+\3-grams:
+p_3     wd_1 wd_2 wd_3 
+
+end of data mark: \end\
+
+\data\
+ngram 1=197
+ngram 2=351
+ngram 3=428
+
+\1-grams:
+-99.9990 2	-0.1854
+-0.7585 </s>	-1.7283
+-0.7518 <s>	-0.1998
+-2.2636 A	-0.1807
+-99.9990 All	-0.1854
+-99.9990 And	-0.1819
+-99.9990 Answer	-0.1022
+-1.7196 Are	-0.0566
+-99.9990 Aren't	-0.1795
+-99.9990 Australia	-0.1022
+-99.9990 B	-0.1022
+-2.0875 Can	-0.1304
+-99.9990 Civil	-0.1854
+-99.9990 Core/ques-comm.train	-0.1008
+-99.9990 Create	-0.1819
+-2.2636 Do	-0.0835
+-99.9990 Don’t	-0.1586
+-99.9990 Europe,	-0.1734
+-99.9990 Give	-0.1831
+-99.9990 Good	-0.1854
+-99.9990 Have	-0.1586
+-2.0875 How	-0.1710
+-2.0875 I	-0.1831
+-99.9990 I'm	-0.1854
+-1.7196 Is	-0.0697
+-99.9990 JARVIS	-0.1734
+-99.9990 JARVIS,	-0.1771
+-99.9990 Jarvis	-0.1854
+-99.9990 Open	-0.1783
+-99.9990 PC	-0.1022
+-99.9990 See	-0.1854
+-99.9990 Shall	-0.1819
+-99.9990 Take	-0.1819
+-1.8657 Tell	-0.8760
+-99.9990 That	-0.1831
+-2.2636 This	-0.0996
+-99.9990 To	-0.1854
+-99.9990 War	-0.1022
+-99.9990 Were	-0.1807
+-2.0875 What	-0.1685
+-2.2636 Who	-0.1734
+-99.9990 Why	-0.1854
+-1.6104 a	-0.1604
+-99.9990 admire	-0.1698
+-99.9990 agree	-0.1783
+-99.9990 air	-0.1854
+-99.9990 all	-0.1854
+-99.9990 alternatives	-0.1022
+-2.2636 altitude	-0.0272
+-2.0875 an	-0.1854
+-99.9990 and	-0.1854
+-99.9990 another	-0.1022
+-99.9990 answer	-0.1022
+-99.9990 any	-0.1854
+-99.9990 anybody	-0.1831
+-99.9990 appointed	-0.1819
+-1.5647 are	0.0353
+-99.9990 aren’t	-0.1795
+-99.9990 ask	-0.1586
+-99.9990 asking	-0.1854
+-99.9990 assault	-0.1807
+-99.9990 assignment	-0.1710
+-99.9990 aware	-0.1022
+-99.9990 bad	-0.1022
+-99.9990 be	-0.1746
+-99.9990 become	-0.1854
+-2.2636 before	-0.1586
+-99.9990 buffoon	-0.1022
+-99.9990 bullet	-0.1854
+-99.9990 burping	-0.1854
+-2.2636 can	-0.1854
+-99.9990 carried	-0.1783
+-99.9990 cases	-0.1022
+-99.9990 caused	-0.1698
+-99.9990 command	-0.1022
+-99.9990 conditioning	-0.1854
+-2.2636 consider	-0.1854
+-2.2636 copy	-0.0984
+-99.9990 couple	-0.1819
+-99.9990 current	-0.1831
+-99.9990 days	-0.1831
+-99.9990 desktop	-0.1022
+-99.9990 diapering	-0.1022
+-99.9990 did	-0.1022
+-2.2636 directory	-0.0272
+-1.8657 do	-0.7513
+-99.9990 documentation	-0.1831
+-2.0875 equal	-0.0421
+-99.9990 equipment	-0.1586
+-99.9990 ever	-0.1854
+-99.9990 explain	-0.1854
+-99.9990 fashion	-0.1710
+-1.9626 file	-0.0455
+-99.9990 file,	-0.1831
+-2.2636 folder	-0.0272
+-2.2636 for	-0.1623
+-99.9990 free	-0.1854
+-2.2636 get	-0.1734
+-99.9990 go	-0.1854
+-2.2636 good	-0.0272
+-99.9990 got	-0.1710
+-99.9990 hard	-0.1022
+-99.9990 has	-0.1854
+-99.9990 heater	-0.1854
+-99.9990 heating	-0.1854
+-2.2636 help	-0.0272
+-99.9990 hindering	-0.1698
+-99.9990 holes	-0.1022
+-99.9990 hour	-0.1819
+-99.9990 i	-0.1854
+-99.9990 icon	-0.1831
+-99.9990 if	-0.1854
+-99.9990 ignorant	-0.1854
+-99.9990 important	-0.1854
+-1.7865 in	-0.1554
+-1.6104 is	-0.0795
+-99.9990 it	-0.1831
+-99.9990 libraries	-0.1022
+-99.9990 life	-0.1022
+-99.9990 looking	-0.1831
+-99.9990 lost	-0.1819
+-99.9990 lunch?	-0.1022
+-2.2636 make	-0.1698
+-99.9990 man	-0.1586
+-99.9990 maximum	-0.1831
+-2.0875 me	-0.0332
+-1.9626 me,	-0.0935
+-2.2636 millions	-0.1068
+-2.2636 most	-0.1022
+-99.9990 my	-0.1854
+-99.9990 name:	-0.1854
+-99.9990 need	-0.1854
+-99.9990 nickname	-0.1022
+-2.0875 of	-0.1854
+-99.9990 often	-0.1022
+-99.9990 ok	-0.1022
+-1.9626 on	-0.0440
+-99.9990 or	-0.1854
+-99.9990 other	-0.1854
+-2.2636 paste	-0.1734
+-99.9990 periods	-0.1022
+-99.9990 piece	-0.1819
+-2.2636 plan	-0.0960
+-99.9990 pregnant	-0.1854
+-99.9990 problem	-0.1783
+-99.9990 process	-0.1746
+-99.9990 public	-0.1854
+-99.9990 put	-0.1831
+-99.9990 question	-0.1022
+-99.9990 questions	-0.1022
+-99.9990 relevant	-0.1854
+-99.9990 remove	-0.1734
+-2.2636 report	-0.1056
+-99.9990 revolutionary	-0.1854
+-99.9990 right	-0.1022
+-99.9990 run	-0.1831
+-2.2636 same	-0.0272
+-2.2636 save	-0.0272
+-2.2636 say	-0.0960
+-99.9990 scenarios	-0.1022
+-99.9990 shutdown	-0.1698
+-99.9990 sleep	-0.1783
+-99.9990 so	-0.1854
+-2.2636 solution	-0.0847
+-99.9990 some	-0.1854
+-2.2636 something	-0.0979
+-99.9990 sometimes	-0.1586
+-2.2636 speak	-0.0993
+-99.9990 statement	-0.1022
+-99.9990 straight	-0.1854
+-99.9990 sum	-0.1819
+-99.9990 system	-0.1022
+-1.7865 that	-0.0521
+-1.4507 the	-0.1420
+-1.9626 there	-0.0500
+-1.8657 they	-0.0989
+-99.9990 think	-0.1795
+-1.5647 this	-0.0379
+-1.8657 those	-0.1759
+-1.4855 to	-0.1308
+-99.9990 too	-0.1854
+-99.9990 two	-0.1854
+-99.9990 up	-0.1022
+-99.9990 using	-0.1854
+-99.9990 viable	-0.1854
+-99.9990 walk	-0.1022
+-99.9990 was	-0.1698
+-99.9990 way	-0.1022
+-2.0875 we	-0.1316
+-2.0875 what	-0.1280
+-99.9990 when	-0.1586
+-99.9990 who	-0.1746
+-99.9990 why	-0.1586
+-2.2636 would	-0.1419
+-1.2222 you	-0.0233
+-2.2636 you?	-0.0272
+-2.0875 your	-0.1854
+
+\2-grams:
+-0.4590 2 days 0.0636
+-0.0067 </s> <s> 0.0257
+-2.2719 <s> All 0.0636
+-2.2719 <s> And 0.0636
+-1.0348 <s> Are -0.0218
+-2.2719 <s> Aren't 0.0636
+-2.1459 <s> Can 0.0468
+-2.2719 <s> Create 0.0636
+-2.1608 <s> Do 0.0396
+-2.2719 <s> Don’t 0.0636
+-2.2719 <s> Have 0.0636
+-2.1459 <s> How 0.0636
+-0.9678 <s> Is -0.0012
+-2.2719 <s> JARVIS 0.0636
+-2.2719 <s> JARVIS, 0.0636
+-2.2719 <s> Jarvis 0.0636
+-2.2719 <s> Open 0.0636
+-2.2719 <s> See 0.0636
+-2.2719 <s> Shall 0.0636
+-2.2719 <s> Take 0.0636
+-1.1139 <s> Tell 0.0636
+-2.2719 <s> That 0.0636
+-2.1608 <s> This 0.0396
+-2.2719 <s> Were 0.0636
+-2.1459 <s> What 0.0636
+-2.1608 <s> Who 0.0636
+-2.2719 <s> Why 0.0636
+-2.2719 <s> are -0.1011
+-2.2719 <s> aren’t 0.0636
+-2.1608 <s> copy 0.0396
+-2.2719 <s> is -0.1047
+-2.1608 <s> make 0.0636
+-2.1608 <s> paste 0.0636
+-2.2719 <s> put 0.0636
+-2.2719 <s> remove 0.0636
+-2.2719 <s> shutdown 0.0636
+-2.2719 <s> speak -0.0389
+-2.2719 <s> what -0.0514
+-2.2719 <s> when 0.0636
+-2.2719 <s> who 0.0636
+-0.7601 A Good 0.0636
+-0.7601 A on -0.0823
+-0.4590 All I'm 0.0636
+-0.4590 And what -0.0514
+-0.4590 Answer </s> 1.6911
+-1.3041 Are the -0.1100
+-1.1930 Are they -0.0568
+-1.1781 Are those -0.0202
+-1.3041 Are you -0.1149
+-0.4590 Aren't those -0.0905
+-0.4590 Australia </s> 1.6911
+-0.4590 B </s> 1.6911
+-0.8250 Can I -0.0073
+-0.9361 Can anybody 0.0636
+-0.4590 Civil War 0.0636
+-0.4590 Core/ques-comm.train <s> -0.1195
+-0.4590 Create an -0.0683
+-0.6489 Do you -0.1058
+-0.4590 Don’t you -0.1149
+-0.4590 Europe, are -0.1011
+-0.4590 Give A -0.0389
+-0.4590 Good Answer 0.0636
+-0.4590 Have you -0.1149
+-0.9361 How To 0.0636
+-0.9361 How are -0.1019
+-0.9361 How would -0.0389
+-0.9361 I ask 0.0636
+-0.9361 I did 0.0636
+-0.9361 I get -0.0389
+-0.4590 I'm looking 0.0636
+-1.1781 Is that -0.0389
+-1.1930 Is there -0.0191
+-1.1930 Is this -0.0905
+-0.4590 JARVIS are -0.1011
+-0.4590 JARVIS, Are -0.0997
+-0.4590 Jarvis sometimes 0.0636
+-0.4590 Open that -0.0959
+-0.4590 PC </s> 1.6911
+-0.4590 See if 0.0636
+-0.4590 Shall we -0.0683
+-0.4590 Take me -0.0514
+-1.1580 Tell me -0.0683
+-0.0969 Tell me, 0.0396
+-0.4590 That can -0.0389
+-0.6489 This is -0.0478
+-0.4590 To Give 0.0636
+-0.4590 War </s> 1.6911
+-0.4590 Were there -0.0823
+-0.9361 What caused 0.0636
+-0.9361 What do 0.6563
+-0.9361 What is -0.0996
+-0.7601 Who appointed 0.0636
+-0.7601 Who are -0.1019
+-0.4590 Why has 0.0636
+-1.4133 a command 0.0636
+-1.4133 a couple 0.0636
+-1.4133 a file -0.0701
+-1.4133 a question 0.0636
+-1.4133 a revolutionary 0.0636
+-1.3021 a solution 0.0636
+-1.4133 a straight 0.0636
+-1.4133 a way 0.0636
+-0.4590 admire the -0.1065
+-0.4590 agree that -0.0959
+-0.4590 air conditioning 0.0636
+-0.4590 all scenarios 0.0636
+-0.4590 alternatives </s> 1.6911
+-0.6489 altitude </s> 1.7421
+-0.9361 an hour 0.0636
+-0.9361 an icon 0.0636
+-0.9361 an ignorant 0.0636
+-0.4590 and diapering 0.0636
+-0.4590 another </s> 1.6911
+-0.4590 answer </s> 1.6911
+-0.4590 any viable 0.0636
+-0.4590 anybody help -0.0114
+-0.4590 appointed me -0.0514
+-1.4590 are </s> 1.6911
+-1.4590 are an -0.0683
+-1.4590 are in -0.0959
+-1.3479 are the -0.0555
+-1.3330 are you -0.1007
+-1.3479 are you? 0.0396
+-0.4590 aren’t those -0.0905
+-0.4590 ask you -0.1149
+-0.4590 asking become 0.0636
+-0.4590 assault on -0.0823
+-0.4590 assignment to -0.1052
+-0.4590 aware </s> 1.6911
+-0.4590 bad </s> 1.6911
+-0.4590 be a -0.1047
+-0.4590 become so 0.0636
+-0.7601 before my 0.0636
+-0.7601 before you -0.1149
+-0.4590 buffoon </s> 1.6911
+-0.4590 bullet holes 0.0636
+-0.4590 burping and 0.0636
+-0.7601 can explain 0.0636
+-0.7601 can walk 0.0636
+-0.4590 carried in -0.0880
+-0.4590 cases </s> 1.6911
+-0.4590 caused the -0.1100
+-0.4590 command </s> 1.6911
+-0.4590 conditioning heating 0.0636
+-0.7601 consider fashion 0.0636
+-0.7601 consider was 0.0636
+-0.6489 copy this -0.0858
+-0.4590 couple of -0.0683
+-0.4590 current altitude -0.0114
+-0.4590 days before -0.0389
+-0.4590 desktop </s> 1.6911
+-0.4590 diapering </s> 1.6911
+-0.4590 did </s> 1.6911
+-0.6489 directory </s> 1.7421
+-0.0792 do you -0.0531
+-0.4590 documentation help -0.0114
+-0.9361 equal </s> 1.6911
+-0.8250 equal in -0.0683
+-0.4590 equipment you -0.1149
+-0.4590 ever lost 0.0636
+-0.4590 explain why 0.0636
+-0.4590 fashion to -0.1090
+-0.9499 file </s> 1.7421
+-1.0611 file name: 0.0636
+-1.0611 file to -0.1090
+-0.4590 file, would -0.0389
+-0.6489 folder </s> 1.7421
+-0.7601 for is -0.0988
+-0.7601 for this -0.1019
+-0.4590 free public 0.0636
+-0.7601 get pregnant 0.0636
+-0.7601 get this -0.1064
+-0.4590 go lunch? 0.0636
+-0.6489 good </s> 1.7421
+-0.4590 got to -0.1090
+-0.4590 hard </s> 1.6911
+-0.4590 has asking 0.0636
+-0.4590 heater too 0.0636
+-0.4590 heating or 0.0636
+-0.6489 help </s> 1.7421
+-0.4590 hindering the -0.1100
+-0.4590 holes </s> 1.6911
+-0.4590 hour of -0.0683
+-0.4590 i think 0.0636
+-0.4590 icon for -0.0389
+-0.4590 if some 0.0636
+-0.4590 ignorant buffoon 0.0636
+-0.4590 important piece 0.0636
+-1.2372 in Australia 0.0636
+-1.2372 in Europe, 0.0636
+-1.2372 in all 0.0636
+-1.2372 in two 0.0636
+-1.1260 in your -0.0073
+-1.2872 is a -0.0683
+-1.4133 is hindering 0.0636
+-1.4133 is it 0.0636
+-1.3021 is the -0.0979
+-1.3021 is they -0.0285
+-0.4590 it something -0.0389
+-0.4590 libraries </s> 1.6911
+-0.4590 life </s> 1.6911
+-0.4590 looking for -0.0389
+-0.4590 lost an -0.0683
+-0.4590 lunch? </s> 1.6911
+-0.7601 make a -0.1047
+-0.7601 make file -0.0701
+-0.4590 man you -0.1149
+-0.4590 maximum altitude -0.0114
+-0.9361 me </s> 1.6911
+-0.8250 me to -0.0959
+-0.9499 me, do 0.7073
+-0.9499 me, is -0.0486
+-0.6489 millions we -0.0004
+-0.7601 most </s> 1.6911
+-0.7601 most important 0.0636
+-0.4590 my periods 0.0636
+-0.4590 name: Core/ques-comm.train 0.0636
+-0.4590 need burping 0.0636
+-0.4590 nickname </s> 1.6911
+-0.9361 of equipment 0.0636
+-0.9361 of questions 0.0636
+-0.9361 of sleep 0.0636
+-0.4590 often </s> 1.6911
+-0.4590 ok </s> 1.6911
+-1.0611 on </s> 1.6911
+-1.0611 on B 0.0636
+-0.9499 on the -0.0555
+-0.4590 or heater 0.0636
+-0.4590 other nickname 0.0636
+-0.7601 paste assignment 0.0636
+-0.7601 paste this -0.1064
+-0.4590 periods </s> 1.6911
+-0.4590 piece of -0.0683
+-0.6489 plan to -0.0542
+-0.4590 pregnant 2 0.0636
+-0.4590 problem in -0.0959
+-0.4590 process is -0.1047
+-0.4590 public libraries 0.0636
+-0.4590 put A -0.0389
+-0.4590 question </s> 1.6911
+-0.4590 questions </s> 1.6911
+-0.4590 relevant documentation 0.0636
+-0.4590 remove this -0.1019
+-0.6489 report on -0.0191
+-0.4590 revolutionary statement 0.0636
+-0.4590 right </s> 1.6911
+-0.4590 run before -0.0389
+-0.6489 same </s> 1.7421
+-0.6489 save </s> 1.7421
+-0.6489 say to -0.0959
+-0.4590 scenarios </s> 1.6911
+-0.4590 shutdown the -0.1100
+-0.4590 sleep in -0.0880
+-0.4590 so hard 0.0636
+-0.7601 solution </s> 1.6911
+-0.7601 solution to -0.1052
+-0.4590 some process 0.0636
+-0.7601 something </s> 1.6911
+-0.7601 something I -0.0683
+-0.4590 sometimes you -0.1149
+-0.7601 speak </s> 1.6911
+-0.7601 speak something -0.0389
+-0.4590 statement </s> 1.6911
+-0.4590 straight answer 0.0636
+-0.4590 sum equal -0.0514
+-0.4590 system </s> 1.6911
+-1.2372 that </s> 1.6911
+-1.2372 that a -0.0996
+-1.2372 that bad 0.0636
+-1.2372 that file, 0.0636
+-1.2372 that good -0.0114
+-1.2372 that you -0.1128
+-1.5730 the Civil 0.0636
+-1.5730 the PC 0.0636
+-1.5730 the current 0.0636
+-1.5730 the man 0.0636
+-1.4618 the millions 0.0396
+-1.4618 the most 0.0636
+-1.5730 the relevant 0.0636
+-1.4618 the same 0.0396
+-1.5730 the sum 0.0636
+-1.5730 the system 0.0636
+-1.0611 there </s> 1.6911
+-0.9499 there a -0.0816
+-1.0611 there any 0.0636
+-1.0319 they are -0.0511
+-1.1580 they equal -0.0514
+-1.1580 they right 0.0636
+-0.4590 think they -0.0795
+-1.4590 this </s> 1.6911
+-1.3479 this directory 0.0396
+-1.4590 this file -0.0823
+-1.3479 this folder 0.0396
+-1.4590 this good -0.0114
+-1.4590 this ok 0.0636
+-1.4590 this problem 0.0636
+-1.4590 this to -0.1090
+-1.1580 those bullet 0.0636
+-1.1580 those equal -0.0683
+-1.1580 those free 0.0636
+-1.1580 those same -0.0114
+-1.1580 those what -0.0683
+-1.5382 to another 0.0636
+-1.5382 to be 0.0636
+-1.5382 to desktop 0.0636
+-1.5382 to maximum 0.0636
+-1.4270 to report 0.0396
+-1.5382 to run 0.0636
+-1.5382 to speak -0.0389
+-1.5382 to that -0.0959
+-1.4270 to this -0.0858
+-1.5382 to your -0.0683
+-0.4590 too often 0.0636
+-0.4590 two cases 0.0636
+-0.4590 up </s> 1.6911
+-0.4590 using air 0.0636
+-0.4590 viable alternatives 0.0636
+-0.4590 walk </s> 1.6911
+-0.4590 was the -0.1065
+-0.4590 way </s> 1.6911
+-0.9361 we go 0.0636
+-0.8250 we save 0.0396
+-0.8250 what do 0.7073
+-0.9361 what i 0.0636
+-0.4590 when you -0.1128
+-0.4590 who is -0.0996
+-0.4590 why you -0.1149
+-0.7601 would the -0.1100
+-0.7601 would you -0.1149
+-1.8014 you </s> 1.6911
+-1.8014 you a -0.1047
+-1.8014 you admire 0.0636
+-1.8014 you agree 0.0636
+-1.6903 you are -0.0905
+-1.8014 you aware 0.0636
+-1.8014 you can -0.0389
+-1.8014 you carried 0.0636
+-1.6903 you consider 0.0636
+-1.8014 you ever 0.0636
+-1.8014 you get -0.0389
+-1.8014 you got 0.0636
+-1.8014 you need 0.0636
+-1.6903 you plan 0.0396
+-1.6903 you say 0.0396
+-1.8014 you there -0.0823
+-1.8014 you up 0.0636
+-1.8014 you using 0.0636
+-0.6489 you? </s> 1.7421
+-0.9361 your assault 0.0636
+-0.9361 your life 0.0636
+-0.9361 your other 0.0636
+
+\3-grams:
+-0.6116 2 days before 
+-2.4178 </s> <s> All 
+-1.0280 </s> <s> Are 
+-2.4178 </s> <s> Aren't 
+-1.9163 </s> <s> Can 
+-2.4178 </s> <s> Create 
+-2.3278 </s> <s> Do 
+-2.4178 </s> <s> Don’t 
+-2.4178 </s> <s> Have 
+-1.9163 </s> <s> How 
+-0.9611 </s> <s> Is 
+-2.4178 </s> <s> JARVIS 
+-2.4178 </s> <s> JARVIS, 
+-2.4178 </s> <s> Jarvis 
+-2.4178 </s> <s> Open 
+-2.4178 </s> <s> See 
+-2.4178 </s> <s> Shall 
+-2.4178 </s> <s> Take 
+-1.1072 </s> <s> Tell 
+-2.4178 </s> <s> That 
+-2.3278 </s> <s> This 
+-2.4178 </s> <s> Were 
+-1.9163 </s> <s> What 
+-2.3278 </s> <s> Who 
+-2.4178 </s> <s> Why 
+-2.4178 </s> <s> are 
+-2.4178 </s> <s> aren’t 
+-2.3278 </s> <s> copy 
+-2.4178 </s> <s> is 
+-2.3278 </s> <s> make 
+-2.3278 </s> <s> paste 
+-2.4178 </s> <s> put 
+-2.4178 </s> <s> remove 
+-2.4178 </s> <s> shutdown 
+-2.4178 </s> <s> speak 
+-2.4178 </s> <s> what 
+-2.4178 </s> <s> when 
+-2.4178 </s> <s> who 
+-0.6116 <s> All I'm 
+-0.6116 <s> And what 
+-1.3898 <s> Are the 
+-1.2998 <s> Are they 
+-0.8882 <s> Are those 
+-0.6116 <s> Aren't those 
+-0.9987 <s> Can I 
+-1.0887 <s> Can anybody 
+-0.6116 <s> Create an 
+-0.8226 <s> Do you 
+-0.6116 <s> Don’t you 
+-0.6116 <s> Have you 
+-1.0887 <s> How To 
+-1.0887 <s> How are 
+-1.0887 <s> How would 
+-0.9552 <s> Is that 
+-1.3667 <s> Is there 
+-1.3667 <s> Is this 
+-0.6116 <s> JARVIS are 
+-0.6116 <s> JARVIS, Are 
+-0.6116 <s> Jarvis sometimes 
+-0.6116 <s> Open that 
+-0.6116 <s> See if 
+-0.6116 <s> Shall we 
+-0.6116 <s> Take me 
+-1.3106 <s> Tell me 
+-0.0969 <s> Tell me, 
+-0.6116 <s> That can 
+-0.8226 <s> This is 
+-0.6116 <s> Were there 
+-1.0887 <s> What caused 
+-1.0887 <s> What do 
+-1.0887 <s> What is 
+-0.9126 <s> Who appointed 
+-0.9126 <s> Who are 
+-0.6116 <s> Why has 
+-0.6116 <s> are you 
+-0.6116 <s> aren’t those 
+-0.8226 <s> copy this 
+-0.6116 <s> is it 
+-0.9126 <s> make a 
+-0.9126 <s> make file 
+-0.9126 <s> paste assignment 
+-0.9126 <s> paste this 
+-0.6116 <s> put A 
+-0.6116 <s> remove this 
+-0.6116 <s> shutdown the 
+-0.6116 <s> speak something 
+-0.6116 <s> what do 
+-0.6116 <s> when you 
+-0.6116 <s> who is 
+-0.6116 A Good Answer 
+-0.6116 A on B 
+-0.6116 All I'm looking 
+-0.6116 And what do 
+-0.6116 Answer </s> <s> 
+-0.6116 Are the sum 
+-0.9126 Are they equal 
+-0.9126 Are they right 
+-1.0887 Are those bullet 
+-1.0887 Are those same 
+-1.0887 Are those what 
+-0.6116 Are you up 
+-0.6116 Aren't those equal 
+-0.6116 Australia </s> <s> 
+-0.6116 B </s> <s> 
+-0.9126 Can I ask 
+-0.9126 Can I get 
+-0.6116 Can anybody help 
+-0.6116 Civil War </s> 
+-0.6116 Core/ques-comm.train <s> And 
+-0.6116 Create an icon 
+-0.9126 Do you consider 
+-0.9126 Do you need 
+-0.6116 Don’t you agree 
+-0.6116 Europe, are you 
+-0.6116 Give A Good 
+-0.6116 Good Answer </s> 
+-0.6116 Have you ever 
+-0.6116 How To Give 
+-0.6116 How are you? 
+-0.6116 How would the 
+-0.6116 I ask you 
+-0.6116 I did </s> 
+-0.6116 I get pregnant 
+-0.6116 I'm looking for 
+-1.0887 Is that a 
+-1.0887 Is that bad 
+-1.0887 Is that good 
+-0.8226 Is there a 
+-0.9126 Is this good 
+-0.9126 Is this ok 
+-0.6116 JARVIS are you 
+-0.6116 JARVIS, Are you 
+-0.6116 Jarvis sometimes you 
+-0.6116 Open that file, 
+-0.6116 PC </s> <s> 
+-0.6116 See if some 
+-0.6116 Shall we go 
+-0.6116 Take me to 
+-0.6116 Tell me </s> 
+-1.1237 Tell me, do 
+-1.1237 Tell me, is 
+-0.6116 That can explain 
+-0.8226 This is a 
+-0.6116 To Give A 
+-0.6116 War </s> <s> 
+-0.6116 Were there any 
+-0.6116 What caused the 
+-0.6116 What do you 
+-0.6116 What is the 
+-0.6116 Who appointed me 
+-0.6116 Who are you? 
+-0.6116 Why has asking 
+-0.6116 a command </s> 
+-0.6116 a couple of 
+-0.6116 a file </s> 
+-0.6116 a question </s> 
+-0.6116 a revolutionary statement 
+-0.9126 a solution </s> 
+-0.9126 a solution to 
+-0.6116 a straight answer 
+-0.6116 a way </s> 
+-0.6116 admire the most 
+-0.6116 agree that you 
+-0.6116 air conditioning heating 
+-0.6116 all scenarios </s> 
+-0.6116 alternatives </s> <s> 
+-0.8226 altitude </s> <s> 
+-0.6116 an hour of 
+-0.6116 an icon for 
+-0.6116 an ignorant buffoon 
+-0.6116 and diapering </s> 
+-0.6116 another </s> <s> 
+-0.6116 answer </s> <s> 
+-0.6116 any viable alternatives 
+-0.6116 anybody help </s> 
+-0.6116 appointed me to 
+-0.6116 are </s> <s> 
+-0.6116 are an ignorant 
+-0.6116 are in Europe, 
+-0.8226 are the same 
+-1.0887 are you aware 
+-1.0887 are you there 
+-1.0887 are you using 
+-0.8226 are you? </s> 
+-0.6116 aren’t those free 
+-0.6116 ask you a 
+-0.6116 asking become so 
+-0.6116 assault on </s> 
+-0.6116 assignment to this 
+-0.6116 aware </s> <s> 
+-0.6116 bad </s> <s> 
+-0.6116 be a revolutionary 
+-0.6116 become so hard 
+-0.6116 before my periods 
+-0.6116 before you can 
+-0.6116 buffoon </s> <s> 
+-0.6116 bullet holes </s> 
+-0.6116 burping and diapering 
+-0.6116 can explain why 
+-0.6116 can walk </s> 
+-0.6116 carried in your 
+-0.6116 cases </s> <s> 
+-0.6116 caused the Civil 
+-0.6116 command </s> <s> 
+-0.6116 conditioning heating or 
+-0.6116 consider fashion to 
+-0.6116 consider was the 
+-0.9126 copy this directory 
+-0.9126 copy this to 
+-0.6116 couple of questions 
+-0.6116 current altitude </s> 
+-0.6116 days before my 
+-0.6116 desktop </s> <s> 
+-0.6116 diapering </s> <s> 
+-0.6116 did </s> <s> 
+-0.8226 directory </s> <s> 
+-1.3106 do you consider 
+-1.2206 do you plan 
+-1.2206 do you say 
+-0.6116 documentation help </s> 
+-0.6116 equal </s> <s> 
+-0.9126 equal in all 
+-0.9126 equal in two 
+-0.6116 equipment you carried 
+-0.6116 ever lost an 
+-0.6116 explain why you 
+-0.6116 fashion to be 
+-0.8226 file </s> <s> 
+-0.6116 file name: Core/ques-comm.train 
+-0.6116 file to desktop 
+-0.6116 file, would you 
+-0.8226 folder </s> <s> 
+-0.6116 for is a 
+-0.6116 for this folder 
+-0.6116 free public libraries 
+-0.6116 get pregnant 2 
+-0.6116 get this problem 
+-0.6116 go lunch? </s> 
+-0.8226 good </s> <s> 
+-0.6116 got to run 
+-0.6116 hard </s> <s> 
+-0.6116 has asking become 
+-0.6116 heater too often 
+-0.6116 heating or heater 
+-0.8226 help </s> <s> 
+-0.6116 hindering the system 
+-0.6116 holes </s> <s> 
+-0.6116 hour of sleep 
+-0.6116 i think they 
+-0.6116 icon for this 
+-0.6116 if some process 
+-0.6116 ignorant buffoon </s> 
+-0.6116 important piece of 
+-0.6116 in Australia </s> 
+-0.6116 in Europe, are 
+-0.6116 in all scenarios 
+-0.6116 in two cases 
+-0.9126 in your assault 
+-0.9126 in your life 
+-1.0887 is a command 
+-1.0887 is a question 
+-1.0887 is a straight 
+-0.6116 is hindering the 
+-0.6116 is it something 
+-0.9126 is the current 
+-0.9126 is the man 
+-0.8226 is they are 
+-0.6116 it something I 
+-0.6116 libraries </s> <s> 
+-0.6116 life </s> <s> 
+-0.6116 looking for is 
+-0.6116 lost an hour 
+-0.6116 lunch? </s> <s> 
+-0.6116 make a file 
+-0.6116 make file </s> 
+-0.6116 man you admire 
+-0.6116 maximum altitude </s> 
+-0.6116 me </s> <s> 
+-0.9126 me to maximum 
+-0.9126 me to speak 
+-0.8226 me, do you 
+-0.8226 me, is they 
+-0.8226 millions we save 
+-0.6116 most </s> <s> 
+-0.6116 most important piece 
+-0.6116 my periods </s> 
+-0.6116 name: Core/ques-comm.train <s> 
+-0.6116 need burping and 
+-0.6116 nickname </s> <s> 
+-0.6116 of equipment you 
+-0.6116 of questions </s> 
+-0.6116 of sleep in 
+-0.6116 often </s> <s> 
+-0.6116 ok </s> <s> 
+-0.6116 on </s> <s> 
+-0.6116 on B </s> 
+-0.8226 on the millions 
+-0.6116 or heater too 
+-0.6116 other nickname </s> 
+-0.6116 paste assignment to 
+-0.6116 paste this file 
+-0.6116 periods </s> <s> 
+-0.6116 piece of equipment 
+-0.8226 plan to report 
+-0.6116 pregnant 2 days 
+-0.6116 problem in Australia 
+-0.6116 process is hindering 
+-0.6116 public libraries </s> 
+-0.6116 put A on 
+-0.6116 question </s> <s> 
+-0.6116 questions </s> <s> 
+-0.6116 relevant documentation help 
+-0.6116 remove this directory 
+-0.8226 report on the 
+-0.6116 revolutionary statement </s> 
+-0.6116 right </s> <s> 
+-0.6116 run before you 
+-0.8226 same </s> <s> 
+-0.8226 save </s> <s> 
+-0.9126 say to that 
+-0.9126 say to your 
+-0.6116 scenarios </s> <s> 
+-0.6116 shutdown the PC 
+-0.6116 sleep in your 
+-0.6116 so hard </s> 
+-0.6116 solution </s> <s> 
+-0.6116 solution to this 
+-0.6116 some process is 
+-0.6116 something </s> <s> 
+-0.6116 something I did 
+-0.6116 sometimes you got 
+-0.6116 speak </s> <s> 
+-0.6116 speak something </s> 
+-0.6116 statement </s> <s> 
+-0.6116 straight answer </s> 
+-0.6116 sum equal in 
+-0.6116 system </s> <s> 
+-0.6116 that </s> <s> 
+-0.6116 that a solution 
+-0.6116 that bad </s> 
+-0.6116 that file, would 
+-0.6116 that good </s> 
+-0.6116 that you are 
+-0.6116 the Civil War 
+-0.6116 the PC </s> 
+-0.6116 the current altitude 
+-0.6116 the man you 
+-0.8226 the millions we 
+-0.9126 the most </s> 
+-0.9126 the most important 
+-0.6116 the relevant documentation 
+-0.8226 the same </s> 
+-0.6116 the sum equal 
+-0.6116 the system </s> 
+-0.6116 there </s> <s> 
+-0.9126 there a solution 
+-0.9126 there a way 
+-0.6116 there any viable 
+-1.0887 they are </s> 
+-0.9987 they are the 
+-0.6116 they equal in 
+-0.6116 they right </s> 
+-0.6116 think they are 
+-0.6116 this </s> <s> 
+-0.8226 this directory </s> 
+-0.6116 this file to 
+-0.8226 this folder </s> 
+-0.6116 this good </s> 
+-0.6116 this ok </s> 
+-0.6116 this problem in 
+-0.6116 this to another 
+-0.6116 those bullet holes 
+-0.6116 those equal </s> 
+-0.6116 those free public 
+-0.6116 those same </s> 
+-0.6116 those what i 
+-0.6116 to another </s> 
+-0.6116 to be a 
+-0.6116 to desktop </s> 
+-0.6116 to maximum altitude 
+-0.8226 to report on 
+-0.6116 to run before 
+-0.6116 to speak </s> 
+-0.6116 to that </s> 
+-0.9126 to this </s> 
+-0.9126 to this folder 
+-0.6116 to your other 
+-0.6116 too often </s> 
+-0.6116 two cases </s> 
+-0.6116 up </s> <s> 
+-0.6116 using air conditioning 
+-0.6116 viable alternatives </s> 
+-0.6116 walk </s> <s> 
+-0.6116 was the most 
+-0.6116 way </s> <s> 
+-0.6116 we go lunch? 
+-0.8226 we save </s> 
+-0.8226 what do you 
+-0.6116 what i think 
+-0.6116 when you are 
+-0.6116 who is the 
+-0.6116 why you get 
+-0.6116 would the relevant 
+-0.6116 would you </s> 
+-0.6116 you </s> <s> 
+-0.6116 you a couple 
+-0.6116 you admire the 
+-0.6116 you agree that 
+-0.9126 you are an 
+-0.9126 you are in 
+-0.6116 you aware </s> 
+-0.6116 you can walk 
+-0.6116 you carried in 
+-0.9126 you consider fashion 
+-0.9126 you consider was 
+-0.6116 you ever lost 
+-0.6116 you get this 
+-0.6116 you got to 
+-0.6116 you need burping 
+-0.8226 you plan to 
+-0.8226 you say to 
+-0.6116 you there </s> 
+-0.6116 you up </s> 
+-0.6116 you using air 
+-0.8226 you? </s> <s> 
+-0.6116 your assault on 
+-0.6116 your life </s> 
+-0.6116 your other nickname 
+
+\end\

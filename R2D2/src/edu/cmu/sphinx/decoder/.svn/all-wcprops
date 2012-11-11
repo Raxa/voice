@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/cmusphinx/!svn/ver/10998/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder
+END
+FrameDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/cmusphinx/!svn/ver/9955/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/FrameDecoder.java
+END
+ResultProducer.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/9357/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/ResultProducer.java
+END
+ResultListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/8887/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/ResultListener.java
+END
+Decoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/9577/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/Decoder.java
+END
+AbstractDecoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9962/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/AbstractDecoder.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/6605/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/decoder/package.html
+END

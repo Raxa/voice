@@ -1,0 +1,2 @@
+Main-Class: jarvis.leia.demo.Demo
+Class-Path: ./

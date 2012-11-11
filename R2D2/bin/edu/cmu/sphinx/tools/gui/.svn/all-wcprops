@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/cmusphinx/!svn/ver/11314/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui
+END
+PanelConfigurable.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/9522/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/PanelConfigurable.java
+END
+PanelGlobal.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/9522/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/PanelGlobal.java
+END
+util.conf
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/cmusphinx/!svn/ver/6997/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/util.conf
+END
+PanelConfigurable.form
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/6997/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/PanelConfigurable.form
+END
+PanelGlobal.form
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/6499/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/PanelGlobal.form
+END
+ConfigProperties.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9386/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/ConfigProperties.java
+END
+GUIOperationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/GUIOperationException.java
+END
+GUIMainDriver.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/GUIMainDriver.java
+END
+GUIFileActionListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svnroot/cmusphinx/!svn/ver/6716/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/GUIFileActionListener.java
+END
+GUIMediator.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/GUIMediator.java
+END
+MainJFrame.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/cmusphinx/!svn/ver/9387/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/MainJFrame.java
+END
+MainJFrame.form
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svnroot/cmusphinx/!svn/ver/6722/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/MainJFrame.form
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/6499/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/README.txt
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/11314/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/tools/gui/build.xml
+END

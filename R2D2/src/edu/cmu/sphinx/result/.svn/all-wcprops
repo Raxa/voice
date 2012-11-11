@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/cmusphinx/!svn/ver/10380/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result
+END
+GDLLatticeFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/GDLLatticeFactory.java
+END
+Edge.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/cmusphinx/!svn/ver/9708/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/Edge.java
+END
+FrameStatistics.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/FrameStatistics.java
+END
+SausageMaker.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/cmusphinx/!svn/ver/9751/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/SausageMaker.java
+END
+MAPConfidenceScorer.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/cmusphinx/!svn/ver/9671/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/MAPConfidenceScorer.java
+END
+WordResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/WordResult.java
+END
+ConfidenceScorer.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/ConfidenceScorer.java
+END
+Result.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/cmusphinx/!svn/ver/10360/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/Result.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/cmusphinx/!svn/ver/6607/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/package.html
+END
+ConfusionSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/cmusphinx/!svn/ver/9538/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/ConfusionSet.java
+END
+TokenGraphDumper.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/10316/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/TokenGraphDumper.java
+END
+SimpleWordResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/10380/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/SimpleWordResult.java
+END
+Node.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/cmusphinx/!svn/ver/9708/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/Node.java
+END
+Lattice.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/10316/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/Lattice.java
+END
+WordResultPath.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/WordResultPath.java
+END
+Sausage.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/cmusphinx/!svn/ver/10380/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/Sausage.java
+END
+LatticeOptimizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/LatticeOptimizer.java
+END
+PivotSausageMaker.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/PivotSausageMaker.java
+END
+LatticeRescorer.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/10156/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/LatticeRescorer.java
+END
+Path.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/cmusphinx/!svn/ver/9376/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/Path.java
+END
+ConfidenceResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/cmusphinx/!svn/ver/9316/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/ConfidenceResult.java
+END
+AbstractSausageMaker.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/9577/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/result/AbstractSausageMaker.java
+END

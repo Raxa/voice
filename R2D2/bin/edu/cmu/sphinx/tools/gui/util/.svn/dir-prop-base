@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 115
+SourceReaderFrame.java
+SourceReader.java
+GUIRWTester.java
+SourceReaderFrame.java
+SourceReader.java
+RunCommand.java
+
+END

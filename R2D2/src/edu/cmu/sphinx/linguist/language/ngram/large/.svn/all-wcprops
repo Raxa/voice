@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/cmusphinx/!svn/ver/11260/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large
+END
+LargeNGramModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svnroot/cmusphinx/!svn/ver/11260/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/LargeNGramModel.java
+END
+LargeTrigramModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/cmusphinx/!svn/ver/10396/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/LargeTrigramModel.java
+END
+UnigramProbability.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/cmusphinx/!svn/ver/9705/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/UnigramProbability.java
+END
+NMaxGramBuffer.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svnroot/cmusphinx/!svn/ver/9708/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/NMaxGramBuffer.java
+END
+NGramProbability.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svnroot/cmusphinx/!svn/ver/9715/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/NGramProbability.java
+END
+BinaryStreamLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/cmusphinx/!svn/ver/10397/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/BinaryStreamLoader.java
+END
+KeywordOptimizerLargeNGramModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svnroot/cmusphinx/!svn/ver/10774/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/KeywordOptimizerLargeNGramModel.java
+END
+BinaryLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/cmusphinx/!svn/ver/10757/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/BinaryLoader.java
+END
+NGramBuffer.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/cmusphinx/!svn/ver/9715/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/NGramBuffer.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svnroot/cmusphinx/!svn/ver/9715/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/language/ngram/large/package.html
+END

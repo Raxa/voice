@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/cmusphinx/!svn/ver/10638/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/util
+END
+LinguistTimer.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/9371/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/util/LinguistTimer.java
+END
+GDLDumper.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svnroot/cmusphinx/!svn/ver/10638/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/util/GDLDumper.java
+END
+LRUCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svnroot/cmusphinx/!svn/ver/9522/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/util/LRUCache.java
+END
+LinguistDumper.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/cmusphinx/!svn/ver/9577/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/util/LinguistDumper.java
+END
+LinguistStats.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/cmusphinx/!svn/ver/9517/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/util/LinguistStats.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svnroot/cmusphinx/!svn/ver/6606/trunk/sphinx4/src/sphinx4/edu/cmu/sphinx/linguist/util/package.html
+END
