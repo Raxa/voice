@@ -2,16 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/cmu_time_awb.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/cmu_us_kal.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/cmudict04.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/cmulex.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/cmutimelex.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/en_us.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/freetts-jsapi10.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/freetts.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/jsapi.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/leia.jar"/>
-	<classpathentry kind="lib" path="/Users/DeathStar/Documents/workspace/C3PO/lib/mbrola.jar"/>
+	<classpathentry kind="lib" path="/home/apurv/workspace/Talker/lib/jsapi.jar"/>
+	<classpathentry kind="lib" path="/home/apurv/workspace/Talker/lib/cmulex.jar"/>
+	<classpathentry kind="lib" path="/home/apurv/workspace/Talker/lib/cmu_us_kal.jar"/>
+	<classpathentry kind="lib" path="/home/apurv/workspace/Talker/lib/en_us.jar"/>
+	<classpathentry kind="lib" path="/home/apurv/workspace/Talker/lib/freetts.jar"/>
+	<classpathentry kind="lib" path="/home/apurv/workspace/Talker/lib/leia.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

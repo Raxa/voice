@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<dialog>
+<task> 
+	Good $TIMEOFDAY$! This is JARVIS
+</task>
+	<todo> 
+		<question> 
+			<style> How may I assist you sir? </style>
+			<style> Which company's form would you fill today? </style>
+			<style> which form would you like to fill today? </style>
+		</question>
+		<confirm> 
+			<style> Did you mean you want to fill $value form </style>
+		</confirm>
+		<value> </value>
+	</todo>
+	<task>
+		<name> Raxa </name>
+		<greeting> 
+			Welcome to $NODE.name$. I will assist you to fill a simple medical form 
+		</greeting>
+		<form>
+			<todo>
+				<firstname>
+					<question>
+						<style> What is your first name? </style>
+					</question>
+					<confirm>
+						<style> So your first name is $value </style>
+					</confirm>
+					<value>	</value>
+				</firstname>
+			</todo>
+			<todo>
+				<lastname>
+				</lastname>
+			</todo>
+			<age></age>
+			<condition>
+				<value> </value>		
+			</condition>
+		</form>
+	</task>
+</dialog>

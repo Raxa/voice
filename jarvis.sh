@@ -9,9 +9,9 @@ root=`pwd`
 # Parametrize the variables corresponding to directories of individual modules
 LEIA_HOME=$root/Leia
 R2D2_HOME=$root/R2D2
-C3PO_HOME=$root/Talker
+C3PO_HOME=$root/C3PO
 SIP_SERVER_HOME=$root/SIPServer
-WINDU_HOME=$root/Windu
+HANSOLO_HOME=$root/HanSolo
 
 # Start Leia server to support messaging
 cd $LEIA_HOME
@@ -44,7 +44,7 @@ xterm -e "ant" &
 sleep 3
 
 # start Windu
-cd $WINDU_HOME
+cd $HANSOLO_HOME
 xterm -e "ant" &
 
 

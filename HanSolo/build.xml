@@ -17,6 +17,7 @@
 	<property name="bin_dir" value="bin"/>
 	<path id="libs">
 	        <pathelement path="${bin_dir}"/>
+		<pathelement path="${lib_dir}/leia.jar"/>
 	</path>
 	
 	<target name="all"

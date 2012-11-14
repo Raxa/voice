@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ********************************************************** -->
+<!-- *                                                        * -->
+<!-- * Apache Ant build file used to build the Sphinx-4 demo.* -->
+<!-- * To build the demo, just type the following:           * -->
+<!-- *                                                        * -->
+<!-- *     ant all					                          * -->
+<!-- *                                                        * -->
+<!-- * For more information:  http://ant.apache.org/          * -->
+<!-- *                                                        * -->
+<!-- ********************************************************** -->
+<project basedir="." default="all" name="Talker">	
+	<!-- Setting Path Variables -->
+	<property name="src_dir" value="./src"/>
+	<property name="build_dir" value="./build"/>
+	<property name="lib_dir" value="./lib/"/>
+	<property name="bin_dir" value="./bin"/>
+	<property name="docs_dir" value="${build_dir}/docs"/>
+
+	<!-- Set javadoc related variables -->
+	<property name="package_name" value="edu.cmu.jarvis"/>
+	<property name="javadoc_access" value="protected"/>
+	<property name="javadoc_links" value="http://java.sun.com/j2se/1.3/docs/api/"/>
+	<property name="title" value="C3PO"/>
+	<property name="version" value="0.1v"/>
+	<path id="libs">
+	        <pathelement path="${bin_dir}"/>
+		<pathelement path="${lib_dir}/freetts.jar"/>
+		<pathelement path="${lib_dir}/jsapi.jar"/>
+		<pathelement path="${lib_dir}/en_us.jar"/>
+		<pathelement path="${lib_dir}/leia.jar"/>
+	</path>
+	
+	<target name="javadoc" 
+          description="Create component Javadoc documentation">
+		<mkdir dir="${build_dir}"/>
+    		<tstamp><format property="year" pattern="yyyy"/></tstamp>
+    		<delete     dir="${docs_dir}"/>
+    		<mkdir      dir="${docs_dir}"/>
+    		<javadoc sourcepath="${src_dir}"
+                	destdir="${docs_dir}"
+           		packagenames="${package_name}.*"
+                 	access="${javadoc_access}"
+                 	author="true"
+                	version="true"
+                    	use="true"
+                   	link="${javadoc_links}"
+               		overview="${src_dir}/overview.html"
+               		doctitle="${title} ${version} API;"
+            		windowtitle="${component.title} ${component.version} API"
+                 	bottom="Copyright &amp;copy; 2012-${year} Raxa.org. All Rights Reserved.">
+    </javadoc>
+  </target>
+
+		
+	<target name="all"
+	            depends="compile, run"
+	            description="Compiles and jars the demos"/>
+	
+	<target name="compile">
+			<mkdir dir="${build_dir}"/>
+	        <mkdir dir="${build_dir}"/>
+	        <javac debug="true"
+	               listfiles="true"
+	               deprecation="true"
+	               includeAntRuntime="false"
+	               srcdir="${src_dir}"
+	               destdir="${build_dir}"
+	               includes="**/*.java">
+	            <classpath refid="libs"/>
+	        </javac>
+	        <jar destfile="${bin_dir}/c3po.jar"
+			manifest="${src_dir}/MANIFEST.MF"
+	             basedir="${build_dir}"
+	             includes="**/*.*"
+	             compress="true"/>
+	</target>
+	<target name="run" depends="compile">
+		<java jar="${bin_dir}/c3po.jar" fork="true">
+			<jvmarg value="-Xms400m"/>
+			<jvmarg value="-Xmx1500m"/>
+		</java>
+	</target>  
+</project>

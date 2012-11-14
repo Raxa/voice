@@ -1,2 +1,2 @@
 Main-Class: jarvis.hansolo.demo.Demo
-Class-Path: ./
+Class-Path: ../lib/leia.jar

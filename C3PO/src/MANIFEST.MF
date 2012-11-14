@@ -1,3 +1,3 @@
-Main-Class: edu.cmu.tts.demo.ServerDemo
+Main-Class: edu.cmu.tts.demo.TextToSpeechServer
 Class-Path: ../lib/freetts.jar ../lib/jsapi.jar ../lib/en_us.jar ../lib/leia.jar
 

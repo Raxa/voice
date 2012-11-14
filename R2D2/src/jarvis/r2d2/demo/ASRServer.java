@@ -63,7 +63,7 @@ public class ASRServer extends Thread{
 			boolean stdout = false;
 			try {
 				System.out.println("[R2D2.ASRServer] Listening ... ");
-				String result = recognizer.recognize().getTimedBestResult(true, true);
+				String result = recognizer.recognize().getBestFinalResultNoFiller();
 				if(results.size() > RESULTS_SIZE) {
 					stdout = true;
 					System.out.println("[R2D2.ASRServer] Too many results in queue. Waiting for queue to get empty");

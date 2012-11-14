@@ -125,7 +125,7 @@
     <component name="trigramModel" 
         type="edu.cmu.sphinx.linguist.language.ngram.SimpleNGramModel">
         <property name="location" 
-            value="/Users/DeathStar/Documents/workspace/R2D2/lib/database.arpa"/>
+            value="./lib/database.arpa"/>
         <property name="logMath" value="logMath"/>
         <property name="dictionary" value="dictionary"/>
         <property name="maxDepth" value="3"/>
@@ -162,6 +162,7 @@
         <property name="logMath" value="logMath"/>
         <property name="unitManager" value="unitManager"/>
         <property name="location" value="resource:/WSJ_8gau_13dCep_8kHz_31mel_200Hz_3500Hz"/>
+		<!--property name="location" value="/Users/DeathStar/Documents/workspace/R2D2/lib/urdu_trainset_100-3800.31f.cd_continuous.6000sen_8gau"/-->
     </component>
 
 
@@ -178,7 +179,7 @@
 
     <component name="frontEnd" type="edu.cmu.sphinx.frontend.FrontEnd">
         <propertylist name="pipeline">
-            <item>microphone </item>
+            <item>audioSource </item>
             <item>preemphasizer </item>
             <item>windower </item>
             <item>fft </item>
@@ -194,8 +195,7 @@
     <!-- ******************************************************** -->
     <component name="epFrontEnd" type="edu.cmu.sphinx.frontend.FrontEnd">
         <propertylist name="pipeline">
-            <!-- item>microphone </item -->
-		<item> audioSource </item>
+            <item>audioSource </item>
             <item>dataBlocker </item>
             <item>speechClassifier </item>
             <item>speechMarker </item>
@@ -245,8 +245,9 @@
 
     <component name="melFilterBank"
         type="edu.cmu.sphinx.frontend.frequencywarp.MelFrequencyFilterBank">
-		<property name="minimumFrequency" value="200"/>
-		<property name="maximumFrequency" value="3500"/>
+		<property name="minimumFrequency" value="100"/>
+		<property name="maximumFrequency" value="3800"/>
+		<property name="numberFilters" value="31"/>
     </component>
 
     <component name="dct"

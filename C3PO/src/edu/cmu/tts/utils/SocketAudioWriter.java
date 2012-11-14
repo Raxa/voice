@@ -1,25 +1,22 @@
-/*
- *
- * See the file "LICENSE" for information on usage and
- * redistribution of this file, and for a DISCLAIMER OF ALL
- * WARRANTIES.
- * 
- * Raxa.org
- *
- */
+
 
 package edu.cmu.tts.utils;
 
 
 import com.sun.speech.freetts.audio.AudioPlayer;
 
+import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import java.net.Socket;
 
+import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+
+import raxa.voice.utils.WavWriter;
 
 
 
@@ -85,8 +82,7 @@ public class SocketAudioWriter implements AudioPlayer {
 		// first tell the client how much is it about hear. 
 		// # Only if it were true in boring conversations.
 
-		writer.write( bytesToWrite + "\n");
-		writer.flush();
+		
 		
 		if(debug)
 			System.out.print(String.valueOf(size) + "\n");
@@ -108,7 +104,7 @@ public class SocketAudioWriter implements AudioPlayer {
 	@Override
 	public boolean drain() {
 		
-		return false;
+		return true;
 	}
 	
 	
@@ -118,16 +114,20 @@ public class SocketAudioWriter implements AudioPlayer {
 	 */
 	@Override
 	public boolean end() {		
-	
+		
 		try {
 			dataOutStream.write(buffer);
 			dataOutStream.flush();
+			//WavWriter ww = new WavWriter("tts-prompt.wav",	new ByteArrayInputStream(buffer));
+			//ww.write();
 		} catch (IOException e) {
 			socketIsConnected = false;
 		}
-		
+		writer.write( bytesToWrite + "\n");
+		writer.flush();
 		if(debug) 
 			System.out.println("End: Written data to stream");
+		
 		return true;
 	}
 
@@ -222,39 +222,37 @@ public class SocketAudioWriter implements AudioPlayer {
 		byte[] tmp = new byte[length];
 		System.arraycopy(audioData, offset, tmp, 0, length);
 		tmp = changeBig2LittleEndian(tmp);
+		
 		System.arraycopy(tmp, 0, buffer, bytesWritten, length);
 		bytesWritten += length;
 		
-		/**
-		try{		
-			// Change the endianess of the audio if it needs to be played on a little endian system
-			bytesWritten += length;
-			byte[] tmp = new byte[length];
-			System.arraycopy(audioData, offset, tmp, 0, length);
-			tmp = changeBig2LittleEndian(tmp);
+		
+		/*
+		try {
+			dataOutStream.write(tmp);
+			dataOutStream.flush();
+			writer.write( tmp.length + "\n");
+			writer.flush();
+		} catch (IOException e) {
 			
-			// send audio :) and done
-			dataOutStream.write(tmp, 0, length);
-			
-			
-		} catch (IOException ioe) {
-			socketIsConnected = false;
-			return false;
+			e.printStackTrace();
 		}
-		*/	
+		*/
 		return true;
 	}
 	
 	
 	public byte[] changeBig2LittleEndian(byte[] buf) {
-        byte[] array = new byte[buf.length];
-    	
-    	for (int i = 0, j = buf.length - 1; i < buf.length ; i++, j--)  
-        {
-            array[i] = buf[j];
-        }
-    	return array;
-    }
+        	byte[] array = new byte[buf.length];
+			if(buf.length % 2 == 1) {
+				System.out.println("[SocketAudioWriter] Why is audio length odd?");
+			}
+			for(int i = 0; i < buf.length -1 ; i += 2){
+				array[i] = buf[i+1];
+				array[i+1] = buf[i];
+			}
+    		return array;
+    	}
 
 
 }

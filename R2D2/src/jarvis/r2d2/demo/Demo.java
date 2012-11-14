@@ -30,10 +30,7 @@ public class Demo {
 	
 	public static void main(String args[]) throws Exception {
 		
-		test();
-		
-		/*
-		MessageHandler messageHandler = new MessageHandler("R2D2", 3, "localhost", 1089, 1090);
+		MessageHandler messageHandler = new MessageHandler("R2D2", 3, "luckyluke.pc.cs.cmu.edu", 1089, 1090);
 		Publisher publisher = messageHandler.getPublisher();
 		
 		ServerSocket controlServer = new ServerSocket(9990);
@@ -46,57 +43,14 @@ public class Demo {
 			System.out.println("[R2D2] Start ..");
 			while(!dataSocket.isClosed() && !controlSocket.isClosed()) {
 				String result = asrServer.recognize();
-				if(result != null) {
-					System.out.println("R2D2_RESULT: " + result);
-					publisher.sendInfo("HANSOLO_SET " + result, 1, 1);
-				}
+
+	            if (result != null) {
+	                System.out.println("You said: " + result + '\n');
+	                publisher.sendAction("HANSOLO_SET " + result, 1, 1);
+	            } 
 			}		
 			
 		}
-		*/
 	}
-	
-	
-	
-	public static void test() throws Exception{
-		
-		MessageHandler messageHandler = 
-				new MessageHandler("R2D2", 3, "luckyluke.pc.cs.cmu.edu", 1089, 1090);
-		Publisher publisher = messageHandler.getPublisher();
-		ConfigurationManager cm;
-        cm = new ConfigurationManager("./config/r2d2.config.xml");
-        
-        Recognizer recognizer = (Recognizer) cm.lookup("recognizer");
-        
-        Microphone microphone = (Microphone) cm.lookup("microphone");        
-        
-        SimpleNGramModel slm = (SimpleNGramModel) cm.lookup("trigramModel");
-        slm.setLanguageModel("/Users/DeathStar/Documents/workspace/R2D2/lib/ques-comm.arpa");
-        
-        recognizer.allocate();
-        System.out.println(recognizer);
-       
-        if (!microphone.startRecording()) {
-            System.out.println("Cannot start microphone.");
-            recognizer.deallocate();
-            System.exit(1);
-        }
-        
-        // loop the recognition until the programm exits.
-        while (true) {
-            System.out.println("Start speaking. Press Ctrl-C to quit.\n");
-
-            Result result = recognizer.recognize();
-
-            if (result != null) {
-                String resultText = result.getBestFinalResultNoFiller();
-                System.out.println("You said: " + resultText + '\n');
-                publisher.sendAction("HANSOLO_SET " + resultText, 1, 1);
-            } else {
-                System.out.println("I can't hear what you said.\n");
-            }
-        }
-        
-    }
 
 }

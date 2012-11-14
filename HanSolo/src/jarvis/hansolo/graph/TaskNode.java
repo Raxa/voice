@@ -42,7 +42,9 @@ public class TaskNode {
 		this.NUM_OF_UNMATCHED_CONDITIONS = Integer.MAX_VALUE;
 	}
 	
-	
+	public Task getTask() {
+		return this.task;
+	}
 	// TODO: Modify this function to add more conditional checks
 	public boolean checkCondition() {
 		NUM_OF_UNMATCHED_CONDITIONS = 0;
@@ -72,7 +74,7 @@ public class TaskNode {
 				// what value to compare to
 				cond = cond.substring(cond.indexOf("!") + 1);
 				if(var.getValue().compareToIgnoreCase(cond) == 0) {
-					System.out.println("here");
+					//System.out.println("here");
 					NUM_OF_UNMATCHED_CONDITIONS ++;
 				}
 			}

@@ -68,6 +68,9 @@ public class Task {
 		}
 	}
 	
+	public TaskType getType() {
+		return this.TYPE;
+	}
 	private void setVariable(Variable var) throws IOException {
 		// inform ASR about what it is about to hear
 		String gram = "";
@@ -124,7 +127,7 @@ public class Task {
 		System.out.println("Speaking:" + toSpeak);
 		Publisher pub = msgHandle.getPublisher();
 		pub.sendAction("C3PO_SPEAK " + toSpeak, 2, 1);
-		Runtime.getRuntime().exec(new String[] { "say", toSpeak });
+		//Runtime.getRuntime().exec(new String[] { "say", toSpeak });
 		try {
 			Thread.currentThread().sleep(700 * st.countTokens());
 		} catch (InterruptedException e) {

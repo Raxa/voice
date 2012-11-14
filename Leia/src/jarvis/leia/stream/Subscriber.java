@@ -1,14 +1,7 @@
-/*
- *
- * See the file "LICENSE" for information on usage and
- * redistribution of this file, and for a DISCLAIMER OF ALL
- * WARRANTIES.
- * 
- * Raxa.org
- *
- */
-
 package jarvis.leia.stream;
+
+
+
 
 import jarvis.leia.message.Message;
 
@@ -72,12 +65,21 @@ public class Subscriber extends Observable{
 			while(true) {
 				Object obj = null;
 				try {
-					obj = ois.readObject();
-					Message message = (Message) obj;
-					setChanged();
-					notifyObservers(message);
-					if(debug) {
-						printMessage(message);
+					obj =ois.readObject();
+					if(obj != null) {
+						// Surprisingly it sometimes is null?? 
+						
+						if (!( obj instanceof Message)) {
+							System.out.println("************** UNEXPECTED *****************");
+							System.out.println(obj);
+						} else {
+							Message message = (Message) obj;
+							setChanged();
+							notifyObservers(message);
+							if(debug) {
+								printMessage(message);
+							}
+						}
 					}
 				} catch (Exception e) {
 					// Report any sort of Exception to stdOut

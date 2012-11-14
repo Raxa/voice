@@ -1,13 +1,3 @@
-/*
- *
- * See the file "LICENSE" for information on usage and
- * redistribution of this file, and for a DISCLAIMER OF ALL
- * WARRANTIES.
- * 
- * Raxa.org
- *
- */
-
 package jarvis.leia.stream;
 
 import jarvis.leia.header.SimpleTextMessageHeader;
@@ -68,19 +58,9 @@ public class Publisher {
 			ConsumerType destination = new ConsumerType(NAME, toID);
 			SimpleTextMessageHeader header = new SimpleTextMessageHeader
 					(ID, destination, priority, msgType);
-			oos.writeObject(new SimpleTextMessage(header, msg));
+			oos.writeObject((Message) new SimpleTextMessage(header, msg));
 			oos.flush();
-		} catch (IOException e) {
-			
-			// If error was because of broken connection
-			// reconnect
-			if(socket.isClosed()) {
-				try {
-					connect();
-				} catch (Exception e1) {
-					System.out.println("[Publisher] " + e1.getMessage());
-				}
-			}							
+		} catch (IOException e) {						
 			return false;
 		}
 		return true;

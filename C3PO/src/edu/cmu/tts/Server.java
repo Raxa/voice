@@ -1,10 +1,13 @@
 /*
  *
- * See the file "LICENSE" for information on usage and
+ * Copyright 1999-2004 Carnegie Mellon University.
+ * Portions Copyright 2004 Sun Microsystems, Inc.
+ * Portions Copyright 2004 Mitsubishi Electric Research Laboratories.
+ * All Rights Reserved.  Use is subject to license terms.
+ *
+ * See the file "license.terms" for information on usage and
  * redistribution of this file, and for a DISCLAIMER OF ALL
  * WARRANTIES.
- * 
- * Raxa.org
  *
  */
 
@@ -36,8 +39,6 @@ public class Server extends TTSServer {
 
     // 8k Voice
     private Voice voice;
-    private String voice8kName = Utilities.getProperty
-	("voice8kName", "kevin");
 
     public volatile BlockingQueue<String> prompts;
     private volatile boolean isConnected;
@@ -48,32 +49,24 @@ public class Server extends TTSServer {
     // an AudioPlayer that writes bytes to the socket
     private SocketAudioWriter socketAudioPlayer;
     
-    private boolean debug = false;;
+    private boolean debug = false;
 
     /**
      * Constructs a default Server, which loads an 8k Voice and a 16k Voice
      * by default.
      */
-    public Server( Socket controlSocket, Socket dataSocket ) {
-    	
+    public Server( Socket controlSocket, Socket dataSocket , Voice voice) {
+    	this.voice = voice;
 		this.controlSocket = controlSocket;
 		this.dataSocket = dataSocket;
 		this.socketAudioPlayer = new SocketAudioWriter(controlSocket, dataSocket);
 		
 		this.prompts = new LinkedBlockingQueue<String>();
 		this.isConnected = true;
-		try {
-	            VoiceManager voiceManager = VoiceManager.getInstance();
-			    voice= voiceManager.getVoice(voice8kName);			    
-	            voice.allocate();
-	            
-	            //voice.setAudioPlayer(socketAudioPlayer);
-	    	    voice.setAudioPlayer(socketAudioPlayer);
-	            
-		} catch (Exception e) {
-		    e.printStackTrace();
-		    System.exit(1);
-		}
+		
+		
+	    voice.setAudioPlayer(socketAudioPlayer);
+		
     }
     
     public boolean isConnected() {
