@@ -100,13 +100,13 @@ public class GetAlertInfo implements VariableSetter,MedicineInformerConstant {
 		Properties prop = new Properties();
 		int MAX_TRY=3;						//initialising;if try fails.
 		try{
-		logger.info("Trying to get the max retry count");
+		logger.debug("Trying to get the max retry count");
 		prop.load(GetAlertInfo.class.getClassLoader().getResourceAsStream("config.properties"));
 		MAX_TRY=Integer.parseInt(prop.getProperty("Max_Retry"));
 		return MAX_TRY;
 		}
 		catch (IOException ex) {
-			logger.info("Unable to get the max retryCount,setting it to 3");
+			logger.error("Unable to get the max retryCount,setting it to 3");
     		return MAX_TRY;
         }
 	}
