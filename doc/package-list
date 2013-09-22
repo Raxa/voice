@@ -1,0 +1,8 @@
+org.raxa.alertmessage
+org.raxa.audioplayer
+org.raxa.database
+org.raxa.module.handlesms
+org.raxa.module.sms
+org.raxa.registration
+org.raxa.scheduler
+org.raxa.service.updater

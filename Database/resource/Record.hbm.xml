@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 Jun, 2013 11:59:10 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.raxa.module.database.Record" table="record">
+        <id name="rid" type="int" access="field">
+            <column name="rid" />
+            <generator class="native" />
+        </id>
+        <property name="pid" type="java.lang.String" access="field">
+            <column name="pid" />
+        </property>
+        <property name="alertType" type="int">
+            <column name="alertType" />
+        </property>
+        <property name="msgId" type="int" access="field">
+            <column name="msgId" />
+        </property>
+        <property name="serviceTime" type="java.sql.Timestamp" access="field">
+            <column name="serviceTime" />
+        </property>
+        <property name="isExecuted" type="org.hibernate.type.YesNoType" access="field">
+            <column name="isExecuted" />
+        </property>
+        <property name="serviceInfo" type="java.lang.String" access="field">
+            <column name="serviceInfo" />
+        </property>
+    </class>
+</hibernate-mapping>

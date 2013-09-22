@@ -1,0 +1,29 @@
+#mode:1 TTS mode:2 Audio
+header1mode=1
+patientNameMessage1=For
+patientNameMessage2=Press
+#sound file location to play beep after which the patient will put their option
+beep=/home/atul/Desktop/beep
+header2mode=1
+footer1mode=1
+endingmode=2
+tabletOrVolume=1
+header1Text=Hello
+header2Text=This is your Medicine Reminder Now you have to take
+footer1Text=Take Care
+endingText=Get Well Soon
+#Message to be played when the patient is not registered and opts for  a service
+notRegistered=Sorry you are not registered.Please register yourself first
+#1st line to be played while conveying medicine reminder in incoming call
+IncomingCallMedicineInfoHeader1=following is your medicine information.
+IncomingCallMedicineInfoHeader2=Take
+#After patient Successfully unregister
+successUnregister=you have successfully Unregistered.
+failUnregister=Sorry unable to unregistered you.
+welcomeText=Welcome to Raxa Do you want to continue with the language Press 1 for yes 2 for No.
+allLangaugeText=Press 1 for English 2 for Hindi 3 for Urdu.
+mainmenuText=Press 1 for registration two for medicine information three for calling a doctor four to un register from the service.
+successfulRegister=You have successfully register for call alert
+unsuccessfulRegister=Registration failed.Please Try Again
+PatientNotExist=Sorry you do not exist in the system.
+

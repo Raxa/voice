@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 Jun, 2013 11:25:23 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.raxa.database.Alert" table="alert" dynamic-update="true">
+        <id name="id" type="long" access="field">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+         <property name="aid" type="java.lang.String" access="field">
+            <column name="aid" />
+        </property>
+        <property name="pid" type="java.lang.String" access="field">
+            <column name="pid" />
+        </property>
+        <property name="alertType" type="int">
+            <column name="alertType" />
+        </property>
+        <property name="msgId" type="int" access="field">
+            <column name="msgId" />
+        </property>
+        <property name="scheduleTime" type="java.sql.Timestamp" access="field">
+            <column name="scheduleTime" />
+        </property>
+        <property name="lastTry" type="java.sql.Timestamp" access="field">
+            <column name="lastTry" />
+        </property>
+        <property name="isExecuted" type="org.hibernate.type.YesNoType">
+            <column name="isExecuted" />
+        </property>
+        <property name="retryCount" type="int" access="field">
+            <column name="retryCount" />
+        </property>
+        <property name="serviceInfo" type="java.lang.String" access="field">
+            <column name="serviceInfo" />
+        </property>        
+    </class>
+</hibernate-mapping>
