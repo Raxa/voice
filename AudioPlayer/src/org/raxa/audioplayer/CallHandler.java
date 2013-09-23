@@ -91,6 +91,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	
     	String defaultLanguage = null,pnumber=null;
     	pnumber=channel.getName();		//IMPORTANT  DEPEND ON THE TRIE SERVICE WE WILL BE USING
+    	//HARDCODE HERE pnumber=SIP/100abc;
     	defaultLanguage=getValueFromPropertyFile("0","languageMap");
     	language=defaultLanguage;
     	List<Patient> patientList=getAllPatientWithNumber(pnumber);
