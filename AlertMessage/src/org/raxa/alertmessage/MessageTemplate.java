@@ -87,18 +87,18 @@ public class MessageTemplate implements MessageInterface {
 			this.name=name;
 			Properties prop = new Properties();
 			parseMessage(message);
-			String propertyFile=preferLanguage.toLowerCase()+"properties";
+			String propertyFile="content.properties";
 			Tmessage=new ArrayList<String>();
 			String header1,header2,footer1,ending;
 			int header1mode,header2mode,footer1mode,endingmode,tabletOrVolumemode;
 			try{
-				logger.info("Trying to get mode in which the words should be spoken from "+propertyFile);
+				logger.debug("Trying to get mode in which the words should be spoken from "+propertyFile);
 				prop.load(this.getClass().getClassLoader().getResourceAsStream(propertyFile));
 				header1mode=Integer.parseInt(prop.getProperty("header1mode",String.valueOf(TTS_MODE)));  //If headerMode not provided it will use TTS
 				header2mode=Integer.parseInt(prop.getProperty("header2mode",String.valueOf(TTS_MODE)));
 				footer1mode=Integer.parseInt(prop.getProperty("footer1mode",String.valueOf(TTS_MODE)));
 				endingmode=Integer.parseInt(prop.getProperty("endingmode",String.valueOf(TTS_MODE)));
-				tabletOrVolumemode=Integer.parseInt(prop.getProperty("tabletOrVolume",String.valueOf(TTS_MODE)));
+				tabletOrVolumemode=Integer.parseInt(prop.getProperty("type",String.valueOf(TTS_MODE)));
 			}
 			catch(Exception ex3){
 				logger.error("Unable to set mode,making all mode to 1 for patient ID  "+pid);
@@ -107,7 +107,7 @@ public class MessageTemplate implements MessageInterface {
 		//This part is hard-coded.Proper changes to be made once raxa-alert API is well documented	
 			try{
 				logger.info("Setting the content of the message"+propertyFile);
-				prop.load(this.getClass().getClassLoader().getResourceAsStream("english.properties"));
+				prop.load(this.getClass().getClassLoader().getResourceAsStream(propertyFile));
 				header1=prop.getProperty("header1Text",null);
 				header2=prop.getProperty("header2Text",null);
 				footer1=prop.getProperty("footer1Text",null);
@@ -144,7 +144,7 @@ public class MessageTemplate implements MessageInterface {
 		
 		public void parseMessage(String message){
 			String separator=" ";
-			String[] content=message.split(separator);
+			String[] content=message.split(separator);	
 			medicineDose=content[1];
 			String lastWordBeforeMedicineName=" of "; // of y
 			int indexOfMedicine=message.lastIndexOf(lastWordBeforeMedicineName)+lastWordBeforeMedicineName.length();   //Since medicine can be of two or more words
@@ -282,14 +282,17 @@ public class MessageTemplate implements MessageInterface {
 	     * @return String:to be converted to Voice
 	     */
 	    public String getTextToconvertToVoice(MedicineInformation info){
+	    	String AMorPM="AM";
 	    	int hours=info.getScheduleTime().getHours();
-			if(hours>=12)
+	    	if(hours>=12){
 				hours=hours-12;
+				AMorPM="PM";
+			}
 			int minutes=info.getScheduleTime().getMinutes();
 			String space=" ";
 			String afterHour=":";		//Depends upon which works best with the TTS used.
-			String afterMinute=" ";
-			String message=info.getDose()+space+info.getType()+space+"of"+space+info.getName()+space+"at"+space+hours+afterHour+space+minutes+afterMinute;
+			String afterMinute=AMorPM;
+			String message=info.getDose()+space+info.getType()+space+"of"+space+info.getName()+space+"at"+space+hours+afterHour+space+minutes+space+afterMinute;
 			return message;
 	    }
 	 
