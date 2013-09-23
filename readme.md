@@ -144,6 +144,10 @@ INSTALLING GOOGLE TTS
   for testing use the example in here :http://zaf.github.io/asterisk-googletts/  
   
   IMPORTANT: copy the googleTTS AGI as present in the code above in agi-bin not the one downloaded from above link
+  
+  now give the file the write access where googletts.agi is copied. Usually /va/lib/asterisk/agi-bin
+  
+  do  sudo chmod 777 /var/lib/asterisk/agi-bin/googletts.agi
 
 
 =============================================
@@ -252,6 +256,7 @@ RUN Scheduler
 4.ant compile jar run
 
 
+give write access to logFiles if required.
 
 =========================================
 A Note on Updater
