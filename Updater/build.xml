@@ -21,6 +21,7 @@
         <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false" />
         <copy todir="${classes.dir}">
             <fileset dir="${resource.dir}" excludes="**/*.java"/>
+<fileset dir="${resource.dir}" includes="**/*.properties"/>
         </copy>
     </target>
 

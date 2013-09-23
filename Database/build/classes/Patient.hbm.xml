@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21 Jun, 2013 10:30:16 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.raxa.database.Patient" table="patient">
+        <id name="pid" type="java.lang.String" access="field">
+            <column name="pid" />
+            <generator class="assigned" />
+        </id>
+        <property name="pname" type="java.lang.String" access="field">
+            <column name="pname" />
+        </property>
+        <property name="pnumber" type="java.lang.String" access="field">
+            <column name="pnumber" />
+        </property>
+        <property name="snumber" type="java.lang.String" access="field">
+            <column name="snumber" />
+        </property>
+        <property name="preferLanguage" type="java.lang.String" access="field">
+        <column name="preferLanguage" />
+        </property>
+    </class>
+</hibernate-mapping>
