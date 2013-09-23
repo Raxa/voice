@@ -1,4 +1,3 @@
-
 package org.raxa.alertmessage;
 
 import java.io.IOException;
@@ -97,7 +96,7 @@ public class MessageTemplate implements MessageInterface {
 				header2mode=Integer.parseInt(prop.getProperty("header2mode",String.valueOf(TTS_MODE)));
 				footer1mode=Integer.parseInt(prop.getProperty("footer1mode",String.valueOf(TTS_MODE)));
 				endingmode=Integer.parseInt(prop.getProperty("endingmode",String.valueOf(TTS_MODE)));
-				tabletOrVolumemode=Integer.parseInt(prop.getProperty("tabletOrVolume",String.valueOf(TTS_MODE)));
+				tabletOrVolumemode=Integer.parseInt(prop.getProperty("type",String.valueOf(TTS_MODE)));
 			}
 			catch(Exception ex3){
 				logger.error("Unable to set mode,making all mode to 1 for patient ID  "+pid);
