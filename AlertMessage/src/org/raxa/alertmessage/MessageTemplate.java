@@ -1,5 +1,3 @@
-
-
 package org.raxa.alertmessage;
 
 import java.io.IOException;
@@ -87,7 +85,9 @@ public class MessageTemplate implements MessageInterface {
 			this.name=name;
 			Properties prop = new Properties();
 			parseMessage(message);
+
 			String propertyFile="content.properties";
+
 			Tmessage=new ArrayList<String>();
 			String header1,header2,footer1,ending;
 			int header1mode,header2mode,footer1mode,endingmode,tabletOrVolumemode;
