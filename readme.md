@@ -151,7 +151,9 @@ INSTALLING GOOGLE TTS
   
   IMPORTANT: copy the googleTTS AGI as present in the code above in agi-bin not the one downloaded from above link
   
-  now give the file the write access where googletts.agi is copied. Usually /va/lib/asterisk/agi-bin
+  now give the file the write access where googletts.agi is copied. Usually /va/lib/asterisk/agi-bin. It can be confirmed by
+  
+  looking the agi directory location in /etc/asterisk/asterisk.conf
   
   do  sudo chmod 777 /var/lib/asterisk/agi-bin/googletts.agi
 
