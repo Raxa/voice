@@ -18,6 +18,12 @@ after 'make menuselect' do  'sudo sh contrib/scrips/get_mp3_source.sh' from aste
 
 Sample sip.conf,manager.conf,extensions.conf,logger.conf are present in asteriskConf Folder
 
+Second way:
+
+install Dahdi and libpri from the Digium video
+
+do sudo apt-get install asterisk (install asterisk version 1.8)
+
 =============================================
 
 ;Configuring /etc/asterisk/sip.conf:Create a SIP user SIP/1000abc that have context=incoming-call
