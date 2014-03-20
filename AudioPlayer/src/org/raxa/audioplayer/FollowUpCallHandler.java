@@ -36,7 +36,7 @@ import src.org.raxa.scheduler.Alert;
  * @author atul
  *
  */
-public class followUpCallHandler extends BaseAgiScript implements MessageInterface,VariableSetter
+public class FollowUpCallHandler extends BaseAgiScript implements MessageInterface,VariableSetter
 {
 	private AgiRequest request;
 	private AgiChannel channel;
@@ -114,6 +114,18 @@ public class followUpCallHandler extends BaseAgiScript implements MessageInterfa
 		
 	}
 
+	/**
+     * Request followup information from patient'
+     * 
+     * Presently implemented using Asterisk DialPlan similar to CallHandler for reminders.
+     * Can alternatively use getData() provided by BaseAGIScript to read input 
+     * 
+     * 
+     * INCOMPLETE
+     * 
+     * @throws AgiException
+     * 
+     */
 	private void requestFollowUpInfo() {
 		Date time=new Date();
 		//set time to today's midnight so that entire medicine prescription of today can be fetched.
