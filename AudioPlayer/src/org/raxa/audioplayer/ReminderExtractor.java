@@ -48,7 +48,7 @@ public class ReminderExtractor implements VariableSetter {
 			Query query=session.createQuery(hql);
 			query.setString("pid", pid);
 			query.setTimestamp("time",time);
-			query.setInteger("alertTye",IVR_TYPE);
+			query.setInteger("alertType",IVR_TYPE);
 			List<Alert> content=(List<Alert>)query.list();
 			for(Alert alert: content){
 				List<String> itemContents=new ArrayList<String>();

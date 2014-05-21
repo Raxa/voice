@@ -54,7 +54,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 	    	this.request=request;
 	    	this.channel=channel;
 	    	if(request.getContext().equals("incoming-call"))
-	        	handleIncomingCall();
+	        handleIncomingCall();
 	        if(request.getContext().equals("outgoing-call"))
 	        	provideMedicalInfo();
 	        
@@ -91,7 +91,8 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	
     	String defaultLanguage = null,pnumber=null;
     	pnumber=channel.getName();		//IMPORTANT  DEPEND ON THE TRIE SERVICE WE WILL BE USING
-    	//HARDCODE HERE pnumber=SIP/100abc;
+    	//HARDCODE HERE 
+	pnumber="SIP/1000abc";
     	defaultLanguage=getValueFromPropertyFile("0","languageMap");
     	language=defaultLanguage;
     	List<Patient> patientList=getAllPatientWithNumber(pnumber);
@@ -314,9 +315,15 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 			time.setMinutes(1);					//set time to today's midnight so that entire medicine prescription of today can be fetched.
 			
 			List<MedicineInformation> listofinfo=new ReminderExtractor().getMedicineInfo(pid, time);
+			String noReminderMsg = getValueFromPropertyFile("noReminders","english");			
 			String header1=getValueFromPropertyFile("IncomingCallMedicineInfoHeader1","english");
 			String header2=getValueFromPropertyFile("IncomingCallMedicineInfoHeader2","english");
 			String ttsNotation=getTTSNotation(language);
+			if(listofinfo == null || listofinfo.size() == 0)
+			{
+			playUsingTTS(noReminderMsg,ttsNotation);
+			return;
+			}
 			if(header1!=null)
 				playUsingTTS(header1,ttsNotation);
 			if(header2!=null)

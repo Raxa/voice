@@ -32,7 +32,6 @@ CREATE TABLE `alert` (
   `isExecuted` char(1) DEFAULT NULL,
   `retryCount` int(11) DEFAULT NULL,
   `serviceInfo` varchar(60) DEFAULT NULL,
-  `response` varchar(100) DEFAULT NULL,
   `id` bigint(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_aid` (`aid`,`alertType`)
