@@ -1,0 +1,87 @@
+All jars are need to be in "projectLocation/lib"
+
+=========================================
+Database
+=========================================
+antlr-2.7.7 jar
+domj4j-1.6.1.jar
+hibernate-commons-annotations-4.0.2.Final.jar
+hibernate-core-4.2.2.Fincal.jar
+hibernate-entitymanager-4.2.2.Final.jar
+hibernate-envers-4.2.2.Fincal.jar
+hibernate-jpa-2.0-api-1.0.1-Final.jar
+javaassis-3.15.0-GA.jar
+jboss-logging-3.1.0.GA.jar
+jboss-transaction-api_1.1_spec-1.0.1.Final.jar
+
+mysql-connector-java-5.0.8-bin
+
+
+==========================================
+AlertMessage,AlertRegistration
+==========================================
+
+Apache Commons and httpclient jars
+==========================================
+commons-codec-1.6
+commons-io-2.4
+commons-logging-1.1.1
+fluent-hc-4.2.5
+httpclient-4.2.5
+httpclient-cache-4.2.5
+httpcore-4.2.4
+httpmime-4.2.5
+
+
+Jackson for JSoN jars
+==========================================
+jackson-annotations-2.2.0
+jackson-core-2.2.0
+jackson-databind-2.2.0
+
+Apache Loggging
+==========================================
+log4j-1.2.17.jar
+
+
+=========================================
+AudioPlayer
+=========================================
+asterisk-java-1.0.0.CI-20130102.214528-1134.jar
+All jars used by Database
+All jars used by AlertMessage
+AlertMessage.jar(created using ant compile jar)
+AlertRegistration.jar(created using ant compile jar)
+log4j-1.2.17.jar
+
+=========================================
+Scheduler
+=========================================
+asterisk-java-1.0.0.CI-20130102.214528-1134.jar
+All jars used by Database
+All jars used by AlertMessage
+AlertMessage.jar(created using ant compile jar in ALertMessage module)
+SMS.jar(created using ant compile jar SMSSender module)
+log4j-1.2.17.jar
+
+URL: https://nexus.reucon.com/content/repositories/opensource-snapshots/org/asteriskjava/asterisk-java/1.0.0.CI-SNAPSHOT/
+
+=========================================
+Updater
+=========================================
+All jars used by Database
+All jars used by AlertMessage
+AlertMessage.jar(created using ant compile jar in ALertMessage module)
+log4j-1.2.17.jar
+
+=========================================
+ReplySMSHandler
+=========================================
+All jars used by Database
+All jars used by AlertMessage
+AlertMessage.jar(created using ant compile jar in ALertMessage module)
+SMS.jar(created using ant compile jar SMSSender module)
+AlertRegistration.jar(created using ant compile jar)
+log4j-1.2.17.jar
+
+

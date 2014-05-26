@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 Jul, 2013 4:02:23 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.raxa.database.PAlert" table="pAlert">
+        <id name="paid" type="int" access="field">
+            <column name="paid" />
+            <generator class="native" />
+        </id>
+        <property name="pid" type="java.lang.String" access="field">
+            <column name="pid" />
+        </property>
+        <property name="alertType" type="int">
+            <column name="alertType" />
+        </property>
+    </class>
+</hibernate-mapping>
