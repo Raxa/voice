@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+
 import org.apache.log4j.Logger;
 import org.asteriskjava.fastagi.AgiChannel;
 import org.asteriskjava.fastagi.AgiException;
@@ -23,7 +24,9 @@ import org.raxa.database.HibernateUtil;
 import org.raxa.database.Patient;
 import org.raxa.registration.Register;
 import org.raxa.alertmessage.MessageInterface;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.raxa.database.VariableSetter;
 
 /**
@@ -37,7 +40,7 @@ import org.raxa.database.VariableSetter;
 public class CallHandler extends BaseAgiScript implements MessageInterface,VariableSetter
 {
 	private AgiRequest request;
-	private AgiChannel channel;
+	AgiChannel channel;
 	private Logger logger = Logger.getLogger(this.getClass());
 	String language;
 	String pnumber;
@@ -63,12 +66,14 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	catch(AgiException ex){
     		
     		logger.error("IMPORTANT:SOME ERROR WHILE HANDLING THE CALL with caller number:"+pnumber);
+    		logger.error(ex.getStackTrace());
     		logger.info("Hanging the call");
     		hangup();
     	}
     	catch(Exception ex1){
     		
     		logger.error("IMPORTANT:SOME ERROR WHILE HANDLING THE CALL with caller:"+pnumber);
+    		logger.error(ex1.getStackTrace());
     		logger.info("Hanging  the call");
     		hangup();
     	}
@@ -89,10 +94,10 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      */
     private void handleIncomingCall() throws AgiException,Exception{ 
     	
-    	String defaultLanguage = null,pnumber=null;
-    	pnumber=channel.getName();		//IMPORTANT  DEPEND ON THE TRIE SERVICE WE WILL BE USING
+    	String defaultLanguage = null;
+    	//pnumber=channel.getName();		//IMPORTANT  DEPEND ON THE TRIE SERVICE WE WILL BE USING
     	//HARDCODE HERE 
-	pnumber="SIP/1000abc";
+    	pnumber="SIP/1000abc";
     	defaultLanguage=getValueFromPropertyFile("0","languageMap");
     	language=defaultLanguage;
     	List<Patient> patientList=getAllPatientWithNumber(pnumber);
@@ -103,8 +108,9 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	}
     	language=languagePlaying;
     	channel.setVariable("numberOftimesMenuPlayed", "0");
-    	
-    	playMainMenu(pnumber,patientList);
+    	channel.setVariable("reminderMenuPlayCount", "0");
+    	playReminderMenu(patientList, languagePlaying);
+    	//playMainMenu(pnumber,patientList);
     	//Done What patient wanted.
     }
 
@@ -184,7 +190,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      */
     private void playMainMenu(String pnumber,List<Patient> patientList) throws Exception{
     	String mainmenuVoiceFileLocation=getValueFromPropertyFile(language.toLowerCase(),"mainmenu");
-    	String mainmenuText=getValueFromPropertyFile("mainmenuText","english");
+    	String mainmenuText=getValueFromPropertyFile("mainMenuText","english");
     	
     	channel.setVariable("numberOftimesMenuPlayed", String.valueOf((Integer.parseInt(channel.getVariable("numberOftimesMenuPlayed")))+1));
     	
@@ -212,7 +218,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * @throws AgiException
      * @throws Exception
      */
-    private void doWhatPatientWant(String keyWord,List<Patient> patientList,String language) throws AgiException,Exception{
+    public void doWhatPatientWant(String keyWord,List<Patient> patientList,String language) throws AgiException,Exception{
     	
     	String pid=null;boolean isPatientRegistered=true;boolean isAllowed=true;
     	int count=Integer.parseInt(channel.getVariable("numberOftimesMenuPlayed"));
@@ -220,61 +226,17 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	if(patientList==null || patientList.size()==0)
     		isPatientRegistered=false;
     	//All option that needs to check if the patient is in the alert System already should add that option to the or Statement
-    	//This is to deal with fact that if a atient is not register and he keeps on opting for the option that needs patient to be registered
-    	if(keyWord.toLowerCase().equals("reminder")||keyWord.toLowerCase().equals("deregister")){
-    		if(!isPatientRegistered && count<=2){						//Play main menu only twice 
-    			playUsingTTS(getValueFromPropertyFile("notRegistered","english"),getTTSNotation(language));
-    			playMainMenu(pnumber,patientList);
-    			return;
-    		}
-    		if(!isPatientRegistered){
-    			channel.hangup();
-    			logger.error("patient unable to choose a valid main menu option");
-    			return;
-    		}
-    	}
+    	//This is to deal with fact that if a patient is not register and he keeps on opting for the option that needs patient to be registered
     	
     	
-    	if(keyWord.toLowerCase().equals("register")){
-    		
-    		Register r=new Register();
-    		List<Patient> p=r.getpatientFromNumber(pnumber,language);
-    		pid=getPid(p);
-    		if(pid==null)
-    			playUsingTTS(getValueFromPropertyFile("PatientNotExist", "english"),getTTSNotation(language));
-    		else{
-    			if(r.addReminder(pid, language, IVR_TYPE))
-    				playUsingTTS(getValueFromPropertyFile("successfulRegister", "english"),getTTSNotation(language));
-    			else
-    				playUsingTTS(getValueFromPropertyFile("unsuccessfulRegister", "english"),getTTSNotation(language));
-    		}
-    		
-    	}
-    	
+    	   	
     	else if(keyWord.toLowerCase().equals("reminder")){
-    		pid=getPid(patientList);
-    		if(pid==null){
-    			playUsingTTS(getValueFromPropertyFile("PatientNotExist", "english"),getTTSNotation(language));
-    			return;
-    		}
-    		//There may be a chance that language currently playing is not the preferred language as specified in database.if we want to change 
-    		//language to preferLanguage below code should be included.otherwise it will continue with the current language.
- /*   		for(Patient p:patientList){
-    			if(p.getPatientId().equals(pid))
-    				language=p.getPatientPreferredLanguage();
-    		}
-    		
-   */ 		else
-    			medicineReminder(pid);
+    			playReminderMenu(patientList, language);
     		
     	}
     	
-    	else if (keyWord.toLowerCase().equals("deregister")){
-    			if(pid==null)
-    			if(new Register().deleteReminder(pid,IVR_TYPE))
-    					playUsingTTS(getValueFromPropertyFile("successUnregister", "english"),getTTSNotation(language));
-    			else 
-    					playUsingTTS(getValueFromPropertyFile("failUnregister", "english"),getTTSNotation(language));
+    	else if (keyWord.toLowerCase().equals("followup")){
+    		//new FollowupCallHandler().requestFollowUpInfo(patientList, language);
     	}
     	
     	else if(keyWord.toLowerCase().equals("call")){
@@ -294,51 +256,23 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * @return
      * @throws AgiException
      */
-    private String getPid(List<Patient> patientList) throws AgiException{
+    public String getPid(List<Patient> patientList) throws AgiException{
     	String pid;
     	pid=channel.getVariable("pid");
     	if(pid==null){
-    		logger.info("Patient with pnumber:"+pnumber+"chose pid:"+pid);
     		pid=getPatientIdfromList(patientList);
+    		logger.info("Patient with pnumber:"+pnumber+"chose pid:"+pid);
     	}
 		channel.setVariable("pid", pid);
 		return pid;
     }
-    /**
-     * Plays medicine Reminder to the patient
-     * @param pid
-     * @throws AgiException
-     */
-    private void medicineReminder(String pid) throws AgiException {
-    		Date time=new Date();
-    		time.setHours(0);
-			time.setMinutes(1);					//set time to today's midnight so that entire medicine prescription of today can be fetched.
-			
-			List<MedicineInformation> listofinfo=new ReminderExtractor().getMedicineInfo(pid, time);
-			String noReminderMsg = getValueFromPropertyFile("noReminders","english");			
-			String header1=getValueFromPropertyFile("IncomingCallMedicineInfoHeader1","english");
-			String header2=getValueFromPropertyFile("IncomingCallMedicineInfoHeader2","english");
-			String ttsNotation=getTTSNotation(language);
-			if(listofinfo == null || listofinfo.size() == 0)
-			{
-			playUsingTTS(noReminderMsg,ttsNotation);
-			return;
-			}
-			if(header1!=null)
-				playUsingTTS(header1,ttsNotation);
-			if(header2!=null)
-				playUsingTTS(header2,ttsNotation);
-			for(MedicineInformation info : listofinfo )
-				playUsingTTS(new MessageTemplate().getTextToconvertToVoice(info),ttsNotation);
-			
-	}
     
 
 
 	/**
      * Gets value from properties file.
      */
-    private String getValueFromPropertyFile(String property,String propertyFile){
+    public String getValueFromPropertyFile(String property,String propertyFile){
     	Properties prop = new Properties();
 		try{
 			logger.debug("Trying to fetch the folder property "+property+" from properties "+propertyFile+".properties");
@@ -378,7 +312,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * 
      */
     
-    private String getPatientIdfromList(List<Patient> patientList) throws AgiException{
+    public String getPatientIdfromList(List<Patient> patientList) throws AgiException{
     	int numberOfTries=2;
     	
     	if(patientList==null)
@@ -439,7 +373,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * @return
      * @throws AgiException
      */
-    private char getOptionUsingTTS(String toSpeak,String escapeDigits,String beepSeconds,int numberOfTry) throws AgiException{
+    public char getOptionUsingTTS(String toSpeak,String escapeDigits,String beepSeconds,int numberOfTry) throws AgiException{
     	char option='0';int count=0;
     	String ttsNotation=getTTSNotation(language);
     	String beepVoiceLocation=getValueFromPropertyFile("beep","english");
@@ -493,7 +427,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * @return
      * @throws AgiException
      */
-    private char getPatientOption(String fileLocation,String timeout,String escapeDigits,int numberOfRepeat)throws AgiException{
+    public char getPatientOption(String fileLocation,String timeout,String escapeDigits,int numberOfRepeat)throws AgiException{
     	//If patient press any of the escape digit the sound streaming will stop
     	String defaultTimeout="15000";	//hard coded
     	char option='0';int count=0;
@@ -515,7 +449,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * Action to be taken when user doesnot choose any option
      * @throws AgiException
      */
-    private void ifOptionNotChosenAfterManyTries() throws AgiException{
+    public void ifOptionNotChosenAfterManyTries() throws AgiException{
     	logger.error("Incoming Call:Patient didnot choose any option after many tries.HangingUp");
     	channel.hangup();
     }
@@ -524,7 +458,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * search for keyword from a property file with option as property field
      */
     
-    private String analysePatientOption(String propertyFile,char option){
+    public String analysePatientOption(String propertyFile,char option){
     	if(option<='8' && option>='1'){
     		String keyWord=getValueFromPropertyFile(Character.toString(option),propertyFile);
     		return keyWord;
@@ -570,20 +504,20 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * @param ttsNotation
      * @throws AgiException
      */
-    private void playUsingTTS(String message,String ttsNotation) throws AgiException{
+    public void playUsingTTS(String message,String ttsNotation) throws AgiException{
     	playUsingTTS(message,ttsNotation,null);
     	
     }
     
     /**
-     * Play the message using TTS and stop laying it as soon as it encounters any escape digits
+     * Play the message using TTS and stop playing it as soon as it encounters any escape digits
      * @param message
      * @param ttsNotation
      * @param escapeDigits
      * @throws AgiException
      * 
      */
-    private void playUsingTTS(String message,String ttsNotation,String escapeDigits) throws AgiException{
+    public void playUsingTTS(String message,String ttsNotation,String escapeDigits) throws AgiException{
     	if(message==null) return;
     	String contentToPlay;String comma=",";
     	String onlySpeed=comma+ttsNotation+comma+comma+speed;
@@ -772,6 +706,127 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	return content;
 	}
 	
+	
+
+	  /**
+   * Plays medicine Reminder to the patient
+   * @param pid
+   * @throws AgiException
+   */
+  private void medicineReminder(String pid) throws AgiException {
+  		Date time=new Date();
+  		time.setHours(0);
+			time.setMinutes(1);					//set time to today's midnight so that entire medicine prescription of today can be fetched.
+			
+			List<MedicineInformation> listofinfo=new ReminderExtractor().getMedicineInfo(pid, time);
+			String noReminderMsg = getValueFromPropertyFile("noReminders","english");			
+			String header1=getValueFromPropertyFile("IncomingCallMedicineInfoHeader1","english");
+			String header2=getValueFromPropertyFile("IncomingCallMedicineInfoHeader2","english");
+			String ttsNotation=getTTSNotation(language);
+			if(listofinfo == null || listofinfo.size() == 0)
+			{
+			playUsingTTS(noReminderMsg,ttsNotation);
+			return;
+			}
+			if(header1!=null)
+				playUsingTTS(header1,ttsNotation);
+			if(header2!=null)
+				playUsingTTS(header2,ttsNotation);
+			for(MedicineInformation info : listofinfo )
+				playUsingTTS(new MessageTemplate().getTextToconvertToVoice(info),ttsNotation);
+			
+	}
+  
+  /**
+   * Takes the Keyword and all the possible patientList associated with the phone number and patient prefer language
+   * Checks if the keyword require pid?
+   * If yes,ask for the patient identity among patientList.
+   * Stores the pid and fetch asked information using the pid
+   * 
+   * @param keyWord
+   * @param patientList
+   * @param language
+   * @throws AgiException
+   * @throws Exception
+   */
+  public void playReminderMenu(List<Patient> patientList,String language) throws AgiException,Exception{
+  	
+  	String reminderMenuVoiceFileLocation=getValueFromPropertyFile(language.toLowerCase(),"mainmenu");
+  	String reminderMenuText=getValueFromPropertyFile("reminderMenuText","english");
+  	
+  	channel.setVariable("reminderMenuPlayCount", String.valueOf((Integer.parseInt(channel.getVariable("reminderMenuPlayCount")))+1));
+  	
+  					//char option=getPatientOption(mainmenuVoiceFileLocation,"11000","1234569",2);
+  		char option=getOptionUsingTTS(reminderMenuText,"1234569","5000",2);
+  	String keyWord=analysePatientOption("remindermenu",option);
+  	if(keyWord==null){
+  		channel.hangup();
+  		logger.error("Unable to get what patient opted in reminder menu of language "+language);
+  		return;
+  	}
+  	
+  	String pid=null;boolean isPatientRegistered=true;boolean isAllowed=true;
+  	int count=Integer.parseInt(channel.getVariable("reminderMenuPlayCount"));
+  	
+  	if(patientList==null || patientList.size()==0)
+  		isPatientRegistered=false;
+  	//All option that needs to check if the patient is in the alert System already should add that option to the or Statement
+  	//This is to deal with fact that if a atient is not register and he keeps on opting for the option that needs patient to be registered
+  	if(keyWord.toLowerCase().equals("reminder")||keyWord.toLowerCase().equals("deregister")){
+  		if(!isPatientRegistered && count<=2){						//Play main menu only twice 
+  			playUsingTTS(getValueFromPropertyFile("notRegistered","english"),getTTSNotation(language));
+  			playReminderMenu(patientList, language);
+  			return;
+  		}
+  		if(!isPatientRegistered){
+  			channel.hangup();
+  			logger.error("patient unable to choose a valid reminder menu option");
+  			return;
+  		}
+  	}
+  	
+  	
+  	if(keyWord.toLowerCase().equals("register")){
+  		
+  		Register r=new Register();
+  		List<Patient> p=r.getpatientFromNumber(pnumber,language);
+  		pid=getPid(p);
+  		if(pid==null)
+  			playUsingTTS(getValueFromPropertyFile("PatientNotExist", "english"),getTTSNotation(language));
+  		else{
+  			if(r.addReminder(pid, language, IVR_TYPE))
+  				playUsingTTS(getValueFromPropertyFile("successfulRegister", "english"),getTTSNotation(language));
+  			else
+  				playUsingTTS(getValueFromPropertyFile("unsuccessfulRegister", "english"),getTTSNotation(language));
+  		}
+  		
+  	}
+  	
+  	else if(keyWord.toLowerCase().equals("reminder")){
+  		pid=getPid(patientList);
+  		if(pid==null){
+  			playUsingTTS(getValueFromPropertyFile("PatientNotExist", "english"),getTTSNotation(language));
+  			return;
+  		}
+  		//There may be a chance that language currently playing is not the preferred language as specified in database.if we want to change 
+  		//language to preferLanguage below code should be included.otherwise it will continue with the current language.
+  /*   		for(Patient p:patientList){
+  			if(p.getPatientId().equals(pid))
+  				language=p.getPatientPreferredLanguage();
+  		}
+  		
+  */ 		else
+  			medicineReminder(pid);
+  		
+  	}
+  	
+  	else if (keyWord.toLowerCase().equals("deregister")){
+  			if(new Register().deleteReminder(pid,IVR_TYPE))
+  					playUsingTTS(getValueFromPropertyFile("successUnregister", "english"),getTTSNotation(language));
+  			else 
+  					playUsingTTS(getValueFromPropertyFile("failUnregister", "english"),getTTSNotation(language));
+  	}
+  }
 	
     
 }
