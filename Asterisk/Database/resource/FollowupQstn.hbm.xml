@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 Jun, 2013 11:25:23 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.raxa.database.FollowupQstn" table="followupqstn" dynamic-update="true">
+        <id name="fid" type="int" access="field">
+            <column name="fid" />
+            <generator class="native" />
+        </id>
+        <property name="pid" type="java.lang.String" access="field">
+            <column name="pid" />
+        </property>
+        <property name="qstn" type="java.lang.String" access="field">
+            <column name="qstn" />
+        </property>
+        <property name="fromDate" type="java.sql.Timestamp" access="field">
+            <column name="fromDate" />
+        </property>
+        <property name="toDate" type="java.sql.Timestamp" access="field">
+            <column name="toDate" />
+        </property>
+        <property name="scheduleTime" type="java.sql.Time" access="field">
+            <column name="scheduleTime" />
+        </property>
+    </class>
+</hibernate-mapping>

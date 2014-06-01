@@ -5,6 +5,7 @@
 package org.raxa.audioplayer;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,9 @@ import org.hibernate.Session;
 import org.raxa.alertmessage.ContentFormat;
 import org.raxa.alertmessage.MedicineInformation;
 import org.raxa.alertmessage.MessageTemplate;
+import org.raxa.database.FollowupChoice;
+import org.raxa.database.FollowupQstn;
+import org.raxa.database.FollowupResponse;
 import org.raxa.database.HibernateUtil;
 import org.raxa.database.Patient;
 import org.raxa.registration.Register;
@@ -101,7 +105,8 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	defaultLanguage=getValueFromPropertyFile("0","languageMap");
     	language=defaultLanguage;
     	List<Patient> patientList=getAllPatientWithNumber(pnumber);
-    	String languagePlaying=sayWelcomeAndgetLanguage(patientList,defaultLanguage);
+    	//String languagePlaying=sayWelcomeAndgetLanguage(patientList,defaultLanguage);
+    	String languagePlaying="english";
     	if(languagePlaying==null){
     		logger.error("Unable to get Language when playing to user withn number "+pnumber);
     		return;
@@ -109,8 +114,8 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	language=languagePlaying;
     	channel.setVariable("numberOftimesMenuPlayed", "0");
     	channel.setVariable("reminderMenuPlayCount", "0");
-    	playReminderMenu(patientList, languagePlaying);
-    	//playMainMenu(pnumber,patientList);
+    	//playReminderMenu(patientList, languagePlaying);
+    	playMainMenu(pnumber,patientList);
     	//Done What patient wanted.
     }
 
@@ -236,7 +241,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	}
     	
     	else if (keyWord.toLowerCase().equals("followup")){
-    		//new FollowupCallHandler().requestFollowUpInfo(patientList, language);
+    		requestFollowUpInfo();
     	}
     	
     	else if(keyWord.toLowerCase().equals("call")){
@@ -826,9 +831,90 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
   			else 
   					playUsingTTS(getValueFromPropertyFile("failUnregister", "english"),getTTSNotation(language));
   	}
+  	else if(keyWord.toLowerCase().equals("mainmenu")){
+  		playMainMenu(pid, patientList);
+  	}
   }
 	
-    
+  /**
+   * Request followup information from patient'
+   * 
+   * Presently implemented using Asterisk DialPlan similar to CallHandler for reminders.
+   * Can alternatively use getData() provided by BaseAGIScript to read input 
+   * 
+   * 
+   * INCOMPLETE
+   * 
+   * @throws AgiException
+   * 
+   */
+	private void requestFollowUpInfo() {
+		try{
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		//Get followup question
+		String hqlQstn = "from FollowupQstn where fid=:fid";
+		Query queryQstn = session.createQuery(hqlQstn);
+		Integer fid = 1;
+		queryQstn.setInteger("fid", fid);
+		FollowupQstn followupQstn = (FollowupQstn) queryQstn.list().get(0);
+		String qstn = followupQstn.getQstn();
+		String ttsNotation=getTTSNotation(language);
+		playUsingTTS(qstn,ttsNotation);
+		//Get followup options
+		String hqlChoice = "from FollowupChoice where fid=:fid";
+		Query queryChoice = session.createQuery(hqlChoice);
+		queryChoice.setInteger("fid", fid);
+		List<FollowupChoice> followupChoices = (List<FollowupChoice>) queryChoice.list();
+		int count = 1;
+		String choiceMenuText = "";
+		String choiceDigits = "";
+		for(FollowupChoice followupChoice : followupChoices){
+			choiceMenuText += " press "+count+" for "+followupChoice.getOption();
+			choiceDigits += ""+count;
+			count++;
+		}
+		char option=getOptionUsingTTS(choiceMenuText,choiceDigits,"5000",2);
+		FollowupResponse followupResponse = setFollowUpResponse(followupChoices.get(Character.getNumericValue(option)).getFcid(), fid);
+		session.save(followupResponse);
+	  	logger.info("Successfully saved response for followup "+fid);    	
+		session.getTransaction().commit();
+		session.close();
+		  
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+		}
+  	
+		
+	}
+
+
+	/**
+   * Persist user response to followUp questions
+   * 
+   * Handles patient incoming call.
+   * 
+   * Set patient number as pnumber
+   * 
+   * INCOMPLETE
+   * @throws AgiException
+   * 
+   */
+	private FollowupResponse setFollowUpResponse(int fcid, int fid){
+	FollowupResponse followupResponse = new FollowupResponse();
+	followupResponse.setFid(fid);
+	followupResponse.setResponse(fcid);
+	java.util.Date date= new java.util.Date();
+	Timestamp now = new Timestamp(date.getTime());
+	followupResponse.setDate(now);
+	followupResponse.setExecuted(true);
+	followupResponse.setLastTry(now);
+	followupResponse.setRetryCount(0);
+	followupResponse.setSyncStatus(false);
+	return followupResponse;
+	}
+	
 }
     
  

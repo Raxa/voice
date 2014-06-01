@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 Jun, 2013 11:25:23 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.raxa.database.FollowupResponse" table="followupresponse" dynamic-update="true">
+        <id name="frid" type="int" access="field">
+            <column name="frid" />
+            <generator class="native" />
+        </id>
+         <property name="fid" type="int" access="field">
+            <column name="fid" />
+        </property>
+        <property name="date" type="java.sql.Timestamp" access="field">
+        <column name="date" />
+        </property>
+        <property name="response" type="int" access="field">
+        <column name="response" />
+        </property>
+        <property name="isExecuted" type="org.hibernate.type.YesNoType" access="field">
+        <column name="isExecuted" />
+        </property>
+        <property name="lastTry" type="java.sql.Timestamp" access="field">
+        <column name="lastTry" />
+        </property>        
+        <property name="retryCount" type="int" access="field">
+        <column name="retryCount" />
+        </property>
+        <property name="syncStatus" type="org.hibernate.type.YesNoType" access="field">
+        <column name="syncStatus" />
+        </property>
+    </class>
+</hibernate-mapping>
