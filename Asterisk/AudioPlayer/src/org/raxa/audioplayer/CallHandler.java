@@ -5,6 +5,7 @@
 package org.raxa.audioplayer;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,8 +17,18 @@ import org.asteriskjava.fastagi.AgiChannel;
 import org.asteriskjava.fastagi.AgiException;
 import org.asteriskjava.fastagi.AgiRequest;
 import org.asteriskjava.fastagi.BaseAgiScript;
+import org.asteriskjava.fastagi.command.RecordFileCommand;
+import org.asteriskjava.manager.action.CommandAction;
+import org.asteriskjava.manager.response.CommandResponse;
+import org.asteriskjava.manager.AuthenticationFailedException;
+import org.asteriskjava.manager.ManagerConnection;
+import org.asteriskjava.manager.ManagerConnectionFactory;
+import org.asteriskjava.manager.TimeoutException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.itsrifat.wit.WitException;
+import org.itsrifat.wit.api.WitClient;
+import org.itsrifat.wit.domain.Message;
 import org.raxa.alertmessage.ContentFormat;
 import org.raxa.alertmessage.MedicineInformation;
 import org.raxa.alertmessage.MessageTemplate;
@@ -51,9 +62,28 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 	final String speed="1";							//The default speed to play voice file 
 	
 	/**
+	 * Connects Java to Asterisk
+	 */
+    private ManagerConnection managerConnection;
+    /**
+     * URL Where Asterisk is hosted
+     */
+    private String ASTERISK_SERVER_URL;
+    /**
+     * User Name of the Manager(defined in manager.conf)
+     */
+    private String MANAGER_USERNAME;
+    /**
+     * password of the Manager(defined in manager.conf)
+     */
+    private String MANAGER_PASSWORD;
+
+    
+	/**
 	 * checks whether the call is incoming or outgoing.Handles the call accordingly
 	 */
     public void service(AgiRequest request, AgiChannel channel) throws AgiException{
+
     	try{
     		answer();
     		language=null;
@@ -860,24 +890,33 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 		FollowupQstn followupQstn = (FollowupQstn) queryQstn.list().get(0);
 		String qstn = followupQstn.getQstn();
 		String ttsNotation=getTTSNotation(language);
+		int i = 2;
+		while(i > 0)
+		{
 		playUsingTTS(qstn,ttsNotation);
+		String choice = getOptionUsingAsr(2);
+		logger.info("you said "+choice);
+		i--;
+		}
+		/*
 		//Get followup options
 		String hqlChoice = "from FollowupChoice where fid=:fid";
 		Query queryChoice = session.createQuery(hqlChoice);
 		queryChoice.setInteger("fid", fid);
 		List<FollowupChoice> followupChoices = (List<FollowupChoice>) queryChoice.list();
 		int count = 1;
-		String choiceMenuText = "";
-		String choiceDigits = "";
+		String dtmfMenuText = "press";
+		String dtmfDigits = "";
 		for(FollowupChoice followupChoice : followupChoices){
-			choiceMenuText += " press "+count+" for "+followupChoice.getOption();
-			choiceDigits += ""+count;
+			dtmfMenuText += " "+count+" for "+followupChoice.getOption();
+			dtmfDigits += ""+count;
 			count++;
 		}
-		char option=getOptionUsingTTS(choiceMenuText,choiceDigits,"5000",2);
+		char option=getOptionUsingTTS(dtmfMenuText,dtmfDigits,"5000",2);
 		FollowupResponse followupResponse = setFollowUpResponse(followupChoices.get(Character.getNumericValue(option)).getFcid(), fid);
 		session.save(followupResponse);
-	  	logger.info("Successfully saved response for followup "+fid);    	
+	  	logger.info("Successfully saved response for followup "+fid);   
+	  	*/ 	
 		session.getTransaction().commit();
 		session.close();
 		  
@@ -914,6 +953,96 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 	followupResponse.setSyncStatus(false);
 	return followupResponse;
 	}
+
+	/**
+	   * Get option using ASR
+	   *
+	   * 
+	   * 
+	   * @throws AgiException
+	   * 
+	   */
+		private String getOptionUsingAsr(int retryCount){
+		String accessToken = getAsrAccesToken();
+		WitClient client = new WitClient(accessToken);
+		String audioFile = "response";
+		
+		String recordCmd = new RecordFileCommand(audioFile,"wav","#",5000,0,true,2).buildCommand();
+		CommandAction commandAction = new CommandAction(recordCmd);
+		
+		if(this.managerConnection == null){
+			initManagerConnection();
+		}
+		try{
+		this.managerConnection.login();
+		CommandResponse response = (CommandResponse) this.managerConnection.sendAction(commandAction);
+		this.managerConnection.logoff();
+		
+		
+		} catch(TimeoutException te){
+			logger.error("Unable to connect to manager. Timeout exception");
+		} catch(IOException ie){
+			logger.error("Unable to connect to manager. IO exception");
+     		logger.error("\nCaused by\n",ie);
+		} catch(AuthenticationFailedException ae){
+			logger.error("Unable to connect to manager. AuthenticationFailed exception");
+		}
+		
+		try{
+		Message message = client.getMessage(audioFile);
+		return message.getMessageBody();
+		}
+		catch(WitException we)
+		{
+			logger.error("Unable to perform speech recognition using wit");
+			return "";
+		}
+		}
+		
+		 /**
+	     *  Read access token from properties
+	     * 
+	     */
+	    public String getAsrAccesToken(){
+	    	String accessToken = null;
+	    	Properties prop = new Properties();
+			try{
+				logger.info("Trying to get asr access token");
+				prop.load(this.getClass().getClassLoader().getResourceAsStream("asr.properties"));
+				accessToken = prop.getProperty("access-token");
+				return accessToken;
+			}
+			catch(IOException ex) { 		
+	    		logger.error("Unable to get asr access token");
+	    		return "";
+	    }
+	   }
+	    
+		 /**
+	     *  Create and initialize manager connection
+	     * 
+	     */
+	    public void initManagerConnection(){
+	    	//managerConnection = new ManagerConnection();
+	    	ASTERISK_SERVER_URL=null;
+	  	    MANAGER_USERNAME=null;
+	  	    MANAGER_PASSWORD=null;
+	  	   try {
+	  		   	Properties prop = new Properties();
+	     		prop.load(CallHandler.class.getClassLoader().getResourceAsStream("config.properties"));
+	     		ASTERISK_SERVER_URL=prop.getProperty("Asterisk_URL");
+	     		MANAGER_USERNAME=prop.getProperty("Manager_Username");
+	     		MANAGER_PASSWORD=prop.getProperty("Manager_Password");
+	     	   } 
+	     	catch (IOException ex) {
+	     		
+	     		logger.error("Some error occur while retreiving information from config.properties. Unable to create manager instance");
+	     		logger.error("\nCaused by\n",ex);
+	    }
+	  	 ManagerConnectionFactory factory = new ManagerConnectionFactory(
+  			   ASTERISK_SERVER_URL, MANAGER_USERNAME, MANAGER_PASSWORD);
+	  	 this.managerConnection = factory.createManagerConnection();	   
+	   }	   
 	
 }
     
