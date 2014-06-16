@@ -5,6 +5,7 @@
 package org.raxa.audioplayer;
 
 import java.io.IOException;
+import java.io.File;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -879,54 +880,63 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
    * 
    */
 	private void requestFollowUpInfo() {
-		try{
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-		//Get followup question
-		String hqlQstn = "from FollowupQstn where fid=:fid";
-		Query queryQstn = session.createQuery(hqlQstn);
-		Integer fid = 1;
-		queryQstn.setInteger("fid", fid);
-		FollowupQstn followupQstn = (FollowupQstn) queryQstn.list().get(0);
-		String qstn = followupQstn.getQstn();
-		String ttsNotation=getTTSNotation(language);
-		int i = 2;
-		while(i > 0)
-		{
-		playUsingTTS(qstn,ttsNotation);
-		String choice = getOptionUsingAsr(2);
-		logger.info("you said "+choice);
-		i--;
-		}
-		/*
-		//Get followup options
-		String hqlChoice = "from FollowupChoice where fid=:fid";
-		Query queryChoice = session.createQuery(hqlChoice);
-		queryChoice.setInteger("fid", fid);
-		List<FollowupChoice> followupChoices = (List<FollowupChoice>) queryChoice.list();
-		int count = 1;
-		String dtmfMenuText = "press";
-		String dtmfDigits = "";
-		for(FollowupChoice followupChoice : followupChoices){
-			dtmfMenuText += " "+count+" for "+followupChoice.getOption();
-			dtmfDigits += ""+count;
-			count++;
-		}
-		char option=getOptionUsingTTS(dtmfMenuText,dtmfDigits,"5000",2);
-		FollowupResponse followupResponse = setFollowUpResponse(followupChoices.get(Character.getNumericValue(option)).getFcid(), fid);
-		session.save(followupResponse);
-	  	logger.info("Successfully saved response for followup "+fid);   
-	  	*/ 	
-		session.getTransaction().commit();
-		session.close();
-		  
-		}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}
-  	
-		
-	}
+        try{
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        //Get followup question
+        String hqlQstn = "from FollowupQstn where fid=:fid";
+        Query queryQstn = session.createQuery(hqlQstn);
+        Integer fid = 1;
+        queryQstn.setInteger("fid", fid);
+        FollowupQstn followupQstn = (FollowupQstn) queryQstn.list().get(0);
+        String qstn = followupQstn.getQstn();
+        String ttsNotation=getTTSNotation(language);
+        char option;
+
+        //Play follow up question
+        playUsingTTS(qstn,ttsNotation);
+
+        //Get followup choices
+        String hqlChoice = "from FollowupChoice where fid=:fid";
+        Query queryChoice = session.createQuery(hqlChoice);
+        queryChoice.setInteger("fid", fid);
+        List<FollowupChoice> followupChoices = (List<FollowupChoice>) queryChoice.list();
+
+
+        //get user response using ASR
+        String choice = getOptionUsingAsr(2);
+        if(choice=="")
+        {
+        //ASR failed. Get followup options using DTMF
+        int count = 1;
+        String dtmfMenuText = "press";
+        String dtmfDigits = "";
+        for(FollowupChoice followupChoice : followupChoices){
+            dtmfMenuText += " "+count+" for "+followupChoice.getOption();
+            dtmfDigits += ""+count;
+            count++;
+        }
+        option=getOptionUsingTTS(dtmfMenuText,dtmfDigits,"5000",2);
+        }
+        else
+        {
+        logger.info("you said "+choice);
+        //Add logic to get followup choice id from choice string
+        option = '1';
+        }
+
+        FollowupResponse followupResponse = setFollowUpResponse(followupChoices.get(Character.getNumericValue(option)).getFcid(), fid);
+        session.save(followupResponse);
+        logger.info("Successfully saved response for followup "+fid);
+
+        session.getTransaction().commit();
+        session.close();
+
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
 
 
 	/**
@@ -954,50 +964,64 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 	return followupResponse;
 	}
 
-	/**
-	   * Get option using ASR
-	   *
-	   * 
-	   * 
-	   * @throws AgiException
-	   * 
-	   */
-		private String getOptionUsingAsr(int retryCount){
-		String accessToken = getAsrAccesToken();
-		WitClient client = new WitClient(accessToken);
-		String audioFile = "response";
-		
-		String recordCmd = new RecordFileCommand(audioFile,"wav","#",5000,0,true,2).buildCommand();
-		CommandAction commandAction = new CommandAction(recordCmd);
-		
-		if(this.managerConnection == null){
-			initManagerConnection();
-		}
-		try{
-		this.managerConnection.login();
-		CommandResponse response = (CommandResponse) this.managerConnection.sendAction(commandAction);
-		this.managerConnection.logoff();
-		
-		
-		} catch(TimeoutException te){
-			logger.error("Unable to connect to manager. Timeout exception");
-		} catch(IOException ie){
-			logger.error("Unable to connect to manager. IO exception");
-     		logger.error("\nCaused by\n",ie);
-		} catch(AuthenticationFailedException ae){
-			logger.error("Unable to connect to manager. AuthenticationFailed exception");
-		}
-		
-		try{
-		Message message = client.getMessage(audioFile);
-		return message.getMessageBody();
-		}
-		catch(WitException we)
-		{
-			logger.error("Unable to perform speech recognition using wit");
-			return "";
-		}
-		}
+    /**
+       * Get option using ASR
+       *
+       *
+       *
+       * @throws AgiException
+       *
+       */
+        private String getOptionUsingAsr(int retryCount){
+        String accessToken = getAsrAccesToken();
+        WitClient client = new WitClient(accessToken);
+
+        //TODO: Read path and file name from config
+        String audioPath = "/var/lib/asterisk/sounds/";
+        String audioFileName = "response";
+        try{
+            channel.exec("Record","response%d:wav,2,5,");
+        }
+        catch(AgiException e){
+            logger.error("Unable to record audio. AGI exception");
+            logger.error("\nCaused by\n",e);
+        }
+
+        //Send audio file to Wit for ASR
+        try{
+        File audioFile = new File(audioPath+audioFileName+".wav");
+        if(audioFile.exists())
+        {
+        Message message = client.getMessage(audioFile);
+        //File deletion code
+        /*
+        if(audioFile.delete()){
+                System.out.println("response file is deleted after ASR!");
+            }else{
+                System.out.println("response file delete operation failed.");
+            }
+        */
+        return message.getMessageBody();
+        }
+        else
+        {
+            logger.error("Recorded response audio file does not exist");
+        }
+        }
+        catch(WitException we)
+        {
+            logger.error("Unable to perform speech recognition using wit");
+            logger.error("\nCaused by\n",we);
+        }
+        finally{
+            if(retryCount != 0)
+            {
+                retryCount--;
+                getOptionUsingAsr(retryCount);
+            }
+            return "";
+        }
+        }
 		
 		 /**
 	     *  Read access token from properties
