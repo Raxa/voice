@@ -4,6 +4,7 @@
 
 package org.raxa.audioplayer;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.File;
 import java.net.URL;
@@ -27,9 +28,6 @@ import org.asteriskjava.manager.ManagerConnectionFactory;
 import org.asteriskjava.manager.TimeoutException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.itsrifat.wit.WitException;
-import org.itsrifat.wit.api.WitClient;
-import org.itsrifat.wit.domain.Message;
 import org.raxa.alertmessage.ContentFormat;
 import org.raxa.alertmessage.MedicineInformation;
 import org.raxa.alertmessage.MessageTemplate;
@@ -904,7 +902,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 
 
         //get user response using ASR
-        String choice = getOptionUsingAsr(2);
+        String choice = getOptionUsingAsr();
         if(choice=="")
         {
         //ASR failed. Get followup options using DTMF
@@ -964,65 +962,6 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 	return followupResponse;
 	}
 
-    /**
-       * Get option using ASR
-       *
-       *
-       *
-       * @throws AgiException
-       *
-       */
-        private String getOptionUsingAsr(int retryCount){
-        String accessToken = getAsrAccesToken();
-        WitClient client = new WitClient(accessToken);
-
-        //TODO: Read path and file name from config
-        String audioPath = "/var/lib/asterisk/sounds/";
-        String audioFileName = "response";
-        try{
-            channel.exec("Record","response%d:wav,2,5,");
-        }
-        catch(AgiException e){
-            logger.error("Unable to record audio. AGI exception");
-            logger.error("\nCaused by\n",e);
-        }
-
-        //Send audio file to Wit for ASR
-        try{
-        File audioFile = new File(audioPath+audioFileName+".wav");
-        if(audioFile.exists())
-        {
-        Message message = client.getMessage(audioFile);
-        //File deletion code
-        /*
-        if(audioFile.delete()){
-                System.out.println("response file is deleted after ASR!");
-            }else{
-                System.out.println("response file delete operation failed.");
-            }
-        */
-        return message.getMessageBody();
-        }
-        else
-        {
-            logger.error("Recorded response audio file does not exist");
-        }
-        }
-        catch(WitException we)
-        {
-            logger.error("Unable to perform speech recognition using wit");
-            logger.error("\nCaused by\n",we);
-        }
-        finally{
-            if(retryCount != 0)
-            {
-                retryCount--;
-                getOptionUsingAsr(retryCount);
-            }
-            return "";
-        }
-        }
-		
 		 /**
 	     *  Read access token from properties
 	     * 
@@ -1067,7 +1006,62 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
   			   ASTERISK_SERVER_URL, MANAGER_USERNAME, MANAGER_PASSWORD);
 	  	 this.managerConnection = factory.createManagerConnection();	   
 	   }	   
-	
+
+/**
+* Get user choice using speech recogniton using Wit 
+*
+*/
+    private String getOptionUsingAsr(){
+    	  String audioPath = "/var/lib/asterisk/sounds/";
+          String audioFileName="";
+          
+    	try{
+            channel.exec("Record","response%d:wav,2,5,");
+            audioFileName = channel.getVariable("RECORDED_FILE");
+        }
+        catch(AgiException e){
+            logger.error("Unable to record audio. AGI exception");
+            logger.error("\nCaused by\n",e);
+        }
+    	
+        String accessToken = getAsrAccesToken();
+        WitSpeech client = new WitSpeech(accessToken,"audio/wav");
+
+        //TODO: Read path and file name from config
+      
+
+		File file = new File(audioPath+audioFileName+".wav");
+		FileInputStream fis = null;
+		logger.info("audio file is "+audioFileName);
+		try {
+			fis = new FileInputStream(file);
+ 
+			System.out.println("Total file size to read (in bytes) : "
+					+ fis.available());
+ 
+			 String response =  client.getResponse(fis);
+             logger.info("server response is "+response);
+             //return response;
+             WitResponse witResponse = client.processWitResponse(response);
+             logger.info("message body is "+witResponse.getBody());
+             return witResponse.getBody();
+
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e){
+			logger.error("speech recognition failed due to "+e);
+		}finally {
+			try {
+				if (fis != null)
+					fis.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+        return "";
+    }
+
 }
     
  
