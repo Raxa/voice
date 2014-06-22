@@ -58,8 +58,9 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 	private Logger logger = Logger.getLogger(this.getClass());
 	String language;
 	String pnumber;
+	String pid;
 	final String speed="1";							//The default speed to play voice file 
-	
+	String ttsNotation;
 	/**
 	 * Connects Java to Asterisk
 	 */
@@ -76,9 +77,23 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * password of the Manager(defined in manager.conf)
      */
     private String MANAGER_PASSWORD;
-
+    /**
+     *  gets list of patients with the same pnumber
+     */
+    List<Patient> patientList;
     
-	/**
+	public CallHandler(AgiChannel channel, String language, String pid) {
+		super();
+		this.channel = channel;
+		this.language = language;
+		this.pid = pid;
+	}
+
+	public CallHandler(){
+		
+	}
+	
+    /**
 	 * checks whether the call is incoming or outgoing.Handles the call accordingly
 	 */
     public void service(AgiRequest request, AgiChannel channel) throws AgiException{
@@ -133,7 +148,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	pnumber="SIP/1000abc";
     	defaultLanguage=getValueFromPropertyFile("0","languageMap");
     	language=defaultLanguage;
-    	List<Patient> patientList=getAllPatientWithNumber(pnumber);
+    	patientList=getAllPatientWithNumber(pnumber);
     	//String languagePlaying=sayWelcomeAndgetLanguage(patientList,defaultLanguage);
     	String languagePlaying="english";
     	if(languagePlaying==null){
@@ -144,7 +159,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	channel.setVariable("numberOftimesMenuPlayed", "0");
     	channel.setVariable("reminderMenuPlayCount", "0");
     	//playReminderMenu(patientList, languagePlaying);
-    	playMainMenu(pnumber,patientList);
+    	playMainMenu();
     	//Done What patient wanted.
     }
 
@@ -218,18 +233,16 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * Plays the main menu using TTS.The main menu String is fetched from mainmenutext property file in english.properties.
      * 
      * 
-     * @param pnumber
-     * @param patientList
      * @throws Exception
      */
-    private void playMainMenu(String pnumber,List<Patient> patientList) throws Exception{
+    private void playMainMenu() throws Exception{
     	String mainmenuVoiceFileLocation=getValueFromPropertyFile(language.toLowerCase(),"mainmenu");
     	String mainmenuText=getValueFromPropertyFile("mainMenuText","english");
     	
     	channel.setVariable("numberOftimesMenuPlayed", String.valueOf((Integer.parseInt(channel.getVariable("numberOftimesMenuPlayed")))+1));
     	
     					//char option=getPatientOption(mainmenuVoiceFileLocation,"11000","1234569",2);
-    		char option=getOptionUsingTTS(mainmenuText,"1234569","5000",2);
+    	char option=getOptionUsingTTS(mainmenuText,"1234569","5000",2);
     	String KeyWord=analysePatientOption("mainmenu",option);
     	if(KeyWord==null){
     		channel.hangup();
@@ -253,8 +266,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      * @throws Exception
      */
     public void doWhatPatientWant(String keyWord,List<Patient> patientList,String language) throws AgiException,Exception{
-    	
-    	String pid=null;boolean isPatientRegistered=true;boolean isAllowed=true;
+    	boolean isPatientRegistered=true;boolean isAllowed=true;
     	int count=Integer.parseInt(channel.getVariable("numberOftimesMenuPlayed"));
     	
     	if(patientList==null || patientList.size()==0)
@@ -275,9 +287,14 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	
     	else if(keyWord.toLowerCase().equals("call")){
     		//INCOMPLETE
-    		//CALL SomeOne
-    		//channel.exec("DIAL", " 'SIP/1000abc','100' ");
+    		//pid = getpid(patientList);
+    		//TODO: get actual patient id 
+    		playInteractionMenu();
     	}
+    	else if(keyWord.toLowerCase().equals("hangup")){
+    		channel.hangup();
+    	}
+    	playMainMenu();
     }
    
     
@@ -356,7 +373,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
     	
     	String message1=getValueFromPropertyFile("patientNameMessage1","english");
     	String message2=getValueFromPropertyFile("patientNameMessage2","english");
-    	String ttsNotatiton=getTTSNotation(language);
+    	ttsNotation = getTTSNotation(language);
     	
     	int count=0;char option='0';
     	String space=" ";String message="";
@@ -384,7 +401,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 	    	
 	    	else{
 	    		String toSay="Sorry You pressed an invalid input";
-	    		playUsingTTS(toSay,ttsNotatiton);
+	    		playUsingTTS(toSay,ttsNotation);
 	    	}
 	    		
 	    	
@@ -409,7 +426,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
      */
     public char getOptionUsingTTS(String toSpeak,String escapeDigits,String beepSeconds,int numberOfTry) throws AgiException{
     	char option='0';int count=0;
-    	String ttsNotation=getTTSNotation(language);
+    	ttsNotation=getTTSNotation(language);
     	String beepVoiceLocation=getValueFromPropertyFile("beep","english");
  //   	playUsingTTS("Please Press your option after the beep",ttsNotation);
     	Long time=Long.parseLong(beepSeconds);
@@ -799,13 +816,13 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
   		return;
   	}
   	
-  	String pid=null;boolean isPatientRegistered=true;boolean isAllowed=true;
+  	boolean isPatientRegistered=true;boolean isAllowed=true;
   	int count=Integer.parseInt(channel.getVariable("reminderMenuPlayCount"));
   	
   	if(patientList==null || patientList.size()==0)
   		isPatientRegistered=false;
   	//All option that needs to check if the patient is in the alert System already should add that option to the or Statement
-  	//This is to deal with fact that if a atient is not register and he keeps on opting for the option that needs patient to be registered
+  	//This is to deal with fact that if a patient is not register and he keeps on opting for the option that needs patient to be registered
   	if(keyWord.toLowerCase().equals("reminder")||keyWord.toLowerCase().equals("deregister")){
   		if(!isPatientRegistered && count<=2){						//Play main menu only twice 
   			playUsingTTS(getValueFromPropertyFile("notRegistered","english"),getTTSNotation(language));
@@ -833,7 +850,6 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
   			else
   				playUsingTTS(getValueFromPropertyFile("unsuccessfulRegister", "english"),getTTSNotation(language));
   		}
-  		
   	}
   	
   	else if(keyWord.toLowerCase().equals("reminder")){
@@ -861,7 +877,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
   					playUsingTTS(getValueFromPropertyFile("failUnregister", "english"),getTTSNotation(language));
   	}
   	else if(keyWord.toLowerCase().equals("mainmenu")){
-  		playMainMenu(pid, patientList);
+  		playMainMenu();
   	}
   }
 	
@@ -882,6 +898,7 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         //Get followup question
+        //TODO: modify query to search based on patient id
         String hqlQstn = "from FollowupQstn where fid=:fid";
         Query queryQstn = session.createQuery(hqlQstn);
         Integer fid = 1;
@@ -899,10 +916,10 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
         Query queryChoice = session.createQuery(hqlChoice);
         queryChoice.setInteger("fid", fid);
         List<FollowupChoice> followupChoices = (List<FollowupChoice>) queryChoice.list();
-
+        FollowupResponse followupResponse = null;
 
         //get user response using ASR
-        String choice = getOptionUsingAsr();
+        String choice = getOptionUsingAsr(2);
         if(choice=="")
         {
         //ASR failed. Get followup options using DTMF
@@ -915,21 +932,32 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
             count++;
         }
         option=getOptionUsingTTS(dtmfMenuText,dtmfDigits,"5000",2);
+        followupResponse = setFollowUpResponse(followupChoices.get(Character.getNumericValue(option)).getFcid(), fid);
         }
         else
         {
         logger.info("you said "+choice);
-        //Add logic to get followup choice id from choice string
-        option = '1';
+        for(FollowupChoice followupChoice : followupChoices){
+        	if(choice.equals(followupChoice.getOption().toLowerCase())){
+        		followupResponse = setFollowUpResponse(followupChoice.getFcid(), fid);
+        		break;
+        	}
         }
-
-        FollowupResponse followupResponse = setFollowUpResponse(followupChoices.get(Character.getNumericValue(option)).getFcid(), fid);
-        session.save(followupResponse);
-        logger.info("Successfully saved response for followup "+fid);
-
-        session.getTransaction().commit();
-        session.close();
-
+        }
+        if(followupResponse != null){
+            session.save(followupResponse);
+            logger.info("Successfully saved response for followup "+fid);
+            session.getTransaction().commit();
+            session.close();
+            String recordSuccessMsg = getValueFromPropertyFile("recordSuccessMsg", "english"); 
+            playUsingTTS(recordSuccessMsg,ttsNotation);	
+         }
+        else{
+        	logger.info("Failed to get response for followup "+fid);
+        	String followupFailMsg = getValueFromPropertyFile("followupFailMsg", "english");
+        	playUsingTTS(followupFailMsg,ttsNotation);
+         }
+        playMainMenu();
         }
         catch(Exception ex){
             ex.printStackTrace();
@@ -962,105 +990,188 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 	return followupResponse;
 	}
 
-		 /**
-	     *  Read access token from properties
-	     * 
-	     */
-	    public String getAsrAccesToken(){
-	    	String accessToken = null;
-	    	Properties prop = new Properties();
-			try{
-				logger.info("Trying to get asr access token");
-				prop.load(this.getClass().getClassLoader().getResourceAsStream("asr.properties"));
-				accessToken = prop.getProperty("access-token");
-				return accessToken;
-			}
-			catch(IOException ex) { 		
-	    		logger.error("Unable to get asr access token");
-	    		return "";
-	    }
-	   }
-	    
-		 /**
-	     *  Create and initialize manager connection
-	     * 
-	     */
-	    public void initManagerConnection(){
-	    	//managerConnection = new ManagerConnection();
-	    	ASTERISK_SERVER_URL=null;
-	  	    MANAGER_USERNAME=null;
-	  	    MANAGER_PASSWORD=null;
-	  	   try {
-	  		   	Properties prop = new Properties();
-	     		prop.load(CallHandler.class.getClassLoader().getResourceAsStream("config.properties"));
-	     		ASTERISK_SERVER_URL=prop.getProperty("Asterisk_URL");
-	     		MANAGER_USERNAME=prop.getProperty("Manager_Username");
-	     		MANAGER_PASSWORD=prop.getProperty("Manager_Password");
-	     	   } 
-	     	catch (IOException ex) {
-	     		
-	     		logger.error("Some error occur while retreiving information from config.properties. Unable to create manager instance");
-	     		logger.error("\nCaused by\n",ex);
-	    }
-	  	 ManagerConnectionFactory factory = new ManagerConnectionFactory(
-  			   ASTERISK_SERVER_URL, MANAGER_USERNAME, MANAGER_PASSWORD);
-	  	 this.managerConnection = factory.createManagerConnection();	   
-	   }	   
-
-/**
-* Get user choice using speech recogniton using Wit 
-*
-*/
-    private String getOptionUsingAsr(){
-    	  String audioPath = "/var/lib/asterisk/sounds/";
-          String audioFileName="";
-          
-    	try{
-            channel.exec("Record","response%d:wav,2,5,");
-            audioFileName = channel.getVariable("RECORDED_FILE");
-        }
-        catch(AgiException e){
-            logger.error("Unable to record audio. AGI exception");
-            logger.error("\nCaused by\n",e);
-        }
-    	
-        String accessToken = getAsrAccesToken();
-        WitSpeech client = new WitSpeech(accessToken,"audio/wav");
-
-        //TODO: Read path and file name from config
+ /**
+ *  Read access token from properties
+ * 
+ */
+public String getAsrAccesToken(){
+	String accessToken = null;
+	Properties prop = new Properties();
+	try{
+		logger.info("Trying to get asr access token");
+		prop.load(this.getClass().getClassLoader().getResourceAsStream("asr.properties"));
+		accessToken = prop.getProperty("access-token");
+		return accessToken;
+	}
+	catch(IOException ex) { 		
+		logger.error("Unable to get asr access token");
+		return "";
+    }
+   }
+    
+	 /**
+     *  Create and initialize manager connection
+     * 
+     */
+    public void initManagerConnection(){
+    	//managerConnection = new ManagerConnection();
+    	ASTERISK_SERVER_URL=null;
+  	    MANAGER_USERNAME=null;
+  	    MANAGER_PASSWORD=null;
+  	   try {
+  		   	Properties prop = new Properties();
+     		prop.load(CallHandler.class.getClassLoader().getResourceAsStream("config.properties"));
+     		ASTERISK_SERVER_URL=prop.getProperty("Asterisk_URL");
+     		MANAGER_USERNAME=prop.getProperty("Manager_Username");
+     		MANAGER_PASSWORD=prop.getProperty("Manager_Password");
+     	   } 
+     	catch (IOException ex) {
+     		
+     		logger.error("Some error occur while retreiving information from config.properties. Unable to create manager instance");
+     		logger.error("\nCaused by\n",ex);
+    }
+  	 ManagerConnectionFactory factory = new ManagerConnectionFactory(
+		   ASTERISK_SERVER_URL, MANAGER_USERNAME, MANAGER_PASSWORD);
+  	 this.managerConnection = factory.createManagerConnection();	   
+   }	   
+    
+private String getOptionUsingAsr(int retryCount){
+	  String audioPath = "/var/lib/asterisk/sounds/";
+      String audioFileName = "";
+      String msgBody = "";
+      String response = "";
+      double confidence = 0.0;
       
+	try{
+        channel.exec("Record","response%d:wav,2,5,");
+        audioFileName = channel.getVariable("RECORDED_FILE");
+    }
+    catch(AgiException e){
+        logger.error("Unable to record audio. AGI exception");
+        logger.error("\nCaused by\n",e);
+    }
+	
+    String accessToken = getAsrAccesToken();
+    WitSpeech client = new WitSpeech(accessToken,"audio/wav");
 
-		File file = new File(audioPath+audioFileName+".wav");
-		FileInputStream fis = null;
-		logger.info("audio file is "+audioFileName);
+    //TODO: Read path and file name from config
+
+	File file = new File(audioPath+audioFileName+".wav");
+	FileInputStream fis = null;
+	logger.info("audio file is "+audioFileName);
 		try {
 			fis = new FileInputStream(file);
  
 			System.out.println("Total file size to read (in bytes) : "
 					+ fis.available());
  
-			 String response =  client.getResponse(fis);
+			 response =  client.getResponse(fis);
              logger.info("server response is "+response);
-             //return response;
-             WitResponse witResponse = client.processWitResponse(response);
-             logger.info("message body is "+witResponse.getBody());
-             return witResponse.getBody();
+         //return response;
+         WitResponse witResponse = client.processWitResponse(response);
+         msgBody = witResponse.getBody();
+         confidence = witResponse.getOutcome().get_confidence();
+         logger.info("message body is "+msgBody);
+         
+         return msgBody;
 
  
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e){
-			logger.error("speech recognition failed due to "+e);
-		}finally {
+		 e.printStackTrace();
+		}
+		finally {
 			try {
 				if (fis != null)
 					fis.close();
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
+			if((msgBody == "" || confidence < 0.5) && retryCount > 0)
+			{
+				retryCount--;
+				getOptionUsingAsr(retryCount);
+			}
 		}
-        return "";
-    }
+        return msgBody;
+}
+
+public void playInteractionMenu()
+{
+	//TODO: Get pid from pnumber
+	pid = "111";
+	String doctorInteractionText = getValueFromPropertyFile("doctorInteractionText","english");
+	try {
+		char option=getOptionUsingTTS(doctorInteractionText,"1234569","5000",2);
+		String keyWord=analysePatientOption("doctorInteractionMenu",option);
+		if(keyWord.equals("message"))
+		{
+			recordVoiceMessage();
+		}
+		else if(keyWord.equals("playback"))
+		{
+			playbackRecordedCall();			
+		}
+		else if(keyWord.equals("call"))
+		{
+			callDoctor();
+		}
+		else if(keyWord.equals("mainmenu"))
+			return;
+	} catch (AgiException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+private void callDoctor() {
+//TODO: Get doctorNumber from Raxa based on pid
+String doctorNumber = "SIP/doctor";
+try{
+	playUsingTTS("Calling your doctor ",ttsNotation);
+	channel.exec("DIAL","SIP/billy,100,,");	
+}
+catch(Exception e){
+	e.printStackTrace();
+}
+}
+
+//TODO: Move strings to config
+private void playbackRecordedCall() {
+	String audioPath = "/var/lib/asterisk/sounds/"; 
+	try {
+		if(new File(audioPath+"recording"+pid+".wav").exists()){
+	        playUsingTTS("Playing your recorded message ",ttsNotation);
+			channel.streamFile(audioPath+"recording"+pid);	
+		}
+		else
+		{
+			playUsingTTS("You do not have a recorded message ",ttsNotation);
+		}
+	} catch (AgiException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+
+private void recordVoiceMessage() {
+	String audioPath = "/var/lib/asterisk/sounds/";
+	try {
+	playUsingTTS("Please record a voice message after the beep ",ttsNotation);
+		channel.exec("Record","recording"+pid+":wav,4,20,");
+	playUsingTTS("Your message has been recorded ",ttsNotation);
+	} catch (AgiException ae) {
+		ae.printStackTrace();
+		try{
+			playUsingTTS("Sorry unable to record your message",ttsNotation);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}	
+}
+
 
 }
     
