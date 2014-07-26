@@ -28,6 +28,12 @@ public class FollowupQstn {
 	 * wether the reply by the system is successfully sent by the SMS Gateway
 	 */
 	private Time scheduleTime;
+	/**
+	 * the type of followup
+	 * 1.SMS
+	 * 2.Call
+	 */
+	private Time followupType;
 
 
 	public FollowupQstn(int fid, String pid, String qstn, Timestamp fromDate,
