@@ -15,9 +15,17 @@ import org.raxa.database.VariableSetter;
 public class Caller implements Runnable,VariableSetter {
 	
 	private AlertInfo patient;
+	private FollowupQstn followupQstn;
+	private int CALL_TYPE;
 	
 	public Caller(AlertInfo obj){
 		patient=obj;
+		CALL_TYPE = ALERT_TYPE;
+	}
+	
+	public Caller(FollowupQstn obj){
+		followupQstn = obj;
+		CALL_TYPE = FOLLOWUP_TYPE;
 	}
 	
 	/**
@@ -26,11 +34,25 @@ public class Caller implements Runnable,VariableSetter {
 	public void run(){
 		Logger logger = Logger.getLogger(this.getClass());
 		OutgoingCallManager o=new OutgoingCallManager();
-		if(!(o.callPatient(patient.getPhoneNumber(),String.valueOf(patient.getMsgId()), patient.getAlertId(),patient.getpreferLanguage())))
-			logger.error("unable to call Patient with alertId "+patient.getAlertId());
-		else{
-			logger.info("Placed a call to the patient with aid "+patient.getAlertId());
-			updateAlertCount();
+		if(CALL_TYPE==ALERT_TYPE)
+		{
+			if(!(o.callPatient(patient.getPhoneNumber(),String.valueOf(patient.getMsgId()), patient.getAlertId(),patient.getpreferLanguage())))
+				logger.error("unable to call Patient with alertId "+patient.getAlertId());
+			else{
+				logger.info("Placed a call to the patient with aid "+patient.getAlertId());
+				updateAlertCount();
+			}
+		}
+		else if(CALL_TYPE==FOLLOWUP_TYPE)
+		{
+			//TODO: Get actual phonenumbers
+			String pnumber = "SIP/1000abc";
+			if(!(o.callPatient(followupQstn.getFid(),pnumber)))
+				logger.error("unable to call Patient with Fid "+followupQstn.getFid());
+			else{
+				logger.info("Placed a call to the patient with Fid "+followupQstn.getFid());
+				//updateAlertCount();
+			}
 		}
 	}
 	

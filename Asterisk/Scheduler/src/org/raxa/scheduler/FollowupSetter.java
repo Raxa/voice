@@ -15,15 +15,15 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * This class sets all thread each containing information about which patient to be called,what message to play etc.It pass AlertInfo Object for alert.
- * @author atul
+ * This class sets all thread each containing information about which patient to be called,what message to play etc.It passes FollowupQstn Object for followup.
+ * @author rahul
  *
  */
-public class AlertSetter implements Runnable,VariableSetter{
-		static Logger logger = Logger.getLogger(AlertSetter.class);
+public class FollowupSetter implements Runnable,VariableSetter{
+		static Logger logger = Logger.getLogger(FollowupSetter.class);
 		private Date today;
 		
-		public AlertSetter(Date today){
+		public FollowupSetter(Date today){
 			this.today=today;
 		}
 	
@@ -33,16 +33,16 @@ public class AlertSetter implements Runnable,VariableSetter{
 				today=new Date();
 			}	
 		
-		List<AlertInfo> listOfIVRCaller=(new GetAlertInfo()).getPatientInfoOnTime(new Date(),IVR_TYPE);
-		List<AlertInfo> listOfSMSCaller=(new GetAlertInfo()).getPatientInfoOnTime(new Date(),SMS_TYPE);
+		List<FollowupQstn> listOfIVRCaller = getPatientsList(IVR_TYPE);
+		List<FollowupQstn> listOfSMSCaller = getPatientsList(SMS_TYPE);
 		
 		if(listOfIVRCaller!=null)
 			setIVRThread(listOfIVRCaller);
-		else logger.debug("In CallSetter:run-No IVRTuple found for the next interval");
+		else logger.debug("In FollowupSetter:run-No IVRTuple found for the next interval");
 		
 		if(listOfSMSCaller!=null)
 			setSMSThread(listOfSMSCaller);
-		else logger.debug("In CallSetter:run-No SMSTuple found for the next interval");
+		else logger.debug("In FollowupSetter:run-No SMSTuple found for the next interval");
 		
 	}
 	/**
@@ -61,56 +61,15 @@ public class AlertSetter implements Runnable,VariableSetter{
 	}
 	
 	/**
-	 * If Database is getting updated by "Updater Service" This method should be removed.
-	 * 
-	 * Update the database and set isExecuted to no and retry_count to 0 each day(at midnight).
-	 */
-	public void resetDatabase(){
-		  ReminderUpdate r=new ReminderUpdate();
-		  Session session = HibernateUtil.getSessionFactory().openSession();
-		  session.beginTransaction();
-		  String hql="select p.pname,p.preferLanguage,pa.pid,pa.alertType from Patient p,PAlert pa where p.pid=pa.pid";
-		  Query query=session.createQuery(hql);
-		  Iterator results=query.list().iterator();
-		  session.getTransaction().commit();
-		  session.close();
-		  try{
-				Object[] row=(Object[]) results.next();
-				
-				while(true){
-					try{
-						  String pname=(String) row[0];
-						  String preferLanguage=(String) row[1];
-						  String pid=(String) row[2];
-						  int alertType=(Integer) row[3];
-						  r.resetReminder(pid, pname, preferLanguage, alertType);
-						  							//System.out.println(pid+"\n"+pname+"\n"+preferLanguage+"\n"+alertType);
-						  if(results.hasNext())
-							  row=(Object[]) results.next();
-						  else break;
-					}
-					catch(Exception ex){
-						logger.error("Some error while trying to reset Reminder of a patient");
-						logger.error("\nCaused by:\n",ex);
-					}
-				}
-			}
-			catch(Exception ex){
-				logger.error("unable to get patientList on ");
-				logger.error("\nCaused by:\n",ex);
-			}
-	}
-	
-	/**
 	 * Set threads which will call patient
 	 * @param list
 	 */
 	
-	public void setIVRThread(List<AlertInfo> list){
+	public void setIVRThread(List<FollowupQstn> list){
 		Properties prop = new Properties();
 		int THREAD_POOL_CALLER=50;
 		try{
-			prop.load(AlertSetter.class.getClassLoader().getResourceAsStream("config.properties"));
+			prop.load(FollowupSetter.class.getClassLoader().getResourceAsStream("config.properties"));
 			THREAD_POOL_CALLER=Integer.parseInt(prop.getProperty("Thread_Pool_Caller"));
 		}
 		catch (IOException ex) {
@@ -120,8 +79,9 @@ public class AlertSetter implements Runnable,VariableSetter{
 		ScheduledExecutorService executor = Executors.newScheduledThreadPool(THREAD_POOL_CALLER);
 		int count=0;
 	    while(count<list.size()){
-	    	AlertInfo a;
+	    	FollowupQstn a;
 			a=list.get(count);
+			//TODO: Add support for regional languages
 			Caller caller=new Caller(a);
 			try{
 				executor.schedule(caller,0,TimeUnit.SECONDS);
@@ -155,7 +115,7 @@ public class AlertSetter implements Runnable,VariableSetter{
 		ScheduledExecutorService executor = Executors.newScheduledThreadPool(THREAD_POOL_MESSAGER);
 		int count=0;
 	    while(count<list.size()){
-	    	AlertInfo a;
+	    	FollowupQstn a;
 			a=list.get(count);
 			Messager sMSSender=new Messager(a);
 			try{
@@ -169,6 +129,15 @@ public class AlertSetter implements Runnable,VariableSetter{
 				count++;
 			}
 		}
+	}
+	
+	public List<FollowupQstn> getPatientsList(int followupType)
+	{
+		String hqlQstn = "from FollowupQstn where followupType=:followupType and a1.scheduleTime<=:systemTime and toDate<=:toDate";
+        Query queryQstn = session.createQuery(hqlQstn);
+        queryQstn.setInteger("followupType", followupType);
+		queryQstn.setInteger("toDate", new Date());
+        return (FollowupQstn) queryQstn.list();
 	}
 
 }

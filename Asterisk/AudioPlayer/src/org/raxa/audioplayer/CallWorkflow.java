@@ -108,11 +108,13 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
     		pnumber=null;
 	    	this.request=request;
 	    	this.channel=channel;
+			//TODO: Use config instead of hardcoded values 
 	    	if(request.getContext().equals("incoming-call"))
 	        handleIncomingCall();
-	        if(request.getContext().equals("outgoing-call"))
+	        else if(request.getContext().equals("outgoing-call"))
 	        	provideMedicalInfo();
-	        
+	        else if(request.getContext().equals("outgoing-followup-call"))
+	        	provideMedicalInfo();
 	        return;
     	}
     	catch(AgiException ex){
@@ -188,9 +190,6 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
 	
     	allLanguageText=getValueFromPropertyFile("allLangaugeText","english");
     	welcomeText=getValueFromPropertyFile("welcomeText","english");
-    	
-    
-    	
     	if(patientList==null || patientList.size()==0){
     		isPatientRegistered=false;
     		languagePlaying=defaultLanguage;
@@ -199,7 +198,6 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
     		languagePlaying=patientList.get(0).getPatientPreferredLanguage();
     		if(languagePlaying!=null)
     			language=languagePlaying;
- 
     		//If we want the welcome to be played by pre recorded voice unmark it
    /* 		welcomeVoiceFileLocation=getValueFromPropertyFile(languagePlaying.toLowerCase(),"welcome");
     		if(welcomeVoiceFileLocation==null){
@@ -207,20 +205,14 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
     			welcomeVoiceFileLocation=getValueFromPropertyFile(languagePlaying.toLowerCase(),"welcome");
     		}
     */	}
-    	
- 
-    	
     	//plays welcome in the 'languagePlaying' language.Should say "Welcome to Raxa.Do
 		// you want to continue with this Language.1 for yes 2 for no."
-    	//See "continueWithLanguage.properties" for any change
-    				
-    					//char continueWithTheLanguage=getPatientOption(welcomeVoiceFileLocation,null,"129",1);
+    	//See "continueWithLanguage.properties" for any change			
+    	//char continueWithTheLanguage=getPatientOption(welcomeVoiceFileLocation,null,"129",1);
     	char continueWithTheLanguage = defaultCallHandler.getOptionUsingTTS(welcomeText,"129","5000",2);
     	String isLanguageChanged=analysePatientOption("continueWithLanguage",continueWithTheLanguage);
-    	
     	if(isLanguageChanged==null || !Boolean.parseBoolean(isLanguageChanged)){
-    					//char whichLanguage=getPatientOption(allLanguageVoiceLocation,"20000","1234569",2);			//SHOULD BE PLAYED IN DIFFERENT LANGUAGE AND SHOULD BE PRERECORDED
-    		
+    		//char whichLanguage=getPatientOption(allLanguageVoiceLocation,"20000","1234569",2);			//SHOULD BE PLAYED IN DIFFERENT LANGUAGE AND SHOULD BE PRERECORDED
     		char whichLanguage= defaultCallHandler.getOptionUsingTTS(allLanguageText,"1234569","5000",2);	//SHOULD BE DELETED
     		languagePlaying=analysePatientOption("languageMap",whichLanguage);
     	}
@@ -278,29 +270,25 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
     		isPatientRegistered=false;
     	//All option that needs to check if the patient is in the alert System already should add that option to the or Statement
     	//This is to deal with fact that if a patient is not register and he keeps on opting for the option that needs patient to be registered
-    	
-    	
-    	   	
     	else if(keyWord.toLowerCase().equals("reminder")){
     			new ReminderCallHandler(request,channel,patientList, language);
     	}
-    	
-    	else if (keyWord.toLowerCase().equals("followup")){
-    		new FollowupCallHandler(request,channel,language);
-    	}
-    	
-    	else if(keyWord.toLowerCase().equals("call")){
-    		//INCOMPLETE
-    		//pid = getpid(patientList);
-    		//TODO: get actual patient id 
-		new InteractionCallHandler(request,channel,language,pid);
-    	}
-		  else if(keyWord.toLowerCase().equals("appointments")){
+    	else
+		{	
+			pid = getpid(patientList);
+			if(keyWord.toLowerCase().equals("followup")){
+    			new FollowupCallHandler(request,channel,language,pid);
+    		}
+    		else if(keyWord.toLowerCase().equals("call")){
+			new InteractionCallHandler(request,channel,language,pid);
+    		}
+		  	else if(keyWord.toLowerCase().equals("appointments")){
     		new AppointmentCallHandler(request, channel,language);
-    	}
-    	else if(keyWord.toLowerCase().equals("hangup")){
-    		channel.hangup();
-    	}
+    		}
+    		else if(keyWord.toLowerCase().equals("hangup")){
+    			channel.hangup();
+    		}
+		}
     	playMainMenu();
     }
    

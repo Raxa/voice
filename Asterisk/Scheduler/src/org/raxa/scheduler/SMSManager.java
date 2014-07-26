@@ -18,9 +18,15 @@ class SMSManager implements VariableSetter{
 	
 	private AlertInfo patient;
 	private static final String senderID="TEST SMS";
-	
+	/**
+	*phone number of patient
+	*/
+	private phoneNumber;
 	SMSManager(AlertInfo ai){
 		patient=ai;
+	}
+	
+	SMSManager(){
 	}
 	/**
 	 * Call SMSSender to send message to patient
@@ -39,6 +45,26 @@ class SMSManager implements VariableSetter{
 		SMSResponse response=sender.sendSMSThroughGateway(message, patient.getPhoneNumber(),senderID,patient.getpreferLanguage());
 		if(response.getIsSuccess()){
 			updateAlert(response);
+		}
+	}
+	
+	/**
+	 * Call SMSSender to send message to patient
+	 * @param message
+	 */
+	public void sendSMS(String pnumber, String message){
+		Logger logger = Logger.getLogger(this.getClass());
+		String username="foo";			
+		String password="bar";
+		SMSSender sender=new SMSSender();
+		if(!(sender.login(username,password))){
+				logger.error("IMPORTANT:Cannot loggin to Send SMS for username:"+username+" password:"+password);
+				return;
+		}
+		//TODO: Pass patient preferred language. This argument is not presently used.
+		SMSResponse response=sender.sendSMSThroughGateway(message, pnumber, senderID, "english");
+		if(response.getIsSuccess()){
+			//updateAlert(response);
 		}
 	}
 	

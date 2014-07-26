@@ -7,7 +7,7 @@ import org.asteriskjava.manager.ManagerConnectionFactory;
 import org.asteriskjava.manager.TimeoutException;
 import org.asteriskjava.manager.action.OriginateAction;
 import org.asteriskjava.manager.response.ManagerResponse;
-import org.apache.log4j.Logger;
+import org.apache.log4j.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -61,6 +61,7 @@ public class OutgoingCallManager{
     public OutgoingCallManager(){
     	   setProperties();
     	   
+
     	   ManagerConnectionFactory factory = new ManagerConnectionFactory(
     			   ASTERISK_SERVER_URL, MANAGER_USERNAME, MANAGER_PASSWORD);
 
@@ -69,6 +70,9 @@ public class OutgoingCallManager{
     }
     
     public void setProperties(){
+        System.out.println("getLevel(logger) = " + logger.getLevel());
+        logger.setLevel(Level.DEBUG);
+        System.out.println("getLevel(logger) = " + logger.getLevel());
  	    ASTERISK_SERVER_URL=null;
  	    MANAGER_USERNAME=null;
  	    MANAGER_PASSWORD=null;
@@ -119,7 +123,7 @@ public class OutgoingCallManager{
     public boolean callPatient(String pnumber,String msgId,String aid,String preferLanguage){
     	this.aid=aid;
         logger.debug("Placing the call to patient with phone number-"+pnumber+" having alertId-"+aid+" and msgId-"+msgId+" and preferLanguage "+preferLanguage);
-    	//pnumber="SIP/1000abc"; 							//Should be deleted.only for testing purpose
+    	pnumber="SIP/1000abc"; 							//Should be deleted.only for testing purpose
     	Map<String,String> var=new HashMap<String,String>();
     	var.put("msgId",msgId);
     	var.put("aid",aid);
@@ -156,6 +160,7 @@ public class OutgoingCallManager{
     	}
     	catch(Exception ex){
     		logger.error("In org.raxa.module.ami.Outgoing.java:Some Error Occured");
+    		logger.error("\nCaused by\n",ex);
     		return false;
     	}
     }

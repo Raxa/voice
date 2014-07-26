@@ -19,17 +19,37 @@ import org.raxa.database.VariableSetter;
 public class Messager implements Runnable,VariableSetter {
 
 	private AlertInfo patient;
+	private FollowupQstn followupQstn;
+	private int SMS_TYPE;
 	
 	public Messager(AlertInfo patient){
 		this.patient=patient;
+		this.SMS_TYPE = ALERT_TYPE;
+	}
+	
+	public Messager(FollowupQstn followupQstn){
+		this.followupQstn = followupQstn;
+		this.SMS_TYPE = FOLLOWUP_TYPE;
 	}
 	
 	public void run(){
 		Logger logger=Logger.getLogger(this.getClass());
-		String message=getMessageContent(patient.getMsgId());
-		updateAlertCount();
-		logger.debug("Sending \n message:"+message+"\n Phone Number:"+patient.getPhoneNumber());
-		new SMSManager(patient).sendSMS(message);
+		String message="";
+		if(this.SMS_TYPE == ALERT_TYPE)
+		{
+			message = getMessageContent(patient.getMsgId());
+			updateAlertCount();
+			logger.debug("Sending \n message:"+message+"\n Phone Number:"+patient.getPhoneNumber());
+			new SMSManager(patient).sendSMS(message);
+		}
+		else if(this.SMS_TYPE == FOLLOWUP_TYPE)
+		{
+			//TODO: Get actual phonenumbers
+			String pnumber = "SIP/1000abc";
+			message = followupQstn.getQstn();
+			new SMSManager().sendSMS(pnumber,message);
+		}	
+		
 	}
 	/**
 	 * Get message to be send given a message ID
