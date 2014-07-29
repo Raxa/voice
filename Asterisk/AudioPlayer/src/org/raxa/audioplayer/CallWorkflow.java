@@ -275,7 +275,7 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
     	}
     	else
 		{	
-			pid = getpid(patientList);
+			pid = defaultCallHandler.getPid(patientList);
 			if(keyWord.toLowerCase().equals("followup")){
     			new FollowupCallHandler(request,channel,language,pid);
     		}

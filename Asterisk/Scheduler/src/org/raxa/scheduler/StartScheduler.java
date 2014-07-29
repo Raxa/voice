@@ -9,6 +9,8 @@ public class StartScheduler {
 	public static void main(String[] args) {
 		DatabasePoller dp=new DatabasePoller();
 		dp.start();
+		FollowupListener fl = new FollowupListener();
+		fl.start();
 	}
 
 }

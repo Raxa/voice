@@ -5,5 +5,9 @@ public interface VariableSetter {
 	
 	public static final int SMS_TYPE = 2;
 	
+	public static final int ALERT_TYPE = 3;
+	
+	public static final int FOLLOWUP_TYPE = 4;
+	
 
 }

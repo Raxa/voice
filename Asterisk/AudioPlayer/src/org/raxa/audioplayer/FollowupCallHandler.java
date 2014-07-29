@@ -47,11 +47,12 @@ public class FollowupCallHandler extends CallHandler
 	private AgiRequest request;
 	AgiChannel channel;
 	private Logger logger = Logger.getLogger(this.getClass());
-	
-	FollowupCallHandler(AgiRequest request, AgiChannel channel, String language){
+	String pid;
+	FollowupCallHandler(AgiRequest request, AgiChannel channel, String language, String pid){
 		super(channel,request,language);
 		this.request=request;
 	    this.channel=channel;
+		this.pid = pid;
 		try{
     		service(request, channel);
 			} catch(Exception ex){
