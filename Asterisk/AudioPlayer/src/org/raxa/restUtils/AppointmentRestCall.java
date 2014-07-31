@@ -18,6 +18,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.log4j.Logger;
 import org.openmrs.Location;
 import org.openmrs.Provider;
+import org.openmrs.module.appointmentscheduling.Appointment;
 import org.openmrs.module.appointmentscheduling.AppointmentBlock;
 import org.openmrs.module.appointmentscheduling.AppointmentType;
 import org.openmrs.module.appointmentscheduling.TimeSlot;
@@ -27,7 +28,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.json.JSONObject;
 import org.json.JSONStringer;
-
 import org.raxa.restUtils.ISO8601DateParser;
 
 /**
@@ -67,8 +67,8 @@ public class AppointmentRestCall{
 	
 
 	
-	public List<AppointmentType> getAppointmentTypes(){
-		String query="appointmentscheduling/appointmenttype?v=full";
+	public List<AppointmentType> getAppointmentTypes(String limit){
+		String query="appointmentscheduling/appointmenttype?v=full&limit="+limit;
 		ObjectMapper m=new ObjectMapper();
 		List<AppointmentType> appointmentTypes = new ArrayList<AppointmentType>();
 		try{
@@ -91,6 +91,34 @@ public class AppointmentRestCall{
 			logger.error("\n ERROR Caused by\n",ex);
 			ex.printStackTrace();
 			return appointmentTypes;
+		}
+	}
+	
+	//TODO: Add getTimeSlots. Call it inside
+	public List<Appointment> getAppointments(String patient, String limit){
+		String query="appointmentscheduling/appointment/+"+patient+"?v=full&limit="+limit;
+		ObjectMapper m=new ObjectMapper();
+		List<Appointment> appointments = new ArrayList<Appointment>();
+		try{
+			JsonNode rootNode = m.readTree(RestCall.getRequestGet(query));
+			JsonNode results = rootNode.get("results");
+			System.out.println(results.size());
+			for(JsonNode result:results){
+				String uuid=result.path("uuid").textValue();
+				String name=result.path("display").textValue();
+				String desc=result.path("description").textValue();
+				Integer duration=result.path("duration").asInt();
+				Appointment appointment = new Appointment();
+				appointment.setUuid(uuid);
+				appointments.add(appointment);
+			}
+			return appointments;
+		}
+		catch(Exception ex){
+			logger.info("Some Error occured.Retruning null for phone number:");
+			logger.error("\n ERROR Caused by\n",ex);
+			ex.printStackTrace();
+			return appointments;
 		}
 	}
 	
@@ -120,8 +148,9 @@ public class AppointmentRestCall{
 		}
 	}
 	
-	public List<Provider> getProviders(){
-		String query="provider?q=doctor&v=full";
+	public List<Provider> getProviders(String limit){
+		//String query="provider?q=doctor&v=full?limit="+limit;
+		String query="provider?v=full&limit="+limit;
 		ObjectMapper m=new ObjectMapper();
 		List<Provider> providers = new ArrayList<Provider>();
 		Provider provider;
@@ -145,33 +174,7 @@ public class AppointmentRestCall{
 			return providers;
 		}
 	}
-	
-	public void createPerson(String gender, String givenName, String familyName){
-		String query="person";
-		try{
-		ObjectMapper m=new ObjectMapper();
-		JSONObject personDetails = new JSONObject();
-		personDetails.put("gender", "M");
-		/*
-		JSONObject name = new JSONObject();
-		name.put("givenName", "Raj");
-		name.put("familyName", "Mohan");
-		personDetails.put("names",name);
-		System.out.println(personDetails.toString());
-		*/
-		 String input = "{\"gender\": \"" + gender + 
-			      "\", \"names\": [{\"givenName\":\"" + givenName + 
-			      "\", \"familyName\":\"" + familyName + "\"}]}";
-		StringEntity se = new StringEntity(input);
-		se.setContentType("application/json");
-		if(RestCall.getRequestPost(query,se))
-			System.out.println("Success");
-		else
-			System.out.println("Failure");
-		} catch(Exception ex){
-			ex.printStackTrace();
-		}
-	}
+
 	
 	public List<TimeSlot> getTimeSlots(Date fromDate, Date toDate, String appointmentType, String location, String provider, String limit){
 		String charset = "UTF-8";

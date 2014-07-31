@@ -14,6 +14,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.asteriskjava.fastagi.AgiChannel;
 import org.asteriskjava.fastagi.AgiException;
@@ -101,16 +103,18 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
     public void service(AgiRequest request, AgiChannel channel) throws AgiException{
 
     	try{
-			defaultCallHandler = new DefaultCallHandler(request,channel);
+    		String defaultLanguage=getValueFromPropertyFile("0","languageMap");
+            language=defaultLanguage;
+    		pnumber=null;
+            LogManager.getRootLogger().setLevel(Level.DEBUG);
+			defaultCallHandler = new DefaultCallHandler(request,channel,language);
 			defaultCallHandler.answer();
     		//answer();
-    		language=null;
-    		pnumber=null;
 	    	this.request=request;
 	    	this.channel=channel;
 			//TODO: Use config instead of hardcoded values 
 	    	if(request.getContext().equals("incoming-call"))
-	        handleIncomingCall();
+	    		handleIncomingCall();
 	        else if(request.getContext().equals("outgoing-call"))
 	        	provideMedicalInfo();
 	        else if(request.getContext().equals("outgoing-followup-call"))
@@ -152,8 +156,6 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
     	//pnumber=channel.getName();		//IMPORTANT  DEPEND ON THE TRIE SERVICE WE WILL BE USING
     	//HARDCODE HERE 
     	pnumber="SIP/1000abc";
-    	defaultLanguage=getValueFromPropertyFile("0","languageMap");
-    	language=defaultLanguage;
     	patientList=getAllPatientWithNumber(pnumber);
     	String languagePlaying=sayWelcomeAndgetLanguage(patientList,defaultLanguage);
     	//String languagePlaying="english";

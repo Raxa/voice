@@ -45,8 +45,8 @@ public class DefaultCallHandler extends CallHandler
 	AgiChannel channel;
 	private Logger logger = Logger.getLogger(this.getClass());
 	
-	DefaultCallHandler(AgiRequest request, AgiChannel channel){
-		super(channel,request);
+	DefaultCallHandler(AgiRequest request, AgiChannel channel, String language){
+		super(channel,request,language);
 		this.request=request;
 	    this.channel=channel;
 		try{
