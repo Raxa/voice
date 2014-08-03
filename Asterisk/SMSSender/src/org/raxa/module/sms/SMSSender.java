@@ -1,4 +1,5 @@
 package org.raxa.module.sms;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -37,6 +38,8 @@ public class SMSSender {
 			String result=HTTPRequest.getRequestPost(getHeadersAndSetBaseUrl(message,pnumber,senderID));
 			if(result==null)
 				throw new Exception();
+			System.out.println("result");
+			logger.error(result);
 			smsresponse=parseResult(result);
 			logger.debug(smsresponse.toString());
 			
@@ -80,6 +83,14 @@ public class SMSSender {
 		//do something with username and password.
 		isAuthorised=true;
 		return isAuthorised;
+	}
+	
+	public static void main(String[] args)
+	{
+		SMSSender smsSender = new SMSSender();
+		smsSender.sendSMSThroughGateway("Main Menu : 1. Get your Medicine Reminder 2. Register yourself for the service 3. Unregister yourself from the service  Type THG (space)(your option)to send your option.",
+				"9160741100", "TEST SMS", "english");
+		
 	}
 	
 	

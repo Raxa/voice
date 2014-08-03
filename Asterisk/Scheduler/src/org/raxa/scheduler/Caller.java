@@ -6,7 +6,8 @@ import org.hibernate.Session;
 import org.raxa.database.Alert;
 import org.raxa.database.HibernateUtil;
 import org.raxa.database.VariableSetter;
-
+import org.raxa.database.FollowupChoice;
+import org.raxa.database.FollowupQstn;
 /**
  * Call Manager AMI and place a call and pass neccessary information
  * Udate Alert retry Count

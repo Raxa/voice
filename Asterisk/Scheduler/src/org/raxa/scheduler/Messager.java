@@ -10,6 +10,8 @@ import org.raxa.database.Alert;
 import org.raxa.database.HibernateUtil;
 import org.raxa.database.Patient;
 import org.raxa.database.VariableSetter;
+import org.raxa.database.FollowupChoice;
+import org.raxa.database.FollowupQstn;
 
 /**
  * Call SMSModule and Provide Info which will then send message to patient
@@ -45,9 +47,12 @@ public class Messager implements Runnable,VariableSetter {
 		else if(this.SMS_TYPE == FOLLOWUP_TYPE)
 		{
 			//TODO: Get actual phonenumbers
-			String pnumber = "SIP/1000abc";
+			//String pnumber = "SIP/1000abc";
+			
+			String pnumber = "9160741100";
 			message = followupQstn.getQstn();
-			new SMSManager().sendSMS(pnumber,message);
+			logger.info("Sending \n message:"+message+"\n Phone Number:"+pnumber);
+			new SMSManager(followupQstn).sendSMS(pnumber,message);
 		}	
 		
 	}

@@ -8,11 +8,14 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Date;
+import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import java.io.IOException;
 import java.util.Properties;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  * This class sets all thread each containing information about which patient to be called,what message to play etc.It passes FollowupQstn Object for followup.
@@ -28,21 +31,28 @@ public class FollowupSetter implements Runnable,VariableSetter{
 		}
 	
 		public void run(){
-			if(!isSameDay()){				//change today when new day occurs
-				resetDatabase();
-				today=new Date();
-			}	
+			logger.info("In FollowupSetter");
+		List<FollowupQstn> listOfIVRCaller = new ArrayList<FollowupQstn>();
+		//List<FollowupQstn> listOfIVRCaller = getPatientsList(IVR_TYPE);
+		List<FollowupQstn> listOfSMSCaller = getPatientsList(IVR_TYPE);
 		
-		List<FollowupQstn> listOfIVRCaller = getPatientsList(IVR_TYPE);
-		List<FollowupQstn> listOfSMSCaller = getPatientsList(SMS_TYPE);
-		
+		/*
+		FollowupQstn fq = new FollowupQstn();
+		String	message = "Did you have your morning medication?\n1. Yes\n2. No \nType <###> (space)(your option)to send your option";
+		fq.setQstn(message);
+		List<FollowupQstn> listOfIVRCaller = new ArrayList<FollowupQstn>();
+		List<FollowupQstn> listOfSMSCaller = new ArrayList<FollowupQstn>();	
+		listOfSMSCaller.add(fq);*/
+		logger.info("SMS size = "+listOfSMSCaller.size());
+		logger.info("IVR size = "+listOfIVRCaller.size());
+			
 		if(listOfIVRCaller!=null)
 			setIVRThread(listOfIVRCaller);
-		else logger.debug("In FollowupSetter:run-No IVRTuple found for the next interval");
+		else logger.info("In FollowupSetter:run-No IVRTuple found for the next interval");
 		
 		if(listOfSMSCaller!=null)
 			setSMSThread(listOfSMSCaller);
-		else logger.debug("In FollowupSetter:run-No SMSTuple found for the next interval");
+		else logger.info("In FollowupSetter:run-No SMSTuple found for the next interval");
 		
 	}
 	/**
@@ -100,11 +110,12 @@ public class FollowupSetter implements Runnable,VariableSetter{
 	 * Set all the threads which will message patient
 	 * @param list
 	 */
-	public void setSMSThread(List<AlertInfo> list){
+	public void setSMSThread(List<FollowupQstn> list){
+		logger.info("Received "+list.size()+" SMS to send");
 		Properties prop = new Properties();
 		int THREAD_POOL_MESSAGER=50;
 		try{
-			prop.load(AlertSetter.class.getClassLoader().getResourceAsStream("config.properties"));
+			prop.load(FollowupSetter.class.getClassLoader().getResourceAsStream("config.properties"));
 			THREAD_POOL_MESSAGER=Integer.parseInt(prop.getProperty("Thread_Pool_Messager"));
 		}
 		catch (IOException ex) {
@@ -133,11 +144,40 @@ public class FollowupSetter implements Runnable,VariableSetter{
 	
 	public List<FollowupQstn> getPatientsList(int followupType)
 	{
-		String hqlQstn = "from FollowupQstn where followupType=:followupType and a1.scheduleTime<=:systemTime and toDate<=:toDate";
+	List<FollowupQstn> qstnsToAsk = new  ArrayList<FollowupQstn>();
+	try{
+		Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+		String hqlQstn = "from FollowupQstn where followupType=:followupType";// and scheduleTime<=:systemTime and toDate<=:toDate";
         Query queryQstn = session.createQuery(hqlQstn);
         queryQstn.setInteger("followupType", followupType);
-		queryQstn.setInteger("toDate", new Date());
-        return (FollowupQstn) queryQstn.list();
+		//queryQstn.setTimestamp("toDate", new Timestamp(new Date().getTime()));
+		 List<FollowupQstn> qstns =  queryQstn.list();
+		//Check if the question has already been asked today
+		for(FollowupQstn fq: qstns){
+			Query query = session.createQuery("from FollowupResponse where fid = :fid and date between :from and :to");
+			query.setParameter("fid", fq.getFid());
+			String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+			Date fromDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date+" 00:00:00");
+			Date toDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date+"  23:59:59");
+			query.setParameter("from", fromDate);
+			query.setParameter("to", toDate);
+			List list = query.list();
+			//havent been asked
+			if(list.size() == 0){
+				qstnsToAsk.add(fq);
+			}
+		}
+		session.getTransaction().commit();
+        session.close();
+	} catch(Exception ex){
+		ex.printStackTrace();
+	}	
+	return qstnsToAsk;
+	}
+	
+	public void resetDatabase(){
+		//Todo
 	}
 
 }

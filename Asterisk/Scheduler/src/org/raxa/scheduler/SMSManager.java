@@ -1,5 +1,8 @@
 package org.raxa.scheduler;
 
+import org.raxa.database.*;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
@@ -9,6 +12,8 @@ import org.raxa.database.VariableSetter;
 import org.raxa.module.sms.SMSResponse;
 import org.raxa.module.sms.SMSSender;
 
+import java.sql.Timestamp;
+
 /**
  * Handle all request which needs to send SMS.
  * @author atul
@@ -17,16 +22,18 @@ import org.raxa.module.sms.SMSSender;
 class SMSManager implements VariableSetter{
 	
 	private AlertInfo patient;
+	private FollowupQstn followupQstn;
 	private static final String senderID="TEST SMS";
 	/**
 	*phone number of patient
 	*/
-	private phoneNumber;
+	private String phoneNumber;
 	SMSManager(AlertInfo ai){
 		patient=ai;
 	}
 	
-	SMSManager(){
+	SMSManager(FollowupQstn fq){
+		followupQstn = fq;
 	}
 	/**
 	 * Call SMSSender to send message to patient
@@ -64,7 +71,7 @@ class SMSManager implements VariableSetter{
 		//TODO: Pass patient preferred language. This argument is not presently used.
 		SMSResponse response=sender.sendSMSThroughGateway(message, pnumber, senderID, "english");
 		if(response.getIsSuccess()){
-			//updateAlert(response);
+			updateFollowup(response);
 		}
 	}
 	
@@ -96,7 +103,44 @@ class SMSManager implements VariableSetter{
 		}
 	}
 	
+		private void updateFollowup(SMSResponse response){
+		Logger logger = Logger.getLogger(this.getClass());
+		try{
+		  Session session = HibernateUtil.getSessionFactory().openSession();
+		  session.beginTransaction();
+			FollowupResponse followupResponse = new FollowupResponse();
+			followupResponse.setFid(followupQstn.getFid());
+			java.util.Date date= new java.util.Date();
+			Timestamp now = new Timestamp(date.getTime());
+			followupResponse.setDate(now);
+			followupResponse.setExecuted(true);
+			followupResponse.setLastTry(now);
+			followupResponse.setRetryCount(0);
+			followupResponse.setSyncStatus(false);
+			session.save(followupResponse);
+		  session.getTransaction().commit();
+		  session.close();
+		}
+		catch(Exception ex){
+			
+			logger.error("Couldnot update Alert for aid:"+patient.getAlertId());
+			logger.error("\n ERROR Caused by\n",ex);
+		}
+	}
 	
-	 
+	 	private FollowupResponse setFollowUpResponse(int fcid, int fid){
+	FollowupResponse followupResponse = new FollowupResponse();
+	followupResponse.setFid(fid);
+	followupResponse.setResponse(fcid);
+	java.util.Date date= new java.util.Date();
+	Timestamp now = new Timestamp(date.getTime());
+	followupResponse.setDate(now);
+	followupResponse.setExecuted(true);
+	followupResponse.setLastTry(now);
+	followupResponse.setRetryCount(0);
+	followupResponse.setSyncStatus(false);
+	return followupResponse;
+	}
+
 	
 }

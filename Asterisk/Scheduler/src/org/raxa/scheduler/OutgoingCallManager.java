@@ -129,7 +129,27 @@ public class OutgoingCallManager{
     	var.put("aid",aid);
     	var.put("preferLanguage", preferLanguage.toLowerCase());
     	var.put("ttsNotation", getTTSNotation(preferLanguage));
-    		
+    	return originateCall(var, pnumber);
+    }
+        /**
+     * Tell Asterisk to call a number:pnumber and give control of the call to "CONTEXT:EXTENSION".
+     * Set channel variables which is passed to AGI in extensions.conf
+     * @param pnumber
+     * @param msgId
+     * @param aid
+     * @param preferLanguage
+     * @return
+     */
+    public boolean callPatient(int fid, String pnumber){
+    	this.aid=aid;
+        logger.debug("Placing the call to patient with phone number-"+pnumber+" having fidd-"+fid);
+    	pnumber="SIP/1000abc"; 							//Should be deleted.only for testing purpose
+    	Map<String,String> var=new HashMap<String,String>();
+    	var.put("fid",Integer.toString(fid));
+		return originateCall(var, pnumber);
+    }
+	
+	public boolean originateCall(Map<String, String> var, String pnumber){
     	try{
 	        OriginateAction originateAction=new OriginateAction();
 	        ManagerResponse originateResponse=new ManagerResponse();
@@ -163,8 +183,7 @@ public class OutgoingCallManager{
     		logger.error("\nCaused by\n",ex);
     		return false;
     	}
-    }
-    
+	}
     /**
      * here if TTS does not support the prefer Language,It will pass English as defaultLanguage.But then the header and footer should be played
      * in default language if the mode is AudioFolder.all language should be in lower case in prop file.

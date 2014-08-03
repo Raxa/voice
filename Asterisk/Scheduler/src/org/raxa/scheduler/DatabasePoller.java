@@ -21,6 +21,7 @@ public class DatabasePoller{
 	static Logger logger = Logger.getLogger(DatabasePoller.class);
 	
 	 public void start(){
+		 
 		Properties prop = new Properties();
 		int THREAD_POOL_DATABASE=1;int DATABASE_POLLING_INTERVAL=2;
     	try {
@@ -34,8 +35,10 @@ public class DatabasePoller{
     	}
 		ScheduledExecutorService executor = Executors.newScheduledThreadPool(THREAD_POOL_DATABASE);
 		Runnable alertSetter = new AlertSetter(new Date());
+		Runnable followupSetter = new FollowupSetter(new Date());
 		try{
 			executor.scheduleWithFixedDelay(alertSetter,0,DATABASE_POLLING_INTERVAL,TimeUnit.SECONDS);
+			executor.scheduleWithFixedDelay(followupSetter,0,DATABASE_POLLING_INTERVAL,TimeUnit.SECONDS);
 		}
 		catch(Exception e){
 			logger.error("\nCaused by\n",e);

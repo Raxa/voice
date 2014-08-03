@@ -35,7 +35,9 @@ public class AlertSetter implements Runnable,VariableSetter{
 		
 		List<AlertInfo> listOfIVRCaller=(new GetAlertInfo()).getPatientInfoOnTime(new Date(),IVR_TYPE);
 		List<AlertInfo> listOfSMSCaller=(new GetAlertInfo()).getPatientInfoOnTime(new Date(),SMS_TYPE);
-		
+		logger.info("SMS size = "+listOfSMSCaller.size());
+		logger.info("IVR size = "+listOfIVRCaller.size());
+			
 		if(listOfIVRCaller!=null)
 			setIVRThread(listOfIVRCaller);
 		else logger.debug("In CallSetter:run-No IVRTuple found for the next interval");
