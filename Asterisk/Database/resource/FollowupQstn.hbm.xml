@@ -6,7 +6,6 @@
     <class name="org.raxa.database.FollowupQstn" table="followupqstn" dynamic-update="true">
         <id name="fid" type="int" access="field">
             <column name="fid" />
-            <generator class="native" />
         </id>
         <property name="pid" type="java.lang.String" access="field">
             <column name="pid" />

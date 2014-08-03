@@ -28,13 +28,8 @@ public class FollowupQstn {
 	 * wether the reply by the system is successfully sent by the SMS Gateway
 	 */
 	private Time scheduleTime;
-	/**
-	 * the type of followup
-	 * 1.SMS
-	 * 2.Call
-	 */
-	private Time followupType;
 
+	private int followupType;
 
 	public FollowupQstn(int fid, String pid, String qstn, Timestamp fromDate,
 			Timestamp toDate, Time scheduleTime) {
@@ -47,6 +42,18 @@ public class FollowupQstn {
 		this.scheduleTime = scheduleTime;
 	}
 	
+	public FollowupQstn(int fid, String pid, String qstn, Timestamp fromDate,
+			Timestamp toDate, Time scheduleTime, int followupType) {
+		super();
+		this.fid = fid;
+		this.pid = pid;
+		this.qstn = qstn;
+		this.fromDate = fromDate;
+		this.toDate = toDate;
+		this.scheduleTime = scheduleTime;
+		this.followupType = followupType;
+	}
+
 	public FollowupQstn() {	}
 
 	public int getFid() {
@@ -95,6 +102,14 @@ public class FollowupQstn {
 
 	public void setScheduleTime(Time scheduleTime) {
 		this.scheduleTime = scheduleTime;
+	}
+
+	public int getFollowupType() {
+		return followupType;
+	}
+
+	public void setFollowupType(int followupType) {
+		this.followupType = followupType;
 	}
 	
 }

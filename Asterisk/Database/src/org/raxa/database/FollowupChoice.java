@@ -2,13 +2,13 @@ package org.raxa.database;
 
 public class FollowupChoice {
 
-	public int fcid;
+	public Integer fcid;
 	public int fid;
-	public String option;
+	public String choice;
 	public int getFcid() {
 		return fcid;
 	}
-	public void setFcid(int fcid) {
+	public void setFcid(Integer fcid) {
 		this.fcid = fcid;
 	}
 	public int getFid() {
@@ -17,17 +17,17 @@ public class FollowupChoice {
 	public void setFid(int fid) {
 		this.fid = fid;
 	}
-	public String getOption() {
-		return option;
+	public String getChoice() {
+		return choice;
 	}
-	public void setOption(String option) {
-		this.option = option;
+	public void setChoice(String choice) {
+		this.choice = choice;
 	}
-	public FollowupChoice(int fcid, int fid, String option) {
+	public FollowupChoice(int fcid, int fid, String choice) {
 		super();
 		this.fcid = fcid;
 		this.fid = fid;
-		this.option = option;
+		this.choice = choice;
 	}
 	public FollowupChoice() {
 	
