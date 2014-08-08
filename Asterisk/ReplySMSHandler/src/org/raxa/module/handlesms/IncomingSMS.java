@@ -1,22 +1,32 @@
 package org.raxa.module.handlesms;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.raxa.database.FollowupChoice;
+import org.raxa.database.HibernateUtil;
+
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.Cache;
 
@@ -26,6 +36,7 @@ import com.google.common.cache.Cache;
 //@WebServlet("/incomingsms")
 public class IncomingSMS extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static String FOLLOWUP_KEYWORD = "FWP";
 	private static Logger logger = Logger.getLogger(IncomingSMS.class);
 	/**
 	 * Stores cache of Patient ID and Object(extends Options) associated with it
@@ -143,6 +154,8 @@ public class IncomingSMS extends HttpServlet {
 			return;
 		}
 		
+		DatabaseService.saveIncomingSMS(pnumber, fromNumber, inDate, message);
+		
 		MessageHandler mHandler=new MessageHandler(message);
 		IMessage messageType=mHandler.getMessageFormat();
 		
@@ -175,6 +188,12 @@ public class IncomingSMS extends HttpServlet {
 	private void handleID(MessageHandler mHandler, String pnumber,String message,Date inDate) {
 		String[] split=message.split(" ");String reply;
 		String userID=split[0].toUpperCase();
+		//The keyword for followup is fixed as followup qstn is being send by a different process. 
+		//In case of further features with fixed ids, could consider moving the ids to a enum
+		if(userID.equals(FOLLOWUP_KEYWORD)){
+			Followup.handleFollowupResponse(pnumber, message, inDate);
+			return;
+		}
 		Options option=cache.getIfPresent(userID);
 		if(option==null){
 			mHandler.sendSMS(message,inDate,pnumber, mHandler.getErrorMessage(RMessage.INVALIDSESSION),defaultLanguage);
@@ -205,6 +224,7 @@ public class IncomingSMS extends HttpServlet {
 		//Cache update itself automatically.		 
 	}
 	
+
 	/**
 	 * <p>Take a get request
 	 * <p>Identify the keyword
@@ -248,11 +268,7 @@ public class IncomingSMS extends HttpServlet {
 			return;
 		}
 		else
-			mHandler.sendSMS(message,inDate, pnumber,reply,option.getLanguage());
-		
-		
-		
-	
+			mHandler.sendSMS(message,inDate, pnumber,reply,option.getLanguage());		
 	}
 	/**
 	 * put element in the cache
@@ -326,12 +342,12 @@ public class IncomingSMS extends HttpServlet {
 		
 		if(cache.size()==maxSize)
 			return null;
-		String id;Options inCache;
+		String id;
 		while(true){
 			int random=randInt(1,alphasLength*alphasLength*alphasLength);
 			if(random!=helloStringID){
 				id=getString(random);
-				if(!uncachedID.contains(id) && cache.getIfPresent(id)==null)
+				if(!uncachedID.contains(id) && cache.getIfPresent(id)==null && id !=FOLLOWUP_KEYWORD)
 					break;
 			}
 		}
@@ -418,5 +434,6 @@ public class IncomingSMS extends HttpServlet {
 		}
 		return temp;
 	}
+	
 	
 }

@@ -32,9 +32,9 @@ public class FollowupSetter implements Runnable,VariableSetter{
 	
 		public void run(){
 			logger.info("In FollowupSetter");
-		List<FollowupQstn> listOfIVRCaller = new ArrayList<FollowupQstn>();
-		//List<FollowupQstn> listOfIVRCaller = getPatientsList(IVR_TYPE);
-		List<FollowupQstn> listOfSMSCaller = getPatientsList(IVR_TYPE);
+		//List<FollowupQstn> listOfIVRCaller = new ArrayList<FollowupQstn>();
+		List<FollowupQstn> listOfIVRCaller = getPatientsList(IVR_TYPE);
+		List<FollowupQstn> listOfSMSCaller = getPatientsList(SMS_TYPE);
 		
 		/*
 		FollowupQstn fq = new FollowupQstn();

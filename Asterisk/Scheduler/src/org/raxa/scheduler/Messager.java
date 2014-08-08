@@ -2,8 +2,11 @@
 package org.raxa.scheduler;
 
 import java.util.List;
+import java.math.BigInteger;
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.raxa.alertmessage.MessageTemplate;
 import org.raxa.database.Alert;
@@ -23,6 +26,9 @@ public class Messager implements Runnable,VariableSetter {
 	private AlertInfo patient;
 	private FollowupQstn followupQstn;
 	private int SMS_TYPE;
+	Logger logger=Logger.getLogger(this.getClass());
+	private static String FOLLOWUP_KEYWORD = "FWP";
+
 	
 	public Messager(AlertInfo patient){
 		this.patient=patient;
@@ -35,7 +41,6 @@ public class Messager implements Runnable,VariableSetter {
 	}
 	
 	public void run(){
-		Logger logger=Logger.getLogger(this.getClass());
 		String message="";
 		if(this.SMS_TYPE == ALERT_TYPE)
 		{
@@ -47,15 +52,40 @@ public class Messager implements Runnable,VariableSetter {
 		else if(this.SMS_TYPE == FOLLOWUP_TYPE)
 		{
 			//TODO: Get actual phonenumbers
-			//String pnumber = "SIP/1000abc";
-			
 			String pnumber = "9160741100";
 			message = followupQstn.getQstn();
-			logger.info("Sending \n message:"+message+"\n Phone Number:"+pnumber);
+			int count = 0;
+			for(FollowupChoice followupChoice: getFollowupChoices(followupQstn.getFid())){
+				count++;
+				message += "\n"+count+". "+followupChoice.getChoice();
+			}
+			int followupCacheId = getCacheId(followupQstn.getFid());
+			message += "\n"+ "Type "+FOLLOWUP_KEYWORD+" "+followupCacheId+" (your option)to send your option.";
 			new SMSManager(followupQstn).sendSMS(pnumber,message);
 		}	
 		
 	}
+	private int getCacheId(int fid) {
+		int cacheId = 0;
+		try{
+			String sql="INSERT INTO followupcache (fid) VALUES (?)";
+			Session session = HibernateUtil.getSessionFactory().openSession();
+	    	session.beginTransaction();
+	    	SQLQuery query=session.createSQLQuery(sql);
+	    	query.setInteger(0, fid);
+	    	query.executeUpdate();
+	    	sql = "SELECT LAST_INSERT_ID() FROM followupcache";
+	    	BigInteger result = (BigInteger) session.createSQLQuery(sql).uniqueResult();
+		cacheId = result.intValue();
+	    	session.getTransaction().commit();
+	    	session.close();
+		}catch(Exception ex){
+			logger.info("Some error occured while fetching followupChoices");
+			logger.error("\n ERROR Caused by\n",ex);
+		}
+		return cacheId;
+	}
+
 	/**
 	 * Get message to be send given a message ID
 	 * @param msgId
@@ -90,6 +120,26 @@ public class Messager implements Runnable,VariableSetter {
 		}
 		return null;
 	}
+	
+private List<FollowupChoice> getFollowupChoices(int fid){
+    //Get followup choices
+	List<FollowupChoice> followupChoices = null;
+	try {
+	Session session = HibernateUtil.getSessionFactory().openSession();
+	session.beginTransaction();
+    String hqlChoice = "from FollowupChoice where fid=:fid";
+    Query queryChoice = session.createQuery(hqlChoice);
+    queryChoice.setInteger("fid", fid);
+    followupChoices = (List<FollowupChoice>) queryChoice.list();
+	session.getTransaction().commit();
+	session.close();
+	} catch (Exception ex){
+		logger.info("Some error occured while fetching followupChoices");
+		logger.error("\n ERROR Caused by\n",ex);
+	}
+	return followupChoices;
+
+}
 	/**
 	 *
 	 * @return logger

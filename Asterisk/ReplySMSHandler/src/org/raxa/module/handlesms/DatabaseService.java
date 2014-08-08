@@ -6,12 +6,17 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.raxa.alertmessage.MedicineInformation;
 import org.raxa.alertmessage.MessageTemplate;
+import org.raxa.database.FollowupResponse;
+import org.raxa.database.FollowupQstn;
 import org.raxa.database.Alert;
+import org.raxa.database.FollowupChoice;
 import org.raxa.database.HibernateUtil;
 import org.raxa.database.IvrMsg;
 import org.raxa.database.Patient;
@@ -131,32 +136,32 @@ public class DatabaseService implements VariableSetter {
 			else
 				return new MessageTemplate().getTextToconvertToSMSReminder(info);
 		}
-		  /**
-		   * Get all patient who are registered for alert and bearing phone number(primary or secondary) as pnumber
-		   * @param pnumber : phone number
-		   * @return List<Patient>
-		   */
-		  protected static List<Patient> getAllRegisteredPatientWithNumber(String pnumber){
-		    	List<Patient> nameAndId=new ArrayList<Patient>();
-		    	try{
-			    	Session session = HibernateUtil.getSessionFactory().openSession();
-			    	session.beginTransaction();
-			    	String hql="from Patient where (pnumber=:pnumber or snumber=:pnumber) and pid in (select pid from PAlert where alertType=:alertType)";
-			    	Query query=session.createQuery(hql);
-			    	query.setString("pnumber", pnumber);
-			    	query.setInteger("alertType", SMS_TYPE);
-			    	List<Patient> patientList=(List<Patient>)query.list();
-			    	if(patientList==null || patientList.size()<1)
-			    		return null;
-			    	for(int i=0;i<patientList.size();i++){
-			    		Patient p=(Patient)patientList.get(i);
-			    		nameAndId.add(p);
-			    	}
-			    	
-		    	}
-		    	catch(Exception ex){
-		    		logger.error("unable to retrieve data for patient with phone number:"+pnumber);
-		    		logger.error("\nCaused by:\n",ex);
+	  /**
+	   * Get all patient who are registered for alert and bearing phone number(primary or secondary) as pnumber
+	   * @param pnumber : phone number
+	   * @return List<Patient>
+	   */
+	  protected static List<Patient> getAllRegisteredPatientWithNumber(String pnumber){
+	    	List<Patient> nameAndId=new ArrayList<Patient>();
+	    	try{
+		    	Session session = HibernateUtil.getSessionFactory().openSession();
+		    	session.beginTransaction();
+		    	String hql="from Patient where (pnumber=:pnumber or snumber=:pnumber) and pid in (select pid from PAlert where alertType=:alertType)";
+	    	Query query=session.createQuery(hql);
+	    	query.setString("pnumber", pnumber);
+	    	query.setInteger("alertType", SMS_TYPE);
+	    	List<Patient> patientList=(List<Patient>)query.list();
+	    	if(patientList==null || patientList.size()<1)
+	    		return null;
+	    	for(int i=0;i<patientList.size();i++){
+	    		Patient p=(Patient)patientList.get(i);
+	    		nameAndId.add(p);
+	    	}
+	    	
+		}
+		catch(Exception ex){
+			logger.error("unable to retrieve data for patient with phone number:"+pnumber);
+			logger.error("\nCaused by:\n",ex);
 		    		nameAndId=null;
 		    	}
 		    	return nameAndId;
@@ -197,11 +202,86 @@ public class DatabaseService implements VariableSetter {
 		}
 		  
 		  
-		  
-		  
-		  
-		  
-		  
-		  
+		/**
+		 * persist incoming sms
+		 * 
+		 */
+		
+	public static void saveIncomingSMS(String pnumber, String sysNumber, Date inDate, String message){
+		try{
+			logger.info("Persisting incoming sms");
+			String sql="INSERT INTO incomingsms (sys_number,user_number,msgtxt) VALUES (?,?,?)";
+			Session session = HibernateUtil.getSessionFactory().openSession();
+	    	session.beginTransaction();
+	    	SQLQuery query=session.createSQLQuery(sql);
+	    	query.setString(0, sysNumber);
+	    	query.setString(1, pnumber);
+	    	query.setString(2, message);
+	    	query.executeUpdate();
+	    	session.getTransaction().commit();
+	    	session.close();
+		}catch(Exception ex){
+			logger.info("Some error occured while fetching followupChoices");
+			logger.error("\n ERROR Caused by\n",ex);
+		}	
+	}
+	
+  /**
+   * Get all patient who are registered for alert and bearing phone number(primary or secondary) as pnumber
+   * @param pnumber : phone number
+   * @return List<Patient>
+   */
+  protected static Patient getPatientForFollowup(String pnumber, int fid){
+	try{
+    	Session session = HibernateUtil.getSessionFactory().openSession();
+    	session.beginTransaction();
+    	String hql="from Patient where (pnumber=:pnumber or snumber=:pnumber) and pid in (select pid from FollowupQstn where fid=:fid)";
+    	Query query=session.createQuery(hql);
+    	query.setString("pnumber", pnumber);
+    	query.setInteger("fid", fid);
+    	return (Patient) query.list().get(0);
+    	}
+	catch(Exception ex){
+		logger.error("unable to retrieve data for followup patient with phone number:"+pnumber);
+		logger.error("\nCaused by:\n",ex);
+    	}
+    	return null;
+    }
+  
+	public static List<FollowupChoice> getFollowupChoices(int fid){
+	    //Get followup choices
+		List<FollowupChoice> followupChoices = null;
+		try {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+	    String hqlChoice = "from FollowupChoice where fid=:fid";
+	    Query queryChoice = session.createQuery(hqlChoice);
+	    queryChoice.setInteger("fid", fid);
+	    followupChoices = (List<FollowupChoice>) queryChoice.list();
+		session.getTransaction().commit();
+		session.close();
+		} catch (Exception ex){
+			logger.info("Some error occured while fetching followupChoices");
+			logger.error("\n ERROR Caused by\n",ex);
+		}
+		return followupChoices;
+	}
+	
+	public static boolean saveFollowupResponse (FollowupResponse followupResponse){
+	try {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+	    session.save(followupResponse);
+		session.getTransaction().commit();
+		session.close();
+		return true;
+		} catch (Exception ex){
+			logger.info("Some error occured while fetching followupChoices");
+			logger.error("\n ERROR Caused by\n",ex);
+			return false;
+		}
+	}
 
+
+  
 }

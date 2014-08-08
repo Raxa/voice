@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 import org.openmrs.Location;
 import org.openmrs.Provider;
 import org.openmrs.module.appointmentscheduling.Appointment;
+import org.openmrs.module.appointmentscheduling.Appointment.AppointmentStatusType;
 import org.openmrs.module.appointmentscheduling.AppointmentBlock;
 import org.openmrs.module.appointmentscheduling.AppointmentType;
 import org.openmrs.module.appointmentscheduling.TimeSlot;
@@ -94,10 +95,13 @@ public class AppointmentRestCall{
 		}
 	}
 	
-	//TODO: Add getTimeSlots. Call it inside
-	public List<Appointment> getAppointments(String patient, String limit){
-		String query="appointmentscheduling/appointment/+"+patient+"?v=full&limit="+limit;
+	public List<Appointment> getAppointments(String patient, AppointmentStatusType status, String limit){
+		String query="appointmentscheduling/appointment?patient+"+patient+
+				"&status"+status.toString()+"&limit="+limit+"&v=full";
 		ObjectMapper m=new ObjectMapper();
+		Appointment appointment;
+		TimeSlot timeSlot;
+		AppointmentType appointmentType;
 		List<Appointment> appointments = new ArrayList<Appointment>();
 		try{
 			JsonNode rootNode = m.readTree(RestCall.getRequestGet(query));
@@ -105,11 +109,17 @@ public class AppointmentRestCall{
 			System.out.println(results.size());
 			for(JsonNode result:results){
 				String uuid=result.path("uuid").textValue();
-				String name=result.path("display").textValue();
-				String desc=result.path("description").textValue();
-				Integer duration=result.path("duration").asInt();
-				Appointment appointment = new Appointment();
+				Date startDate = ISO8601DateParser.parse(result.path("timeSlot").path("startDate").textValue());
+				Date endDate = ISO8601DateParser.parse(result.path("timeSlot").path("endDate").textValue());
+				appointmentType = new AppointmentType();
+				appointmentType.setName( result.path("appointmentType").textValue());
+				timeSlot = new TimeSlot();
+				timeSlot.setStartDate(startDate);
+				timeSlot.setEndDate(endDate);
+				appointment = new Appointment();
 				appointment.setUuid(uuid);
+				appointment.setTimeSlot(timeSlot);
+				appointment.setAppointmentType(appointmentType);
 				appointments.add(appointment);
 			}
 			return appointments;
