@@ -29,6 +29,7 @@ import org.hibernate.Session;
 import org.openmrs.Location;
 import org.openmrs.Provider;
 import org.openmrs.module.appointmentscheduling.Appointment;
+import org.openmrs.module.appointmentscheduling.Appointment.AppointmentStatusType;
 import org.openmrs.module.appointmentscheduling.AppointmentType;
 import org.openmrs.module.appointmentscheduling.TimeSlot;
 import org.raxa.alertmessage.MessageInterface;
@@ -59,13 +60,17 @@ public class AppointmentCallHandler extends CallHandler
 	List<Appointment> appointments;
 	final String LIMIT = "5";
 	final int SEARCH_INTERVAL = 14;
-	final String DATE_FORMAT = "dd MMMM hh a";
+	final String DATE_FORMAT = "dd MMMM h a";
+	final String REPEAT_FORMAT = "  %d to repeat this menu.";
 	SimpleDateFormat sdf;
 	
-	AppointmentCallHandler(AgiRequest request, AgiChannel channel, String language){
+	String pid;
+	
+	AppointmentCallHandler(AgiRequest request, AgiChannel channel, String language, String pid){
 		super(channel,request,language);
 		this.request=request;
 	    this.channel=channel;
+		this.pid = pid;
 	    appointmentRestCall = new AppointmentRestCall();
 	    sdf = new SimpleDateFormat(DATE_FORMAT);
 		try{
@@ -83,9 +88,13 @@ public class AppointmentCallHandler extends CallHandler
     	logger.debug("Entering AppointmentCallHandler"); 
 	}
 	
+    /**
+     * This method plays the main appointment related options
+     * It recursively calls itself unless user exits by choosing to return to main menu
+     */
 	public void playAppointmentMenu(){
 	try {	
-	String pid = "111";
+	//String pid = "111";
 	String locationOptions,providerOptions,appointmentTypeOptions, timeSlotOptions;
 	char locationChoice, providerChoice, appointmentTypeChoice, timeSlotChoice;
 	locationOptions = providerOptions = appointmentTypeOptions = timeSlotOptions = "Press ";
@@ -94,67 +103,82 @@ public class AppointmentCallHandler extends CallHandler
 		String keyWord=analyseOption("appointmentMenu",option);
 		if(keyWord.equals("book"))
 		{
-			int i;
+			int i, choice;
+			//Last option is always to repeat the menu
 			//Get appointment type
 			appointmentTypes = appointmentRestCall.getAppointmentTypes(LIMIT);
-			playUsingTTS("Please choose your appointment type","en","");
-			for(i=0; i<locations.size();i++){
-				appointmentTypeOptions += " "+(i+1)+" for "+appointmentTypes.get(i).getName();
+			for(i=0; i<appointmentTypes.size();i++){
+				appointmentTypeOptions += "  "+(i+1)+" for "+appointmentTypes.get(i).getName();
 			}
-			appointmentTypeChoice = getOptionUsingTTS(appointmentTypeOptions, "12345", "5000", 2);
-			playUsingTTS("You chose "+ appointmentTypes.get(Character.getNumericValue(appointmentTypeChoice)-1).getName() ,"en","");
+			do{
+				playUsingTTS("Please choose your appointment type","en","");
+				appointmentTypeChoice = getOptionUsingTTS(appointmentTypeOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
+				choice = Character.getNumericValue(appointmentTypeChoice);
+			}while(choice == appointmentTypes.size()+1);
+			
+			playUsingTTS("You chose "+ appointmentTypes.get(choice-1).getName() ,"en","");
 
 			//Get locations
 			locations = appointmentRestCall.getLocations(LIMIT);
-			playUsingTTS("Please choose your location","en","");
-			
 			for(i=0; i<locations.size();i++){
 				locationOptions += " "+(i+1)+" for "+locations.get(i).getName();
 			}
-			locationChoice = getOptionUsingTTS(locationOptions, "12345", "5000", 2);
-			playUsingTTS("You chose "+ locations.get(Character.getNumericValue(locationChoice)-1).getName() ,"en","");
+			do{
+			playUsingTTS("Please choose your location","en","");
+			locationChoice = getOptionUsingTTS(locationOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
+			choice = Character.getNumericValue(locationChoice);
+			}while(choice == locations.size()+1);
+			playUsingTTS("You chose "+ locations.get(choice-1).getName() ,"en","");
 			
 			//Get providers
 			providers = appointmentRestCall.getProviders(LIMIT);
-			playUsingTTS("Please choose a doctor","en","");
-
 			for(i=0; i<providers.size();i++){
 				providerOptions += " "+(i+1)+" for "+providers.get(i).getName();
 			}
-			providerChoice = getOptionUsingTTS(providerOptions, "12345", "5000", 2);
-			playUsingTTS("You chose "+ providers.get(Character.getNumericValue(providerChoice)-1).getName() ,"en","");
+			do{
+				playUsingTTS("Please choose a doctor","en","");
+				providerChoice = getOptionUsingTTS(providerOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
+				choice = Character.getNumericValue(providerChoice);
+			}while(choice == providers.size()+1);
+			playUsingTTS("You chose "+ providers.get(choice-1).getName() ,"en","");
 			
 			//Get next 5 timeslots within 2 weeks
 			Date fromDate = new Date();
 			Date toDate = AppointmentRestCall.addDaysToDate(fromDate, SEARCH_INTERVAL);
-			String appointmentTypeUuid = appointmentTypes.get(Character.getNumericValue(appointmentTypeChoice)).getUuid();
-			String locationUuid = locations.get(Character.getNumericValue(locationChoice)).getUuid();
-			String providerUuid = providers.get(Character.getNumericValue(providerChoice)).getUuid();
+			String appointmentTypeUuid = appointmentTypes.get(Character.getNumericValue(appointmentTypeChoice)-1).getUuid();
+			String locationUuid = locations.get(Character.getNumericValue(locationChoice)-1).getUuid();
+			String providerUuid = providers.get(Character.getNumericValue(providerChoice)-1).getUuid();
 			timeSlots = appointmentRestCall.getTimeSlots(fromDate, toDate, appointmentTypeUuid, locationUuid, providerUuid, LIMIT);
 			if(timeSlots.size()==0){
 				playUsingTTS("Sorry, there are no available timeslots based on your selection. Please try again.","en","");
 				return;
 			}
-			playUsingTTS("Please choose from these available timeslots","en","");
+
 			Date date;
 			for(i=0; i<locations.size();i++){
 				date = timeSlots.get(i).getStartDate();
 				timeSlotOptions += " "+(i+1)+" for "+sdf.format(date);
 			}
-			timeSlotChoice = getOptionUsingTTS(timeSlotOptions, "12345", "5000", 2);
+			do{
+				playUsingTTS("Please choose from these available timeslots","en","");
+				timeSlotChoice = getOptionUsingTTS(timeSlotOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
+				choice = Character.getNumericValue(timeSlotChoice);
+			}while(choice == timeSlots.size()+1);
 			TimeSlot timeSlot = timeSlots.get(Character.getNumericValue(timeSlotChoice)-1);
-			
+			String timeSlotUuid = timeSlot.getUuid();
 			char isConfirmed = getOptionUsingTTS("Press 1 to confirm your appointment on "
-											+sdf.format(timeSlot.getStartDate())+" Press 2 to retry", "12345", "5000", 2);
+											+sdf.format(timeSlot.getStartDate())+" Press 2 to retry", "12", "5000", 2);
+			
+			//No need to check for option 2 since playAppointmentMenu() is called outside the main if condition
 			if(isConfirmed=='1'){
-				//appointmentRestCall.createAppointment(timeSlot, patient, appointmentType);
+				appointmentRestCall.createAppointment(timeSlotUuid, pid, appointmentTypeUuid);
 				playUsingTTS("Thanks. Your appointment has been confirmed","en","");
 			}
 
 		}
 		else if(keyWord.equals("status"))
 		{
-			appointments = appointmentRestCall.getAppointments(pid, LIMIT);
+			appointments = appointmentRestCall.getAppointments(pid,AppointmentStatusType.SCHEDULED, LIMIT);
 			if(appointments.size()==0)
 			{
 				playUsingTTS("Your don't have any appointments scheduled","en","");
@@ -166,10 +190,10 @@ public class AppointmentCallHandler extends CallHandler
 				int i;
 				Date date;
 				String appointmentList = "";
-				for(i=0; i<locations.size();i++){
+				for(i=0; i<appointments.size();i++){
 					date = appointments.get(i).getTimeSlot().getStartDate();
 					appointmentList += appointments.get(i).getAppointmentType().getName()+
-										"on "+sdf.format(date);
+										" on "+sdf.format(date);
 				}
 				playUsingTTS(appointmentList,"en","");
 				
@@ -177,7 +201,7 @@ public class AppointmentCallHandler extends CallHandler
 		}
 		else if(keyWord.equals("cancel"))
 		{
-			appointments = appointmentRestCall.getAppointments(pid, LIMIT);
+			appointments = appointmentRestCall.getAppointments(pid, AppointmentStatusType.SCHEDULED, LIMIT);
 			if(appointments.size()==0)
 			{
 				playUsingTTS("Your don't have any appointments to cancel","en","");

@@ -48,7 +48,7 @@ public class AppointmentRestCall{
 	private String patientFullQueryviaQ;
 	public AppointmentRestCall(){
 		try {
-            prop.load(this.getClass().getClassLoader().getResourceAsStream("restCall.properties"));
+            prop.load(this.getClass().getClassLoader().getResourceAsStream("appointmentRestCall.properties"));
             String urlbase=prop.getProperty("restBaseUrl","");
             String username=prop.getProperty("username","");
             String password=prop.getProperty("password","");
@@ -96,8 +96,8 @@ public class AppointmentRestCall{
 	}
 	
 	public List<Appointment> getAppointments(String patient, AppointmentStatusType status, String limit){
-		String query="appointmentscheduling/appointment?patient+"+patient+
-				"&status"+status.toString()+"&limit="+limit+"&v=full";
+		String query="appointmentscheduling/appointment?patient="+patient+
+				"&status="+status.toString()+"&limit="+limit+"&v=full";
 		ObjectMapper m=new ObjectMapper();
 		Appointment appointment;
 		TimeSlot timeSlot;
@@ -112,7 +112,7 @@ public class AppointmentRestCall{
 				Date startDate = ISO8601DateParser.parse(result.path("timeSlot").path("startDate").textValue());
 				Date endDate = ISO8601DateParser.parse(result.path("timeSlot").path("endDate").textValue());
 				appointmentType = new AppointmentType();
-				appointmentType.setName( result.path("appointmentType").textValue());
+				appointmentType.setName( result.path("appointmentType").path("name").textValue());
 				timeSlot = new TimeSlot();
 				timeSlot.setStartDate(startDate);
 				timeSlot.setEndDate(endDate);
@@ -125,7 +125,7 @@ public class AppointmentRestCall{
 			return appointments;
 		}
 		catch(Exception ex){
-			logger.info("Some Error occured.Retruning null for phone number:");
+			logger.info("Some Error occured. Returning null appointments for patient "+patient);
 			logger.error("\n ERROR Caused by\n",ex);
 			ex.printStackTrace();
 			return appointments;
@@ -151,7 +151,7 @@ public class AppointmentRestCall{
 			return locations;
 		}
 		catch(Exception ex){
-			logger.info("Some Error occured.Retruning null for phone number:");
+			logger.info("Some Error occured while getting locations.");
 			logger.error("\n ERROR Caused by\n",ex);
 			ex.printStackTrace();
 			return locations;
@@ -178,7 +178,7 @@ public class AppointmentRestCall{
 			return providers;
 		}
 		catch(Exception ex){
-			logger.info("Some Error occured.Retruning null for phone number:");
+			logger.info("Some Error occured while getting providers");
 			logger.error("\n ERROR Caused by\n",ex);
 			ex.printStackTrace();
 			return providers;
@@ -222,7 +222,7 @@ public class AppointmentRestCall{
 			return timeSlots;
 		}
 		catch(Exception ex){
-			logger.info("Some Error occured.Retruning null for phone number:");
+			logger.info("Some Error occured while getting timeSlots");
 			logger.error("\n ERROR Caused by\n",ex);
 			ex.printStackTrace();
 			return timeSlots;
@@ -257,7 +257,7 @@ public class AppointmentRestCall{
 				System.out.println("Failure");
 			return true;
 		}catch(Exception ex){
-			logger.info("Some Error occured.Retruning null for phone number:");
+			logger.info("Some Error occured inside createAppointment");
 			logger.error("\n ERROR Caused by\n",ex);
 			ex.printStackTrace();
 			return false;	
@@ -278,7 +278,7 @@ public class AppointmentRestCall{
 				System.out.println("Failure");
 			return true;
 		}catch(Exception ex){
-			logger.info("Some Error occured.Retruning null for phone number:");
+			logger.info("Some Error occured inside cancelAppointment");
 			logger.error("\n ERROR Caused by\n",ex);
 			ex.printStackTrace();
 			return false;	

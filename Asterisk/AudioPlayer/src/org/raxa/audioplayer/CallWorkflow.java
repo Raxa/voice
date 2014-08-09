@@ -156,7 +156,10 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
     	//pnumber=channel.getName();		//IMPORTANT  DEPEND ON THE TRIE SERVICE WE WILL BE USING
     	//HARDCODE HERE 
     	pnumber="SIP/1000abc";
-    	patientList=getAllPatientWithNumber(pnumber);
+    	//patientList=getAllPatientWithNumber(pnumber);
+		pid = "3a3d33e6-80f4-4057-b94e-079f364d3c17";
+		new AppointmentCallHandler(request, channel,language, pid);
+		
     	String languagePlaying=sayWelcomeAndgetLanguage(patientList,defaultLanguage);
     	//String languagePlaying="english";
     	if(languagePlaying==null){
@@ -285,7 +288,7 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
 			new InteractionCallHandler(request,channel,language,pid);
     		}
 		  	else if(keyWord.toLowerCase().equals("appointments")){
-    		new AppointmentCallHandler(request, channel,language);
+    		new AppointmentCallHandler(request, channel,language,pid);
     		}
     		else if(keyWord.toLowerCase().equals("hangup")){
     			channel.hangup();

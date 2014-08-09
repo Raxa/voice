@@ -110,7 +110,7 @@ public class FollowupCallHandler extends CallHandler
         String choice = getOptionUsingAsr(2);
         logger.info("you said "+choice);
         for(FollowupChoice followupChoice : followupChoices){
-        	if(choice.equals(followupChoice.getOption().toLowerCase())){
+        	if(choice.equals(followupChoice.getChoice().toLowerCase())){
         		hasRecognized = true;
         		followupResponse = setFollowUpResponse(followupChoice.getFcid(), fid);
         		break;
@@ -124,7 +124,7 @@ public class FollowupCallHandler extends CallHandler
         String dtmfMenuText = "press";
         String dtmfDigits = "";
         for(FollowupChoice followupChoice : followupChoices){
-            dtmfMenuText += " "+count+" for "+followupChoice.getOption();
+            dtmfMenuText += " "+count+" for "+followupChoice.getChoice();
             dtmfDigits += ""+count;
             count++;
         }
