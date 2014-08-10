@@ -14,7 +14,8 @@ public enum Keyword {
 	REMINDER("REM","org.raxa.module.handlesms.Reminder","Get your Medicine Reminder"),
 	MENU("MENU","org.raxa.module.handlesms.Menu","Get Menu"),
 	REGISTER("REG","org.raxa.module.handlesms.Registration","Register yourself for the service"),
-	UNREGISTER("UNREG","org.raxa.module.handlesms.UnRegister","Unregister yourself from the service");
+	UNREGISTER("UNREG","org.raxa.module.handlesms.UnRegister","Unregister yourself from the service"),
+	APPOINTMENT("APMT","org.raxa.module.handlesms.AppointmentSMS","Get appointment menu");;
 	/**
 	 * Keyword which user will send
 	 */

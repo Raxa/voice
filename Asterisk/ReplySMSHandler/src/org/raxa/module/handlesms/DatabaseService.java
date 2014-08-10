@@ -209,7 +209,7 @@ public class DatabaseService implements VariableSetter {
 		
 	public static void saveIncomingSMS(String pnumber, String sysNumber, Date inDate, String message){
 		try{
-			logger.info("Persisting incoming sms");
+			logger.info("Persisting incoming sms from "+pnumber+" on "+inDate.toString()+ " - "+message);
 			String sql="INSERT INTO incomingsms (sys_number,user_number,msgtxt) VALUES (?,?,?)";
 			Session session = HibernateUtil.getSessionFactory().openSession();
 	    	session.beginTransaction();
@@ -282,6 +282,35 @@ public class DatabaseService implements VariableSetter {
 		}
 	}
 
+	  /**
+     *  Return list of patient associated with a number
+     * 
+     * @param pnumber
+     * @return
+     */
+  public static List<Patient> getAllPatients(String pnumber){
+    	List<Patient> nameAndId=new ArrayList<Patient>();
+    	try{
+	    	Session session = HibernateUtil.getSessionFactory().openSession();
+	    	session.beginTransaction();
+			String hql="from Patient where (pnumber=:pnumber or snumber=:pnumber)";
+	    	Query query=session.createQuery(hql);
+	    	query.setString("pnumber", pnumber);
+	    	List<Patient> patientList=(List<Patient>)query.list();
+	    	if(patientList==null || patientList.size()<1)
+	    		return null;
+	    	for(int i=0;i<patientList.size();i++){
+	    		Patient p=(Patient)patientList.get(i);
+	    		nameAndId.add(p);
+	    	}
+	    	return nameAndId;
+    	}
+    	catch(Exception ex){
+    		logger.error("unable to retrieve data for patient with phone number:"+pnumber);
+    		logger.error("\nCaused by:\n",ex);
+    		return null;
+    	}
+    }
 
   
 }
