@@ -155,7 +155,7 @@ public class AppointmentCallHandler extends CallHandler
 			}
 
 			Date date;
-			for(i=0; i<locations.size();i++){
+			for(i=0; i<timeSlots.size();i++){
 				date = timeSlots.get(i).getStartDate();
 				timeSlotOptions += " "+(i+1)+" for "+sdf.format(date);
 			}
@@ -226,11 +226,11 @@ public class AppointmentCallHandler extends CallHandler
 				{
 					if(appointmentRestCall.cancelAppointment(appointments.get(choice-1).getUuid()))
 					{
-						playUsingTTS("An error occured while cancelling. Please try again","en","");
+						playUsingTTS("Your appointment has been successfully cancelled","en","");
 					}
 					else
 					{
-						playUsingTTS("Your appointment has been successfully cancelled","en","");	
+						playUsingTTS("An error occured while cancelling. Please try again","en","");
 					}
 				}
 			}

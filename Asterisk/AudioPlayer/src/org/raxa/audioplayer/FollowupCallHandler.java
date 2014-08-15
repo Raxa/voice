@@ -48,19 +48,37 @@ public class FollowupCallHandler extends CallHandler
 	AgiChannel channel;
 	private Logger logger = Logger.getLogger(this.getClass());
 	String pid;
+	int fid;
+	boolean HAS_FID;
 	FollowupCallHandler(AgiRequest request, AgiChannel channel, String language, String pid){
 		super(channel,request,language);
 		this.request=request;
 	    this.channel=channel;
 		this.pid = pid;
+		HAS_FID = false;
+		try{
+    		service(request, channel);
+		} 
+		catch(Exception ex){
+				logger.error("\nCaused by:\n",ex);
+		}	
+	}
+	
+
+    FollowupCallHandler(AgiRequest request, AgiChannel channel, String language, int fid){
+		super(channel,request,language);
+		this.request=request;
+	    this.channel=channel;
+		this.fid = fid;
+		HAS_FID = true;
 		try{
     		service(request, channel);
 			} catch(Exception ex){
 				logger.error("\nCaused by:\n",ex);
-			}	}
+			}	
+	}
 	
 
-    
 	  /**
 	 * checks whether the call is incoming or outgoing.Handles the call accordingly
 	 */
@@ -82,44 +100,86 @@ public class FollowupCallHandler extends CallHandler
    * 
    */
 	private void requestFollowUpInfo() {
-        try{
-        Session session = HibernateUtil.getSessionFactory().openSession();
+	Session session = null;
+    try{
+        session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
+		String ttsNotation=getTTSNotation(language);
         //Get followup question
+		String hqlQstn;
+		Query queryQstn;
         //TODO: modify query to search based on patient id
-        String hqlQstn = "from FollowupQstn where fid=:fid";
-        Query queryQstn = session.createQuery(hqlQstn);
-        Integer fid = 1;
+		if(HAS_FID)
+		{
+		hqlQstn = "from FollowupQstn where fid=:fid";
+        queryQstn = session.createQuery(hqlQstn);
         queryQstn.setInteger("fid", fid);
-        FollowupQstn followupQstn = (FollowupQstn) queryQstn.list().get(0);
-        String qstn = followupQstn.getQstn();
-        String ttsNotation=getTTSNotation(language);
-        char option;
-        boolean hasRecognized = false;
-        //Play follow up question
-        playUsingTTS(qstn,ttsNotation);
+		}
+		else{
+			//Find followup scheduled for this patient in the next one hour
+			//time configurable
+			hqlQstn = "from FollowupQstn where pid=:pid and fromDate <= CURRENT_DATE() and toDate >= CURRENT_DATE()";
+			queryQstn = session.createQuery(hqlQstn);
+			queryQstn.setString("pid", pid);
+		}
+        List<FollowupQstn> followupQstns = (List<FollowupQstn>) queryQstn.list();
+		if(followupQstns.size() > 1){
+			String noOfQstnInfo = "You have "+followupQstns.size()+" followup questions today.";
+			playUsingTTS(noOfQstnInfo,ttsNotation);
+		}
+		for(FollowupQstn followupQstn : followupQstns){
+			String qstn = followupQstn.getQstn();
+			if(!HAS_FID){
+				fid = followupQstn.getFid();
+			}
+			//Play follow up question
+			playUsingTTS(qstn,ttsNotation);
+			//Get followup choices
+			String hqlChoice = "from FollowupChoice where fid=:fid";
+			Query queryChoice = session.createQuery(hqlChoice);
+			queryChoice.setInteger("fid", fid);
+			List<FollowupChoice> followupChoices = (List<FollowupChoice>) queryChoice.list();
+			FollowupResponse followupResponse = null;
+			FollowupChoice followupChoice = recognizeChoice(followupChoices);
+			if(followupChoice != null)
+				followupResponse = setFollowUpResponse(followupChoice.getFcid(), fid);
 
-        //Get followup choices
-        String hqlChoice = "from FollowupChoice where fid=:fid";
-        Query queryChoice = session.createQuery(hqlChoice);
-        queryChoice.setInteger("fid", fid);
-        List<FollowupChoice> followupChoices = (List<FollowupChoice>) queryChoice.list();
-        FollowupResponse followupResponse = null;
+			if(followupResponse != null){
+				session.save(followupResponse);
+				logger.info("Successfully saved response for followup "+fid);
+				String recordSuccessMsg = getValueFromPropertyFile("recordSuccessMsg", "english"); 
+				playUsingTTS(recordSuccessMsg,ttsNotation);	
+			 }
+			else{
+				logger.info("Failed to get response for followup "+fid);
+				String followupFailMsg = getValueFromPropertyFile("followupFailMsg", "english");
+				playUsingTTS(followupFailMsg,ttsNotation);
+			 }
+		   }
+		session.getTransaction().commit();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        } finally{
+			if(session !=null)
+				session.close();
+		}
+		
+    }
 
-        //get user response using ASR
+	public FollowupChoice recognizeChoice(List<FollowupChoice> followupChoices){
+	try{
+		//get user response using ASR
         String choice = getOptionUsingAsr(2);
         logger.info("you said "+choice);
         for(FollowupChoice followupChoice : followupChoices){
         	if(choice.equals(followupChoice.getChoice().toLowerCase())){
-        		hasRecognized = true;
-        		followupResponse = setFollowUpResponse(followupChoice.getFcid(), fid);
-        		break;
+        		return followupChoice;
         	}
         }
         
-        if(hasRecognized == false)
-        {
         //ASR failed. Get followup options using DTMF
+		char option;
         int count = 1;
         String dtmfMenuText = "press";
         String dtmfDigits = "";
@@ -129,28 +189,13 @@ public class FollowupCallHandler extends CallHandler
             count++;
         }
         option=getOptionUsingTTS(dtmfMenuText,dtmfDigits,"5000",2);
-        followupResponse = setFollowUpResponse(followupChoices.get(Character.getNumericValue(option)).getFcid(), fid);
-        }
-        
-        if(followupResponse != null){
-            session.save(followupResponse);
-            logger.info("Successfully saved response for followup "+fid);
-            session.getTransaction().commit();
-            session.close();
-            String recordSuccessMsg = getValueFromPropertyFile("recordSuccessMsg", "english"); 
-            playUsingTTS(recordSuccessMsg,ttsNotation);	
-         }
-        else{
-        	logger.info("Failed to get response for followup "+fid);
-        	String followupFailMsg = getValueFromPropertyFile("followupFailMsg", "english");
-        	playUsingTTS(followupFailMsg,ttsNotation);
-         }
-        }
-        catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-
+		return followupChoices.get(Character.getNumericValue(option)-1);
+	}
+	catch(Exception ex){
+		logger.error("Error getting followupchoice"+ex);
+		return null;
+		}
+	}
 
 	/**
    * Persist user response to followUp questions

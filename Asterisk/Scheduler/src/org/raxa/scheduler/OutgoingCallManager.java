@@ -57,7 +57,8 @@ public class OutgoingCallManager{
      */
     private String aid;
     Logger logger = Logger.getLogger(OutgoingCallManager.class);
-    
+    Properties prop;
+	
     public OutgoingCallManager(){
     	   setProperties();
     	   
@@ -81,15 +82,11 @@ public class OutgoingCallManager{
  	    TIMEOUT=null;
  	    EXTENSION=null;
  	   try {
- 		   	Properties prop = new Properties();
+ 		   	prop = new Properties();
     		prop.load(OutgoingCallManager.class.getClassLoader().getResourceAsStream("config.properties"));
     		ASTERISK_SERVER_URL=prop.getProperty("Asterisk_URL");
     		MANAGER_USERNAME=prop.getProperty("Manager_Username");
     		MANAGER_PASSWORD=prop.getProperty("Manager_Password");
-    		CONTEXT=prop.getProperty("MedRemind_Context");
-     	    CALLERID=prop.getProperty("MedRemind_CallerId");
-     	    TIMEOUT=Long.parseLong(prop.getProperty("MedRemind_TimeOut"),10);
-     	    EXTENSION=prop.getProperty("MedRemind_Extension");
     	   } 
     	catch (IOException ex) {
     		
@@ -123,7 +120,11 @@ public class OutgoingCallManager{
     public boolean callPatient(String pnumber,String msgId,String aid,String preferLanguage){
     	this.aid=aid;
         logger.debug("Placing the call to patient with phone number-"+pnumber+" having alertId-"+aid+" and msgId-"+msgId+" and preferLanguage "+preferLanguage);
-    	pnumber="SIP/1000abc"; 							//Should be deleted.only for testing purpose
+    	pnumber="SIP/billy"; 							//Should be deleted.only for testing purpose
+		CONTEXT=prop.getProperty("MedRemind_Context");
+		CALLERID=prop.getProperty("MedRemind_CallerId");
+		TIMEOUT=Long.parseLong(prop.getProperty("MedRemind_TimeOut"),10);
+		EXTENSION=prop.getProperty("MedRemind_Extension");
     	Map<String,String> var=new HashMap<String,String>();
     	var.put("msgId",msgId);
     	var.put("aid",aid);
@@ -142,9 +143,15 @@ public class OutgoingCallManager{
      */
     public boolean callPatient(int fid, String pnumber){
     	this.aid=aid;
-        logger.debug("Placing the call to patient with phone number-"+pnumber+" having fidd-"+fid);
-    	pnumber="SIP/1000abc"; 							//Should be deleted.only for testing purpose
+		pnumber="SIP/billy"; 							//Should be deleted.only for testing purpose
+        logger.debug("Placing the call to patient with phone number-"+pnumber+" having fid-"+fid);
+		CONTEXT=prop.getProperty("Followup_Context");
+		CALLERID=prop.getProperty("Followup_CallerId");
+		TIMEOUT=Long.parseLong(prop.getProperty("Followup_TimeOut"),10);
+		EXTENSION=prop.getProperty("Followup_Extension");
     	Map<String,String> var=new HashMap<String,String>();
+		var.put("preferLanguage", "english");
+    	var.put("ttsNotation", "en");
     	var.put("fid",Integer.toString(fid));
 		return originateCall(var, pnumber);
     }
@@ -206,4 +213,9 @@ public class OutgoingCallManager{
     		return defaultLanguage;
         }
     }
+	
+	public static void main(String [] args){
+		OutgoingCallManager ocm = new OutgoingCallManager();
+		ocm.callPatient(1,"sip/1000abc");
+	}
  }

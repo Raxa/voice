@@ -109,7 +109,6 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
             LogManager.getRootLogger().setLevel(Level.DEBUG);
 			defaultCallHandler = new DefaultCallHandler(request,channel,language);
 			defaultCallHandler.answer();
-    		//answer();
 	    	this.request=request;
 	    	this.channel=channel;
 			//TODO: Use config instead of hardcoded values 
@@ -118,7 +117,10 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
 	        else if(request.getContext().equals("outgoing-call"))
 	        	provideMedicalInfo();
 	        else if(request.getContext().equals("outgoing-followup-call"))
-	        	provideMedicalInfo();
+	        	{
+				int fid = Integer.parseInt(channel.getVariable("fid"));
+				new FollowupCallHandler(request,channel,language,fid);
+				}
 	        return;
     	}
     	catch(AgiException ex){
@@ -156,7 +158,7 @@ public class CallWorkflow extends BaseAgiScript implements MessageInterface,Vari
     	//pnumber=channel.getName();		//IMPORTANT  DEPEND ON THE TRIE SERVICE WE WILL BE USING
     	//HARDCODE HERE 
     	pnumber="SIP/1000abc";
-    	//patientList=getAllPatientWithNumber(pnumber);
+    	patientList=getAllPatientWithNumber(pnumber);
 		pid = "3a3d33e6-80f4-4057-b94e-079f364d3c17";
 		new AppointmentCallHandler(request, channel,language, pid);
 		
