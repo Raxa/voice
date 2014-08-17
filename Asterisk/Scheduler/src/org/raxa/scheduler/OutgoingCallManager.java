@@ -16,7 +16,7 @@ import java.util.Properties;
  * Call Patient Number and set context to handle the call via AGI
  *
  *
- * @author atul
+ * @author atul, rahulr92
  *
  */
 public class OutgoingCallManager{
@@ -70,6 +70,9 @@ public class OutgoingCallManager{
            
     }
     
+    /**
+     * Get asterisk manager credentials from config file 
+     */
     public void setProperties(){
         System.out.println("getLevel(logger) = " + logger.getLevel());
         logger.setLevel(Level.DEBUG);
@@ -108,53 +111,56 @@ public class OutgoingCallManager{
     	TIMEOUT=l;
     }
     		
-    /**
-     * Tell Asterisk to call a number:pnumber and give control of the call to "CONTEXT:EXTENSION".
-     * Set channel variables which is passed to AGI in extensions.conf
-     * @param pnumber
-     * @param msgId
-     * @param aid
-     * @param preferLanguage
-     * @return
-     */
-    public boolean callPatient(String pnumber,String msgId,String aid,String preferLanguage){
-    	this.aid=aid;
-        logger.debug("Placing the call to patient with phone number-"+pnumber+" having alertId-"+aid+" and msgId-"+msgId+" and preferLanguage "+preferLanguage);
-    	pnumber="SIP/billy"; 							//Should be deleted.only for testing purpose
-		CONTEXT=prop.getProperty("MedRemind_Context");
-		CALLERID=prop.getProperty("MedRemind_CallerId");
-		TIMEOUT=Long.parseLong(prop.getProperty("MedRemind_TimeOut"),10);
-		EXTENSION=prop.getProperty("MedRemind_Extension");
-    	Map<String,String> var=new HashMap<String,String>();
-    	var.put("msgId",msgId);
-    	var.put("aid",aid);
-    	var.put("preferLanguage", preferLanguage.toLowerCase());
-    	var.put("ttsNotation", getTTSNotation(preferLanguage));
-    	return originateCall(var, pnumber);
-    }
-        /**
-     * Tell Asterisk to call a number:pnumber and give control of the call to "CONTEXT:EXTENSION".
-     * Set channel variables which is passed to AGI in extensions.conf
-     * @param pnumber
-     * @param msgId
-     * @param aid
-     * @param preferLanguage
-     * @return
-     */
-    public boolean callPatient(int fid, String pnumber){
-    	this.aid=aid;
-		pnumber="SIP/billy"; 							//Should be deleted.only for testing purpose
-        logger.debug("Placing the call to patient with phone number-"+pnumber+" having fid-"+fid);
-		CONTEXT=prop.getProperty("Followup_Context");
-		CALLERID=prop.getProperty("Followup_CallerId");
-		TIMEOUT=Long.parseLong(prop.getProperty("Followup_TimeOut"),10);
-		EXTENSION=prop.getProperty("Followup_Extension");
-    	Map<String,String> var=new HashMap<String,String>();
-		var.put("preferLanguage", "english");
-    	var.put("ttsNotation", "en");
-    	var.put("fid",Integer.toString(fid));
-		return originateCall(var, pnumber);
-    }
+/**
+ * Tell Asterisk to call a number:pnumber and give control of the call to "MedRemind_Context:MedRemind_Extension".
+ * Sets channel variables which are passed to AGI in extensions.conf
+ * Used for medicine reminders
+ * 
+ * @param pnumber
+ * @param msgId
+ * @param aid
+ * @param preferLanguage
+ * @return
+ */
+public boolean callPatient(String pnumber,String msgId,String aid,String preferLanguage){
+	this.aid=aid;
+    logger.debug("Placing the call to patient with phone number-"+pnumber+" having alertId-"+aid+" and msgId-"+msgId+" and preferLanguage "+preferLanguage);
+	pnumber="SIP/billy"; 							//Should be deleted.only for testing purpose
+	CONTEXT=prop.getProperty("MedRemind_Context");
+	CALLERID=prop.getProperty("MedRemind_CallerId");
+	TIMEOUT=Long.parseLong(prop.getProperty("MedRemind_TimeOut"),10);
+	EXTENSION=prop.getProperty("MedRemind_Extension");
+	Map<String,String> var=new HashMap<String,String>();
+	var.put("msgId",msgId);
+	var.put("aid",aid);
+	var.put("preferLanguage", preferLanguage.toLowerCase());
+	var.put("ttsNotation", getTTSNotation(preferLanguage));
+	return originateCall(var, pnumber);
+}
+
+ /**
+ * Tell Asterisk to call a number:pnumber and give control of the call to "Followup_Context:Followup_Extension".
+ * Sets channel variables which are passed to AGI in extensions.conf
+ * Used for followups
+ * 
+ * @param fid
+ * @param pnumber
+ * @return
+ */
+public boolean callPatient(int fid, String pnumber){
+	this.aid=aid;
+	pnumber="SIP/billy"; 							//Should be deleted.only for testing purpose
+    logger.debug("Placing call to patient with phone number-"+pnumber+" having fid-"+fid);
+	CONTEXT=prop.getProperty("Followup_Context");
+	CALLERID=prop.getProperty("Followup_CallerId");
+	TIMEOUT=Long.parseLong(prop.getProperty("Followup_TimeOut"),10);
+	EXTENSION=prop.getProperty("Followup_Extension");
+	Map<String,String> var=new HashMap<String,String>();
+	var.put("preferLanguage", "english");
+	var.put("ttsNotation", "en");
+	var.put("fid",Integer.toString(fid));
+	return originateCall(var, pnumber);
+}
 	
 	public boolean originateCall(Map<String, String> var, String pnumber){
     	try{
@@ -195,7 +201,7 @@ public class OutgoingCallManager{
      * here if TTS does not support the prefer Language,It will pass English as defaultLanguage.But then the header and footer should be played
      * in default language if the mode is AudioFolder.all language should be in lower case in prop file.
      * @param preferLangaue:Language that need to converted to voice by TTS.
-     * @return short notation of the Langauge understood by the TTS.
+     * @return short notation of the Language understood by the TTS.
      */
     public String getTTSNotation(String preferLanguage){
     	String defaultLanguage=null;
@@ -214,8 +220,4 @@ public class OutgoingCallManager{
         }
     }
 	
-	public static void main(String [] args){
-		OutgoingCallManager ocm = new OutgoingCallManager();
-		ocm.callPatient(1,"sip/1000abc");
-	}
  }

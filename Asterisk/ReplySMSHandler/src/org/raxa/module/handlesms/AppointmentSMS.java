@@ -15,6 +15,14 @@ import org.raxa.database.Patient;
 import org.raxa.database.VariableSetter;
 import org.raxa.restUtils.AppointmentRestCall;
 
+/**
+ * All classes extending Options function as state machines
+ * Based on user response, the state of the instance changes
+ * Makes use of AppointmentRESTCall class
+ *  
+ * @author rahulr92
+ *
+ */
 //TODO: Change raw numbers for states to named constants
 public class AppointmentSMS extends Options implements VariableSetter {
 	List<Location> locations;
@@ -45,7 +53,10 @@ public class AppointmentSMS extends Options implements VariableSetter {
 			+ "2. View appointments\n"
 			+ "3. Cancel appointment";
 	private final String NO_APPOINTMENTS = "Your don't have any appointments scheduled";
-	
+	/**
+	 * The system is initially in state 0. It responds with the menu in state 0 & sets processMenu as true.
+	 * When processMenu is true, the user response is used to determine the next state (eg. 1,6,7 for booking, viewing & canceling )
+	 */
 	boolean processMenu;
 	
 	AppointmentRestCall appointmentRestCall;
@@ -69,6 +80,10 @@ public class AppointmentSMS extends Options implements VariableSetter {
 		return Keyword.APPOINTMENT.getDescription();
 	}
 
+	/**
+	 * Manages state of the instance and creates reply messages for each state
+	 * Returns empty string when there is no reply to be sent
+	 */
 	@Override
 	public String getReply(String message, String pnumber) {
 
@@ -99,6 +114,7 @@ public class AppointmentSMS extends Options implements VariableSetter {
 				state=6;
 				break;
 			case 3:
+				//cancel appointment
 				state=7;
 			}
 		} else {

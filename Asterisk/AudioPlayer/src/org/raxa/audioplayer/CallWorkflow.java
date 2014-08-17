@@ -46,11 +46,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.raxa.database.VariableSetter;
 
 /**
- * Outgoing Call Context here sets the following channel variable
- * totalItem;item0,item1....,count
+ * This is the main class which handles the call workflow
+ * Based on the context of the call (eg: incoming-call, outgoing-call, outgoing-followup-call), 
+ * the calleer is taken through the corresponding workflow
  * 
  * CAUTION:Even if the patient has hung up the program is going to execute until it meets an exception or termination.
- * @author atul
+ * @author atul, rahulr92
  *
  */
 public class CallWorkflow extends BaseAgiScript implements MessageInterface,VariableSetter

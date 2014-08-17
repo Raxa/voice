@@ -1,9 +1,23 @@
 package org.raxa.database;
 
+/**
+ * An object of this class corresponds to one possible choice for a followupQstn 
+ * @author rahur
+ *
+ */
 public class FollowupChoice {
 
+	/**
+	 * Uniquely identifies a followupChoice
+	 */
 	public Integer fcid;
+	/**
+	 * The fid specifies which followupQstn this choice belongs to
+	 */
 	public int fid;
+	/**
+	 * The value of the choice. eg. Yes, No etc.
+	 */
 	public String choice;
 	public int getFcid() {
 		return fcid;

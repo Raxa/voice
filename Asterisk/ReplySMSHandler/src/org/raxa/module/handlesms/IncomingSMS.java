@@ -289,8 +289,7 @@ public class IncomingSMS extends HttpServlet {
 	 * @param option
 	 * @return
 	 */
-	private boolean verifyNumber(String pnumber, Options option) {
-				
+	private boolean verifyNumber(String pnumber, Options option) {				
 		return true;
 	}
 
@@ -320,7 +319,7 @@ public class IncomingSMS extends HttpServlet {
 	}
 	
 	/**
-	 * Fills the map datamemebr.
+	 * Fills the map data member.
 	 * <p>for all keywords maps keywords with their associated class
 	 */
 	private void putObjectInMap(){

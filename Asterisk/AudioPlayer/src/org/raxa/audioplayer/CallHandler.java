@@ -32,11 +32,12 @@ import org.raxa.database.Patient;
 import org.raxa.database.VariableSetter;
 
 /**
- * Outgoing Call Context here sets the following channel variable
- * totalItem;item0,item1....,count
+ * Class extends asteriskjava BaseAgiScript
+ * Contains all common call handling functions. 
+ * This class is extended by various application specific call handlers.
+ * eg: FollowupCallHandler, AppointmentCallHandler etc.  
  * 
- * CAUTION:Even if the patient has hung up the program is going to execute until it meets an exception or termination.
- * @author atul
+ * @author rahulr92
  *
  */
 public class CallHandler extends BaseAgiScript implements MessageInterface,VariableSetter
@@ -88,19 +89,34 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
 	}
 	
 	  /**
+	 * Abstract method which acts as entry point for all calls
+	 * This method needs to be overridden by all classes that extend CallHandler. 
 	 * checks whether the call is incoming or outgoing.Handles the call accordingly
 	 */
     public void service(AgiRequest request, AgiChannel channel) throws AgiException{
 	
 	}
 
+    /**
+     * Gets users choice using IVR
+     * Plays toSpeak message and return user's choice
+     * current behavior - if user selects choice while the audio is being played, it is not recorded. 
+     * instead playing is stopped, a beep is played out and system waits for user response for beepSeconds  
+     * 
+     * @param toSpeak
+     * @param escapeDigits
+     * @param beepSeconds
+     * @param numberOfTry
+     * @return
+     * @throws AgiException
+     */
 	public char getOptionUsingTTS(String toSpeak,String escapeDigits,String beepSeconds,int numberOfTry) throws AgiException{
     	char option='0';int count=0;
     	String ttsNotation= "en";
 		 //getTTSNotation(language);
     	String beepVoiceLocation="beep";
 		 //getValueFromPropertyFile("beep","english");
- //   	playUsingTTS("Please Press your option after the beep",ttsNotation);
+    	//playUsingTTS("Please Press your option after the beep",ttsNotation);
     	Long time=Long.parseLong(beepSeconds);
     	while(option=='0'&& count<numberOfTry){
     		playUsingTTS(toSpeak,ttsNotation,escapeDigits);
@@ -233,13 +249,27 @@ public class CallHandler extends BaseAgiScript implements MessageInterface,Varia
   	 this.managerConnection = factory.createManagerConnection();	   
    }	   
     
+/**
+ * Gets user's choice using speech recognition
+ * Presently uses Wit.Ai for voice recognition
+ * Wit responds with a json message which includes msgBody, confidence level and a Natural Language Processing (NLP) component
+ * The NLP component includes context information as intent and entities
+ * Presently the raw msg_body is used as response text. It is accepted only if confidence level is greater than 0.5
+ * 
+ * We can later make use of the NLP part (intent) in the Wit response so that multiple responses can be mapped to the same intent.
+ * Eg: yes, yeah, yea etc.can be mapped to answer_confirmation intent with value 'affirmative'
+ * 
+ * TODO: Add logic to delete audio file after recognition is done
+ * 
+ * @param retryCount
+ * @return
+ */
 public String getOptionUsingAsr(int retryCount){
 	  String audioPath = "/var/lib/asterisk/sounds/";
       String audioFileName = "";
       String msgBody = "";
       String response = "";
       double confidence = 0.0;
-      
 	try{
         channel.exec("Record","response%d:wav,2,5,");
         audioFileName = channel.getVariable("RECORDED_FILE");
@@ -248,31 +278,22 @@ public String getOptionUsingAsr(int retryCount){
         logger.error("Unable to record audio. AGI exception");
         logger.error("\nCaused by\n",e);
     }
-	
     String accessToken = getAsrAccesToken();
     WitSpeech client = new WitSpeech(accessToken,"audio/wav");
-
     //TODO: Read path and file name from config
-
 	File file = new File(audioPath+audioFileName+".wav");
 	FileInputStream fis = null;
 	logger.info("audio file is "+audioFileName);
 		try {
 			fis = new FileInputStream(file);
- 
-			System.out.println("Total file size to read (in bytes) : "
-					+ fis.available());
- 
-			 response =  client.getResponse(fis);
-             logger.info("server response is "+response);
+			//logger.info("Total file size to read (in bytes) : "+ fis.available());
+			response =  client.getResponse(fis);
+            logger.info("server response is "+response);
          //return response;
          WitResponse witResponse = client.processWitResponse(response);
          msgBody = witResponse.getBody();
          confidence = witResponse.getOutcome().get_confidence();
          logger.info("message body is "+msgBody);
-         
-
- 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e){
@@ -299,10 +320,10 @@ public String getOptionUsingAsr(int retryCount){
         return msgBody;
 	}
 
-	 /**
-	 *  Read access token from properties
-	 * 
-	 */
+ /**
+ * Get Wit access token
+ * Read access token from properties
+ */
 	public String getAsrAccesToken(){
 	String accessToken = null;
 	Properties prop = new Properties();
@@ -318,89 +339,89 @@ public String getOptionUsingAsr(int retryCount){
     }
    }
 	
-    /**
-     * used in Outgoing-Call Context.
-     * 
-     * update how many ivrMsg:itemNumber of msgId has been played.
-     * @param count
-     * @throws AgiException
-     */
+/**
+ * used in Outgoing-Call Context.
+ * 
+ * update how many ivrMsg:itemNumber of msgId has been played.
+ * @param count
+ * @throws AgiException
+ */
     public void updateCount(int count) throws AgiException{
 		++count;
 		channel.setVariable("count",String.valueOf(count));
 	}	
 	
-	    /**
-     *  Use in Incoming-Call Context
-     * 
-     *Copied from org.raxa.module.ami.Outgoing.getTTSNotation Method. Just to make the AGI completely independent. 
-     *Return ttsNotation for preferLanguage else return default Notation
-     */
+/**
+ *  Use in Incoming-Call Context
+ * 
+ *Copied from org.raxa.module.ami.Outgoing.getTTSNotation Method. Just to make the AGI completely independent. 
+ *Return ttsNotation for preferLanguage else return default Notation
+ */
+ 
+public String getTTSNotation(String preferLanguage){
+	String defaultLanguage=null;
+	Properties prop = new Properties();
+	try{
+		logger.info("Trying to fetch the notation for the prefer language:"+preferLanguage);
+		prop.load(this.getClass().getClassLoader().getResourceAsStream("tts.properties"));
+		defaultLanguage=prop.getProperty("default");
+		return(prop.getProperty(preferLanguage.toLowerCase()));
+	}
+	catch(IOException ex) {
+		
+		logger.error("Unable to set prefer language:"+preferLanguage+" playing in defaultLanguage:"+defaultLanguage);
+		logger.error("\nCaused by:\n",ex);
+		return defaultLanguage;
+    }
+}
+	
+/**
+ * search for keyword from a property file with option as property field
+ */
     
-    public String getTTSNotation(String preferLanguage){
-    	String defaultLanguage=null;
-    	Properties prop = new Properties();
-		try{
-			logger.info("Trying to fetch the notation for the prefer language:"+preferLanguage);
-			prop.load(this.getClass().getClassLoader().getResourceAsStream("tts.properties"));
-			defaultLanguage=prop.getProperty("default");
-			return(prop.getProperty(preferLanguage.toLowerCase()));
-		}
-		catch(IOException ex) {
-    		
-    		logger.error("Unable to set prefer language:"+preferLanguage+" playing in defaultLanguage:"+defaultLanguage);
-    		logger.error("\nCaused by:\n",ex);
-    		return defaultLanguage;
-        }
-    }
-	
-	    /**
-     * search for keyword from a property file with option as property field
-     */
-    
-    public String analyseOption(String propertyFile,char option){
-    	if(option<='8' && option>='1'){
-    		String keyWord=getValueFromPropertyFile(Character.toString(option),propertyFile);
-    		return keyWord;
-    	}
-    	return null;
-    }
+public String analyseOption(String propertyFile,char option){
+	if(option<='8' && option>='1'){
+		String keyWord=getValueFromPropertyFile(Character.toString(option),propertyFile);
+		return keyWord;
+	}
+	return null;
+}
 	
 	
-    /**
-     * Given a list of possible patient it returns the pid.
-     * then it stores the pid as the channel variable to avoid calculation again and agai
-     * 
-     * Disadvantage:once patient pid is set it cannot query for anyone else while in the call.
-     * @param patientList
-     * @return
-     * @throws AgiException
-     */
-    public String getPid(List<Patient> patientList) throws AgiException{
-    	String pid;
-    	pid=channel.getVariable("pid");
-    	if(pid==null){
-    		pid=getPatientIdfromList(patientList);
-    		logger.info("Patient with pnumber:"+pnumber+"chose pid:"+pid);
-    	}
-		channel.setVariable("pid", pid);
-		return pid;
-    }
+/**
+ * Given a list of possible patient it returns the pid.
+ * then it stores the pid as the channel variable to avoid calculation again and again
+ * 
+ * Disadvantage:once patient pid is set it cannot query for anyone else while in the call.
+ * @param patientList
+ * @return
+ * @throws AgiException
+ */
+public String getPid(List<Patient> patientList) throws AgiException{
+	String pid;
+	pid=channel.getVariable("pid");
+	if(pid==null){
+		pid=getPatientIdfromList(patientList);
+		logger.info("Patient with pnumber:"+pnumber+"chose pid:"+pid);
+	}
+	channel.setVariable("pid", pid);
+	return pid;
+}
     
 
  
-    /**
-     * This speaks out name of all the patient name one by one and return the uuid for the name the caller chose
-     * 
-     * What I don't like about it:after calling every name it will produce a beep and ask for option.If not get an answer say the other patient name and
-     * again beep,wait ask for an option
-     * 
-     * can be changed to any other file.
-     * 
-     *  Use in Incoming-Call Context
-     * @throws AgiException 
-     * 
-     */
+/**
+ * This speaks out name of all the patient name one by one and return the uuid for the name the caller chose
+ * 
+ * What I don't like about it:after calling every name it will produce a beep and ask for option.If not get an answer say the other patient name and
+ * again beep,wait ask for an option
+ * 
+ * can be changed to any other file.
+ * 
+ *  Use in Incoming-Call Context
+ * @throws AgiException 
+ * 
+ */
     public String getPatientIdfromList(List<Patient> patientList) throws AgiException{
     	int numberOfTries=2;
     	if(patientList==null)

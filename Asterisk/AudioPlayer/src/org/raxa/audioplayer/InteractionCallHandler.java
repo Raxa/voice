@@ -31,11 +31,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.raxa.database.VariableSetter;
 
 /**
- * Outgoing Call Context here sets the following channel variable
- * totalItem;item0,item1....,count
- * 
- * CAUTION:Even if the patient has hung up the program is going to execute until it meets an exception or termination.
- * @author atul
+ * Handles all doctor interaction related call handling functions
+ * Includes recording voice message, playing back recorded message and calling a doctor 
  *
  */
 public class InteractionCallHandler extends CallHandler
@@ -58,14 +55,16 @@ public class InteractionCallHandler extends CallHandler
 	
 
     
-	  /**
-	 * checks whether the call is incoming or outgoing.Handles the call accordingly
-	 */
-    public void service(AgiRequest request, AgiChannel channel) throws AgiException{
-	playInteractionMenu();
-	}
-	
-	
+  /**
+ * transfers control to playIneractionMenu
+ */
+public void service(AgiRequest request, AgiChannel channel) throws AgiException{
+playInteractionMenu();
+}
+
+/**
+ * Plays doctor interaction menu
+ */
 public void playInteractionMenu()
 {
 	//TODO: Get pid from pnumber
@@ -94,9 +93,12 @@ public void playInteractionMenu()
 	}
 }
 
+/**
+ * Call a doctor 
+ */
 private void callDoctor() {
-//TODO: Get doctorNumber from Raxa based on pid
-String doctorNumber = "SIP/doctor";
+//TODO: Get doctorNumber from Raxa based on pid (possibly using REST)
+String doctorNumber = "SIP/billy";
 try{
 	playUsingTTS("Calling your doctor ",ttsNotation);
 	channel.exec("DIAL","SIP/billy,100,,");	
@@ -106,7 +108,10 @@ catch(Exception e){
 }
 }
 
-//TODO: Move strings to config
+
+/**
+ * Playback recorded call
+ */
 private void playbackRecordedCall() {
 	String audioPath = "/var/lib/asterisk/sounds/"; 
 	try {
@@ -125,6 +130,9 @@ private void playbackRecordedCall() {
 	
 }
 
+/**
+ * Record voice message with pid as filename
+ */
 private void recordVoiceMessage() {
 	String audioPath = "/var/lib/asterisk/sounds/";
 	try {

@@ -40,11 +40,10 @@ import org.raxa.database.VariableSetter;
 import org.raxa.restUtils.AppointmentRestCall;
 
 /**
- * Outgoing Call Context here sets the following channel variable
- * totalItem;item0,item1....,count
+ * Appointment related call handling functions 
+ * This class makes use of the AppointmentRestCall class to get appointment related attributes via REST
  * 
- * CAUTION:Even if the patient has hung up the program is going to execute until it meets an exception or termination.
- * @author rahul
+ * @author rahulr92
  *
  */
 public class AppointmentCallHandler extends CallHandler
@@ -81,168 +80,198 @@ public class AppointmentCallHandler extends CallHandler
 			}	
 	}
 
-	  /**
-	 * checks whether the call is incoming or outgoing.Handles the call accordingly
-	 */
-    public void service(AgiRequest request, AgiChannel channel) throws AgiException{
-    	logger.debug("Entering AppointmentCallHandler"); 
-	}
-	
-    /**
-     * This method plays the main appointment related options
-     * It recursively calls itself unless user exits by choosing to return to main menu
-     */
-	public void playAppointmentMenu(){
-	try {	
+  /**
+ * checks whether the call is incoming or outgoing.Handles the call accordingly
+ */
+public void service(AgiRequest request, AgiChannel channel) throws AgiException{
+	logger.debug("Entering AppointmentCallHandler"); 
+}
+
+/**
+ * This method plays the main appointment related options
+ * It recursively calls itself unless user exits by choosing to return to main menu
+ */
+public void playAppointmentMenu(){
+try {	
 	//String pid = "111";
-	String locationOptions,providerOptions,appointmentTypeOptions, timeSlotOptions;
-	char locationChoice, providerChoice, appointmentTypeChoice, timeSlotChoice;
-	locationOptions = providerOptions = appointmentTypeOptions = timeSlotOptions = "Press ";
 	String appointmentMenuText = getValueFromPropertyFile("appointmentMenuText","english");
-		char option=getOptionUsingTTS(appointmentMenuText,"1234569","5000",2);
-		String keyWord=analyseOption("appointmentMenu",option);
-		if(keyWord.equals("book"))
-		{
-			int i, choice;
-			//Last option is always to repeat the menu
-			//Get appointment type
-			appointmentTypes = appointmentRestCall.getAppointmentTypes(LIMIT);
-			for(i=0; i<appointmentTypes.size();i++){
-				appointmentTypeOptions += "  "+(i+1)+" for "+appointmentTypes.get(i).getName();
-			}
-			do{
-				playUsingTTS("Please choose your appointment type","en","");
-				appointmentTypeChoice = getOptionUsingTTS(appointmentTypeOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
-				choice = Character.getNumericValue(appointmentTypeChoice);
-			}while(choice == appointmentTypes.size()+1);
-			
-			playUsingTTS("You chose "+ appointmentTypes.get(choice-1).getName() ,"en","");
-
-			//Get locations
-			locations = appointmentRestCall.getLocations(LIMIT);
-			for(i=0; i<locations.size();i++){
-				locationOptions += " "+(i+1)+" for "+locations.get(i).getName();
-			}
-			do{
-			playUsingTTS("Please choose your location","en","");
-			locationChoice = getOptionUsingTTS(locationOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
-			choice = Character.getNumericValue(locationChoice);
-			}while(choice == locations.size()+1);
-			playUsingTTS("You chose "+ locations.get(choice-1).getName() ,"en","");
-			
-			//Get providers
-			providers = appointmentRestCall.getProviders(LIMIT);
-			for(i=0; i<providers.size();i++){
-				providerOptions += " "+(i+1)+" for "+providers.get(i).getName();
-			}
-			do{
-				playUsingTTS("Please choose a doctor","en","");
-				providerChoice = getOptionUsingTTS(providerOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
-				choice = Character.getNumericValue(providerChoice);
-			}while(choice == providers.size()+1);
-			playUsingTTS("You chose "+ providers.get(choice-1).getName() ,"en","");
-			
-			//Get next 5 timeslots within 2 weeks
-			Date fromDate = new Date();
-			Date toDate = AppointmentRestCall.addDaysToDate(fromDate, SEARCH_INTERVAL);
-			String appointmentTypeUuid = appointmentTypes.get(Character.getNumericValue(appointmentTypeChoice)-1).getUuid();
-			String locationUuid = locations.get(Character.getNumericValue(locationChoice)-1).getUuid();
-			String providerUuid = providers.get(Character.getNumericValue(providerChoice)-1).getUuid();
-			timeSlots = appointmentRestCall.getTimeSlots(fromDate, toDate, appointmentTypeUuid, locationUuid, providerUuid, LIMIT);
-			if(timeSlots.size()==0){
-				playUsingTTS("Sorry, there are no available timeslots based on your selection. Please try again.","en","");
-				return;
-			}
-
-			Date date;
-			for(i=0; i<timeSlots.size();i++){
-				date = timeSlots.get(i).getStartDate();
-				timeSlotOptions += " "+(i+1)+" for "+sdf.format(date);
-			}
-			do{
-				playUsingTTS("Please choose from these available timeslots","en","");
-				timeSlotChoice = getOptionUsingTTS(timeSlotOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
-				choice = Character.getNumericValue(timeSlotChoice);
-			}while(choice == timeSlots.size()+1);
-			TimeSlot timeSlot = timeSlots.get(Character.getNumericValue(timeSlotChoice)-1);
-			String timeSlotUuid = timeSlot.getUuid();
-			char isConfirmed = getOptionUsingTTS("Press 1 to confirm your appointment on "
-											+sdf.format(timeSlot.getStartDate())+" Press 2 to retry", "12", "5000", 2);
-			
-			//No need to check for option 2 since playAppointmentMenu() is called outside the main if condition
-			if(isConfirmed=='1'){
-				appointmentRestCall.createAppointment(timeSlotUuid, pid, appointmentTypeUuid);
-				playUsingTTS("Thanks. Your appointment has been confirmed","en","");
-			}
-
-		}
-		else if(keyWord.equals("status"))
-		{
-			appointments = appointmentRestCall.getAppointments(pid,AppointmentStatusType.SCHEDULED, LIMIT);
-			if(appointments.size()==0)
-			{
-				playUsingTTS("Your don't have any appointments scheduled","en","");
-			}
-			else
-			{
-				String plural = (appointments.size() == 1) ? " " : "s ";
-				playUsingTTS("You have the following appointment"+plural+"scheduled","en","");
-				int i;
-				Date date;
-				String appointmentList = "";
-				for(i=0; i<appointments.size();i++){
-					date = appointments.get(i).getTimeSlot().getStartDate();
-					appointmentList += appointments.get(i).getAppointmentType().getName()+
-										" on "+sdf.format(date);
-				}
-				playUsingTTS(appointmentList,"en","");
-				
-			}
-		}
-		else if(keyWord.equals("cancel"))
-		{
-			appointments = appointmentRestCall.getAppointments(pid, AppointmentStatusType.SCHEDULED, LIMIT);
-			if(appointments.size()==0)
-			{
-				playUsingTTS("Your don't have any appointments to cancel","en","");
-			}
-			else
-			{
-				playUsingTTS("Choose appointment to cancel","en","");
-				int i;
-				Date date;
-				String appointmentList = "Press ";
-				for(i=0; i<appointments.size();i++){
-					date = appointments.get(i).getTimeSlot().getStartDate();
-					appointmentList += (i+1)+ " to cancel "+appointments.get(i).getAppointmentType().getName()+
-										"on "+sdf.format(date);
-				}
-				int choice = Character.getNumericValue(getOptionUsingTTS(appointmentList,"12345", "5000", 2));
-				if(choice > appointments.size())
-				{
-					playUsingTTS("Invalid choice. Please try again","en","");
-				}
-				else
-				{
-					if(appointmentRestCall.cancelAppointment(appointments.get(choice-1).getUuid()))
-					{
-						playUsingTTS("Your appointment has been successfully cancelled","en","");
-					}
-					else
-					{
-						playUsingTTS("An error occured while cancelling. Please try again","en","");
-					}
-				}
-			}
-		}
-		else if(keyWord.equals("mainmenu"))
-			{
-			return;
-			}
-		playAppointmentMenu();
+	char option=getOptionUsingTTS(appointmentMenuText,"1234569","5000",2);
+	String keyWord=analyseOption("appointmentMenu",option);
+	if(keyWord.equals("book"))
+	{
+		bookAppointment();
+	}
+	else if(keyWord.equals("status"))
+	{
+		getScheduledAppointments();
+	}
+	else if(keyWord.equals("cancel"))
+	{
+		cancelAppointment();
+	}
+	else if(keyWord.equals("mainmenu"))
+	{
+	return;
+	}
+	playAppointmentMenu();
 	} catch (AgiException e) {
 		e.printStackTrace();
+	}	
+ }
+
+/**
+ * Gets all the appointments of the patient
+ * Cancels the appointment chosen by the patient
+ * 
+ * @throws AgiException
+ */
+private void cancelAppointment() throws AgiException {
+	appointments = appointmentRestCall.getAppointments(pid, AppointmentStatusType.SCHEDULED, LIMIT);
+	if(appointments.size()==0)
+	{
+		playUsingTTS("Your don't have any appointments to cancel","en","");
 	}
-			
+	else
+	{
+		playUsingTTS("Choose appointment to cancel","en","");
+		int i;
+		Date date;
+		String appointmentList = "Press ";
+		for(i=0; i<appointments.size();i++){
+			date = appointments.get(i).getTimeSlot().getStartDate();
+			appointmentList += (i+1)+ " to cancel "+appointments.get(i).getAppointmentType().getName()+
+								"on "+sdf.format(date);
+		}
+		int choice = Character.getNumericValue(getOptionUsingTTS(appointmentList,"12345", "5000", 2));
+		if(choice > appointments.size())
+		{
+			playUsingTTS("Invalid choice. Please try again","en","");
+		}
+		else
+		{
+			if(appointmentRestCall.cancelAppointment(appointments.get(choice-1).getUuid()))
+			{
+				playUsingTTS("Your appointment has been successfully cancelled","en","");
+			}
+			else
+			{
+				playUsingTTS("An error occured while cancelling. Please try again","en","");
+			}
+		}
 	}
+}
+
+/**
+ * Gets all scheduled appointments of the patient
+ * @throws AgiException
+ */
+private void getScheduledAppointments() throws AgiException {
+	appointments = appointmentRestCall.getAppointments(pid,AppointmentStatusType.SCHEDULED, LIMIT);
+	if(appointments.size()==0)
+	{
+		playUsingTTS("Your don't have any appointments scheduled","en","");
+	}
+	else
+	{
+		String plural = (appointments.size() == 1) ? " " : "s ";
+		playUsingTTS("You have the following appointment"+plural+"scheduled","en","");
+		int i;
+		Date date;
+		String appointmentList = "";
+		for(i=0; i<appointments.size();i++){
+			date = appointments.get(i).getTimeSlot().getStartDate();
+			appointmentList += appointments.get(i).getAppointmentType().getName()+
+								" on "+sdf.format(date);
+		}
+		playUsingTTS(appointmentList,"en","");
+	}
+}
+
+/**
+ * Gets appointment type, location, doctor and time
+ * Book appointment based on these parameters
+ * 
+ * @throws AgiException
+ */
+private void bookAppointment() throws AgiException {
+	char locationChoice;
+	char providerChoice;
+	char appointmentTypeChoice;
+	char timeSlotChoice;
+	int i, choice;
+	String locationOptions,providerOptions,appointmentTypeOptions, timeSlotOptions;
+	locationOptions = providerOptions = appointmentTypeOptions = timeSlotOptions = "Press ";
+	//Last option is always to repeat the menu
+	
+	//Get appointment type
+	appointmentTypes = appointmentRestCall.getAppointmentTypes(LIMIT);
+	for(i=0; i<appointmentTypes.size();i++){
+		appointmentTypeOptions += "  "+(i+1)+" for "+appointmentTypes.get(i).getName();
+	}
+	do{
+		playUsingTTS("Please choose your appointment type","en","");
+		appointmentTypeChoice = getOptionUsingTTS(appointmentTypeOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
+		choice = Character.getNumericValue(appointmentTypeChoice);
+	}while(choice == appointmentTypes.size()+1);
+	playUsingTTS("You chose "+ appointmentTypes.get(choice-1).getName() ,"en","");
+
+	//Get locations
+	locations = appointmentRestCall.getLocations(LIMIT);
+	for(i=0; i<locations.size();i++){
+		locationOptions += " "+(i+1)+" for "+locations.get(i).getName();
+	}
+	do{
+	playUsingTTS("Please choose your location","en","");
+	locationChoice = getOptionUsingTTS(locationOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
+	choice = Character.getNumericValue(locationChoice);
+	}while(choice == locations.size()+1);
+	playUsingTTS("You chose "+ locations.get(choice-1).getName() ,"en","");
+	
+	//Get providers
+	providers = appointmentRestCall.getProviders(LIMIT);
+	for(i=0; i<providers.size();i++){
+		providerOptions += " "+(i+1)+" for "+providers.get(i).getName();
+	}
+	do{
+		playUsingTTS("Please choose a doctor","en","");
+		providerChoice = getOptionUsingTTS(providerOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
+		choice = Character.getNumericValue(providerChoice);
+	}while(choice == providers.size()+1);
+	playUsingTTS("You chose "+ providers.get(choice-1).getName() ,"en","");
+	
+	//Get next 5 timeslots within 2 weeks
+	Date fromDate = new Date();
+	Date toDate = AppointmentRestCall.addDaysToDate(fromDate, SEARCH_INTERVAL);
+	String appointmentTypeUuid = appointmentTypes.get(Character.getNumericValue(appointmentTypeChoice)-1).getUuid();
+	String locationUuid = locations.get(Character.getNumericValue(locationChoice)-1).getUuid();
+	String providerUuid = providers.get(Character.getNumericValue(providerChoice)-1).getUuid();
+	timeSlots = appointmentRestCall.getTimeSlots(fromDate, toDate, appointmentTypeUuid, locationUuid, providerUuid, LIMIT);
+	if(timeSlots.size()==0){
+		playUsingTTS("Sorry, there are no available timeslots based on your selection. Please try again.","en","");
+		return;
+	}
+
+	Date date;
+	for(i=0; i<timeSlots.size();i++){
+		date = timeSlots.get(i).getStartDate();
+		timeSlotOptions += " "+(i+1)+" for "+sdf.format(date);
+	}
+	do{
+		playUsingTTS("Please choose from these available timeslots","en","");
+		timeSlotChoice = getOptionUsingTTS(timeSlotOptions+ String.format(REPEAT_FORMAT, i+1), "123456", "5000", 2);
+		choice = Character.getNumericValue(timeSlotChoice);
+	}while(choice == timeSlots.size()+1);
+	TimeSlot timeSlot = timeSlots.get(Character.getNumericValue(timeSlotChoice)-1);
+	
+	//confirm appointment details
+	char isConfirmed = getOptionUsingTTS("Press 1 to confirm your appointment on "
+									+sdf.format(timeSlot.getStartDate())+" Press 2 to retry", "12", "5000", 2);
+	
+	//book the appointment
+	String timeSlotUuid = timeSlot.getUuid();
+	if(isConfirmed=='1'){
+		appointmentRestCall.createAppointment(timeSlotUuid, pid, appointmentTypeUuid);
+		playUsingTTS("Thanks. Your appointment has been confirmed","en","");
+	}
+}
 }

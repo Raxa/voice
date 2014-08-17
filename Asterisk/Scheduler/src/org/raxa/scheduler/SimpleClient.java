@@ -11,7 +11,9 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
  
-/**  Connects to a SimpleServer which is listening on port 8189
+/** Sample client side code to send Followup question to server
+ * The data is send as JSON
+ * It is received and interpreted by FollowupListener class  
 */
 public class SimpleClient{
  

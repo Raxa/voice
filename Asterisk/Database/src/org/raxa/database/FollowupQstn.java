@@ -3,6 +3,11 @@ package org.raxa.database;
 import java.sql.Time;
 import java.sql.Timestamp;
 
+/**
+ * An object of this class corresponds to a followup qstn for a patient
+ * @author rahulr92
+ *
+ */
 public class FollowupQstn {
 	/**
 	 * Auto Increment
@@ -28,7 +33,9 @@ public class FollowupQstn {
 	 * wether the reply by the system is successfully sent by the SMS Gateway
 	 */
 	private Time scheduleTime;
-
+	/**
+	 * Could be IVR_TYPE or SMS_TYPE (defined in VariableSetter)
+	 */
 	private int followupType;
 
 	public FollowupQstn(int fid, String pid, String qstn, Timestamp fromDate,

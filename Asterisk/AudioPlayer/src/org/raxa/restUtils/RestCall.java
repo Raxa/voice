@@ -16,7 +16,11 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.log4j.Logger;
 
-
+/**
+ * Class used to make GET and POST REST calls to a specified URL
+ * @author rahulr92
+ *
+ */
 public class RestCall {
 	static String username = null;
 	static String password = null;

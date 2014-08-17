@@ -33,11 +33,8 @@ import org.raxa.database.VariableSetter;
 import org.raxa.alertmessage.MedicineInformation;
 import org.raxa.alertmessage.MessageTemplate;
 /**
- * Outgoing Call Context here sets the following channel variable
- * totalItem;item0,item1....,count
- * 
- * CAUTION:Even if the patient has hung up the program is going to execute until it meets an exception or termination.
- * @author atul
+ * Reminder related call handling functions
+ * @author atul, rahulr92
  *
  */
 public class ReminderCallHandler extends CallHandler
@@ -56,19 +53,19 @@ public class ReminderCallHandler extends CallHandler
 			playReminderMenu(patientList,language);
 			} catch(Exception ex){
 				logger.error("\nCaused by:\n",ex);
-			}	}
+			}	
+}
 	
 
     
-	  /**
-	 * checks whether the call is incoming or outgoing.Handles the call accordingly
-	 */
-    public void service(AgiRequest request, AgiChannel channel) throws AgiException{
-
-	}
+  /**
+ * checks whether the call is incoming or outgoing.Handles the call accordingly
+ */
+public void service(AgiRequest request, AgiChannel channel) throws AgiException{
+}
 	
 	
-	  /**
+  /**
    * Plays medicine Reminder to the patient
    * @param pid
    * @throws AgiException
@@ -93,8 +90,7 @@ public class ReminderCallHandler extends CallHandler
 			if(header2!=null)
 				playUsingTTS(header2,ttsNotation);
 			for(MedicineInformation info : listofinfo )
-				playUsingTTS(new MessageTemplate().getTextToconvertToVoice(info),ttsNotation);
-			
+				playUsingTTS(new MessageTemplate().getTextToconvertToVoice(info),ttsNotation);			
 	}
   
   /**
@@ -110,7 +106,6 @@ public class ReminderCallHandler extends CallHandler
    * @throws Exception
    */
   public void playReminderMenu(List<Patient> patientList,String language) throws AgiException,Exception{
-  	
   	String reminderMenuVoiceFileLocation=getValueFromPropertyFile(language.toLowerCase(),"mainmenu");
   	String reminderMenuText=getValueFromPropertyFile("reminderMenuText","english");
   	
@@ -143,23 +138,20 @@ public class ReminderCallHandler extends CallHandler
   			logger.error("patient unable to choose a valid reminder menu option");
   			return;
   		}
-  	}
-  	
-  	
-  	if(keyWord.toLowerCase().equals("register")){
-  		
-  		Register r=new Register();
-  		List<Patient> p=r.getpatientFromNumber(pnumber,language);
-  		pid=getPid(p);
-  		if(pid==null)
-  			playUsingTTS(getValueFromPropertyFile("PatientNotExist", "english"),getTTSNotation(language));
-  		else{
-  			if(r.addReminder(pid, language, IVR_TYPE))
-  				playUsingTTS(getValueFromPropertyFile("successfulRegister", "english"),getTTSNotation(language));
-  			else
-  				playUsingTTS(getValueFromPropertyFile("unsuccessfulRegister", "english"),getTTSNotation(language));
-  		}
-  	}
+  }
+	if(keyWord.toLowerCase().equals("register")){
+		Register r=new Register();
+		List<Patient> p=r.getpatientFromNumber(pnumber,language);
+		pid=getPid(p);
+		if(pid==null)
+			playUsingTTS(getValueFromPropertyFile("PatientNotExist", "english"),getTTSNotation(language));
+		else{
+			if(r.addReminder(pid, language, IVR_TYPE))
+				playUsingTTS(getValueFromPropertyFile("successfulRegister", "english"),getTTSNotation(language));
+			else
+				playUsingTTS(getValueFromPropertyFile("unsuccessfulRegister", "english"),getTTSNotation(language));
+		}
+	}
   	
   	else if(keyWord.toLowerCase().equals("reminder")){
   		pid=getPid(patientList);
@@ -176,8 +168,7 @@ public class ReminderCallHandler extends CallHandler
   		
   */ 		else
   			medicineReminder(pid);
-  		
-  	}
+  }
   	
   	else if (keyWord.toLowerCase().equals("deregister")){
   			if(new Register().deleteReminder(pid,IVR_TYPE))

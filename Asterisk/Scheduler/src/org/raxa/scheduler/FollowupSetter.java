@@ -18,8 +18,9 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 /**
- * This class sets all thread each containing information about which patient to be called,what message to play etc.It passes FollowupQstn Object for followup.
- * @author rahul
+ * This class sets all thread each containing information about which patient to be called,what message to play etc.
+ * It passes FollowupQstn Object for followup
+ * @author rahulr92
  *
  */
 public class FollowupSetter implements Runnable,VariableSetter{
@@ -31,8 +32,7 @@ public class FollowupSetter implements Runnable,VariableSetter{
 		}
 	
 		public void run(){
-			logger.info("In FollowupSetter");
-		//List<FollowupQstn> listOfIVRCaller = new ArrayList<FollowupQstn>();
+		logger.info("In FollowupSetter");
 		List<FollowupQstn> listOfIVRCaller = getPatientsList(IVR_TYPE);
 		List<FollowupQstn> listOfSMSCaller = getPatientsList(SMS_TYPE);
 		
@@ -142,17 +142,26 @@ public class FollowupSetter implements Runnable,VariableSetter{
 		}
 	}
 	
+	/**
+	 * Gets all followup questions scheduled for the next one hour (configurable duration)
+	 * of the specified followup type (i.e. IVR_TYPE or SMS_TYPE)
+	 * 
+	 * @param followupType
+	 * @return
+	 */
 	public List<FollowupQstn> getPatientsList(int followupType)
 	{
 	List<FollowupQstn> qstnsToAsk = new  ArrayList<FollowupQstn>();
 	try{
 		Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-		String hqlQstn = "from FollowupQstn where followupType=:followupType";// and scheduleTime<=:systemTime and toDate<=:toDate";
+		String hqlQstn = "from FollowupQstn where followupType=:followupType";// and scheduleTime<=:systemTime and 
+		// fromDate <= CURRENT_DATE() and toDate >= CURRENT_DATE()";
         Query queryQstn = session.createQuery(hqlQstn);
         queryQstn.setInteger("followupType", followupType);
 		//queryQstn.setTimestamp("toDate", new Timestamp(new Date().getTime()));
 		 List<FollowupQstn> qstns =  queryQstn.list();
+		 
 		//Check if the question has already been asked today
 		for(FollowupQstn fq: qstns){
 			Query query = session.createQuery("from FollowupResponse where fid = :fid and date between :from and :to");
@@ -163,6 +172,7 @@ public class FollowupSetter implements Runnable,VariableSetter{
 			query.setParameter("from", fromDate);
 			query.setParameter("to", toDate);
 			List list = query.list();
+			
 			//havent been asked
 			if(list.size() == 0){
 				qstnsToAsk.add(fq);

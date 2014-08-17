@@ -35,11 +35,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.raxa.database.VariableSetter;
 
 /**
- * Outgoing Call Context here sets the following channel variable
- * totalItem;item0,item1....,count
+ * All followup call handling methods
  * 
- * CAUTION:Even if the patient has hung up the program is going to execute until it meets an exception or termination.
- * @author atul
+ * @author rahulr92
  *
  */
 public class FollowupCallHandler extends CallHandler
@@ -88,13 +86,10 @@ public class FollowupCallHandler extends CallHandler
 	
 
   /**
-   * Request followup information from patient'
-   * 
-   * Presently implemented using Asterisk DialPlan similar to CallHandler for reminders.
-   * Can alternatively use getData() provided by BaseAGIScript to read input 
-   * 
-   * 
-   * INCOMPLETE
+   * Request followup information from patient
+   * Used in both incoming and outgoing context
+   * in case of incoming call, HAS_FID will be false. we use the pid to get all followups questions for patient
+   * in case of outgoing call, HAS_FID will be true. The fid of the question to ask will be passed by the Scheduler (OutgoingCallManager)
    * 
    * @throws AgiException
    * 
@@ -167,6 +162,15 @@ public class FollowupCallHandler extends CallHandler
 		
     }
 
+	/**
+	 * Identify what the choice made by the patient is.
+	 * Initially, tries to understand the choice using ASR (with 2 retries)
+	 * If the recognized option is one of the passed followupChoices, it is returned
+	 * Otherwise, plays out the options as IVR menu and gets users choice.
+	 * 
+	 * @param followupChoices
+	 * @return
+	 */
 	public FollowupChoice recognizeChoice(List<FollowupChoice> followupChoices){
 	try{
 		//get user response using ASR
@@ -198,14 +202,7 @@ public class FollowupCallHandler extends CallHandler
 	}
 
 	/**
-   * Persist user response to followUp questions
-   * 
-   * Handles patient incoming call.
-   * 
-   * Set patient number as pnumber
-   * 
-   * INCOMPLETE
-   * @throws AgiException
+   * Persists user response to followup questions
    * 
    */
 	private FollowupResponse setFollowUpResponse(int fcid, int fid){
@@ -222,22 +219,4 @@ public class FollowupCallHandler extends CallHandler
 	return followupResponse;
 	}
 
- /**
- *  Read access token from properties
- * 
- */
-public String getAsrAccesToken(){
-	String accessToken = null;
-	Properties prop = new Properties();
-	try{
-		logger.info("Trying to get asr access token");
-		prop.load(this.getClass().getClassLoader().getResourceAsStream("asr.properties"));
-		accessToken = prop.getProperty("access-token");
-		return accessToken;
-	}
-	catch(IOException ex) { 		
-		logger.error("Unable to get asr access token");
-		return "";
-    }
-   }
 }

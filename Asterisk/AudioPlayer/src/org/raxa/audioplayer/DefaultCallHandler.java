@@ -32,9 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.raxa.database.VariableSetter;
 
 /**
- * Outgoing Call Context here sets the following channel variable
- * totalItem;item0,item1....,count
- * 
+ * This class is used for performing general call handling functions
  * CAUTION:Even if the patient has hung up the program is going to execute until it meets an exception or termination.
  * @author atul
  *
@@ -57,9 +55,9 @@ public class DefaultCallHandler extends CallHandler
 	
 
     
-	  /**
-	 * checks whether the call is incoming or outgoing.Handles the call accordingly
-	 */
+  /**
+ * checks whether the call is incoming or outgoing.Handles the call accordingly
+ */
     public void service(AgiRequest request, AgiChannel channel) throws AgiException{
 	}
 }
