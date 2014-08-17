@@ -1,4 +1,13 @@
 =============================================
+License
+=============================================
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+=============================================
 INSTALLING AND CONFIGURING ASTERISK
 
 =============================================
@@ -78,10 +87,14 @@ same=>n,GOTO(outgoing-call,100,2)
 
 
 [incoming-call]
-
 exten=>100,1,Answer()
-
 same=>n,AGI(agi://127.0.0.1/hello.agi)
+
+[outgoing-followup-call]
+exten=>100,1,SET(count=0)
+exten=>100,2,AGI(agi://127.0.0.1/hello.agi?language=${preferLanguage}&fid=${fid}&ttsNotation=${ttsNotation})
+exten=>100,3,GOTO(outgoing-followup-call,122,1)
+same=>n,Hangup()
 
 
 =============================================
@@ -306,5 +319,11 @@ Follow this link:http://askubuntu.com/questions/154953/specify-jdk-for-tomcat7
 
 ->The link can be configured by changing web.xml
 
+===================================================
+FOLLOWUP AND APPOINTMENT CALL/SMS HANDLING
+===================================================
+
+Refer this wiki for features implemented:
+https://raxaemr.atlassian.net/wiki/pages/viewpage.action?pageId=50724873
    
 
